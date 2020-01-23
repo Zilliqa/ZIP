@@ -5,7 +5,7 @@ The Zilliqa Improvement Proposals (ZIPs) are the core protocol standards for the
 1. Review ZIP-0.
 2. Fork the repository by clicking "Fork" in the top right.
 3. Add your ZIP to your fork of the repository. There is a template ZIP here.
-4. Submit a Pull Request to [Zilliqa's ZIPs repository](https://github.com/Zilliqa/ZIPs).
+4. Submit a Pull Request to [Zilliqa's ZIP repository](https://github.com/Zilliqa/ZIP).
 
 Your first PR should be a first draft of the final ZIP. An editor will manually review the first PR for a new ZIP and assign it a number before merging it. Make sure you include a `discussions-to header` with the URL to a discussion forum or open GitHub issue where people can discuss the ZIP as a whole.
 
