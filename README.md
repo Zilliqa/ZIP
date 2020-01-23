@@ -1,4 +1,4 @@
-# ZIPs
+# ZIP
 The Zilliqa Improvement Proposals (ZIPs) are the core protocol standards for the Zilliqa platform.
 
 # Contributing
