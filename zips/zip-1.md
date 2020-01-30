@@ -12,9 +12,9 @@ This ZIP details the address standard adopted by the Zilliqa blockchain. This ZI
 
 Due to `EIP-55` being not widely adopted by wallets and exchanges, the 20-bytes `base16` checksum variation used by Zilliqa protocol to prevent the loss of funds sent to an Ethereum address is not viable.
 
-Hence, this ZIP proposed that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native ZIL address and vice versa.
+Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native ZIL address and vice versa.
 
-The native protocol will still utilises the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets/SDKs level only. It will only be visible to end-users.
+The native protocol will still utilises the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
 
 ## Specification
 
@@ -49,7 +49,7 @@ This ZIP is backward compatible as the required changes are only on the wallet a
 
 ## Test Cases 
 
-This ZIP will use the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a7c7851e732a25e1d` as a testcase and example:
+This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a7c7851e732a25e1d` as a testcase and example:
 
 - Mainnet legacy `base16` checksummed address: `0x7Aa7eA9f4534d8D70224b9c2FB165242F321F12b`
 - Mainnet `bech32` checksummed address: `zil102n74869xnvdwq3yh8p0k9jjgtejruft268tg8`
@@ -72,7 +72,7 @@ This ZIP will use the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd
 
 #### Sample sanity implementation
 
-In order to support only `bech32` , it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by our official [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
+In order to support both bech32 (DEFAULT) and legacy base16 (OPTIONAL) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by our official [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
 
 ```javascript
   private normaliseAddress(address: string) {
@@ -80,11 +80,11 @@ In order to support only `bech32` , it is recommended to refer to the code snipp
       return fromBech32Address(address);
     }
 
-    if (!isValidChecksumAddress(address)) {
+    if (isValidChecksumAddress(address)) {
       return address;
     }
 
-    throw new Error('wrong address format, should be bech32 or checksum');
+    throw new Error('Wrong address format, should be either bech32 or checksummed address');
   }
 ```
 
