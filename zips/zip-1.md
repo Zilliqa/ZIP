@@ -43,7 +43,7 @@ The rationale to move to `Zilliqa Bech32 format` is to prevent confusion with Et
 
 Using Zilliqa’s address format that consists of 20 bytes led to some confusion due to similarity with Ethereum address format. Any tokens mistakenly sent to the wrong address would lead to irreversible loss of the tokens. This is because the one address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of hash functions used (`sha256` vs `keccak` respectively).
 
-## Backwards Compatibility
+## Backward Compatibility
 
 This ZIP is backward compatible as the required changes are only on the wallet and SDKs level. There is no change required on the core protocol layer.
 
