@@ -2,7 +2,7 @@
 The Zilliqa Improvement Proposals (ZIPs) are the core protocol standards for the Zilliqa platform.
 
 # Contributing
-1. Review ZIP-0.
+1. Review [ZIP-0](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-0.md).
 2. Fork the repository by clicking "Fork" in the top right.
 3. Add your ZIP to your fork of the repository. There is a template ZIP here.
 4. Submit a Pull Request to [Zilliqa's ZIP repository](https://github.com/Zilliqa/ZIP).
