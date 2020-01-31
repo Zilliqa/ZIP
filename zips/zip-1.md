@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 1  | Zilliqa Address Standard | Draft | Standards Track  | Ian Tan <br> Han Wen Chua <hanwen@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> | 2019-06-23 | 2020-01-30 
+| 1  | Zilliqa Address Standard | Draft | Standards Track  | Ian Tan <iantanwx@gmail.com> <br> Han Wen Chua <hanwen@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> | 2019-06-23 | 2020-01-30
 
 
 ## Abstract
