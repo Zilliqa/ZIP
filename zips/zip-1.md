@@ -35,7 +35,7 @@ A Zilliqa `bech32` checksummed address consists of the following aspects:
 
 ### Previous solution
 
-Zilliqa previous address format utilises a different 20 bytes checksum mechanism from Ethereum to prevent the issue of erroneous funds transfers between an Ethereum and a Zilliqa address. However, due to [EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) being not widely adopted by wallets and exchanges, this solution became not viable as a preventive mechanism.
+Zilliqa's previous address format used a different 20 bytes checksum mechanism from Ethereum to prevent the issue of erroneous fund transfers between an Ethereum and a Zilliqa address. However, due to [EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) being not widely adopted by wallets and exchanges, this solution became not viable as a preventive mechanism.
 
 ### Bech32 address format
 
