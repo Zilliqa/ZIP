@@ -41,7 +41,7 @@ Zilliqa previous address format utilises a different 20 bytes checksum mechanism
 
 The rationale to move to `Zilliqa Bech32 format` is to prevent confusion with Ethereum address. 
 
-Using Zilliqa’s address format that consists of 20 bytes led to some confusion due to similarity with Ethereum address format. Any tokens mistakenly sent to the wrong address would lead to irreversible loss of the tokens. This is because the one address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of hash functions used (`sha256` vs `keccak` respectively).
+Using Zilliqa’s address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
 
 ## Backward Compatibility
 
