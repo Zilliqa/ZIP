@@ -72,7 +72,7 @@ This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a
 
 #### Sample sanity implementation
 
-In order to support both bech32 (DEFAULT) and legacy base16 (OPTIONAL) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by our official [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
+In order to support both bech32 (DEFAULT) and legacy base16 (OPTIONAL) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by the [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
 
 ```javascript
   private normaliseAddress(address: string) {
