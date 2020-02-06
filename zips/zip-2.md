@@ -8,23 +8,23 @@ This ZIP details the standard of how internal transactions are presented externa
 
 ## Motivation
 
-As more and more contract being deployed in Zilliqa blockchain, in some cases, precise tracking of inter-contract transitions and balance transferring is needed, such as to know the rewardees of a bounty contract and the amount they are rewarded. Since the transaction sent to blockchain only indicates which contract and what transition to be invoked, it's unable to tell what exactly happened during the contract execution, which may cause great inconvenience for contract developers and users.
+As more and more contracts are deployed on the Zilliqa blockchain, there becomes a need for a precise way to track inter-contract transitions and balance transfers in some cases (e.g., the rewardees and their corresponding reward amounts in the case of a bounty contract). Since a transaction sent to the blockchain only indicates which contract and what transition to be invoked, there is no apparent way to tell what exactly happened during the contract execution, which greatly inconveniences contract developers and users.
 
-Hence, this ZIP proposes that those internal can be recorded in transaction receipt to help users to track all the information of a contract transaction.
+Hence, this ZIP proposes a way for users to track all the information in a contract transaction by recording those internal transactions in the contract transaction's receipt.
 
 ## Specification
 
 Please refer to [`GetTransaction`](https://apidocs.zilliqa.com/#gettransaction) for more details of the transaction receipt specifications.
 
-The internal transaction records will be added as a new field named as `transitions` in the JSON message of API result under the `receipt`. Each entry in `transitions` field consists the following aspects:
+The `GetTransaction` API call returns a JSON message that includes a `receipt` field. Under this `receipt`, the internal transaction records are added as individual entries under a new field named `transitions`. Each entry in `transitions` further consists of the following fields:
 
 |      Field    |                          Description                            |
 | ------------- | --------------------------------------------------------------- |
-| **  addr   ** | address of the contract emitted this transition                 |
-| **  depth  ** | the depth of current transition if happen to invoke a tree call |
-| **  msg    ** | the message emitted by scilla interpreter for this transition   |
+|     `addr`    | Address of the contract that emitted this transition            |
+|     `depth`   | Depth of current transition if a tree call is invoked           |
+|     `msg`     | Message emitted by the Scilla interpreter for this transition   |
 
-- The `msg` field is fetched from the `"message"` field of the Scilla interpreter output, for more detail, please refer to [`here`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output). Do note that this may change if Scilla upgraded its specification.
+- The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [`Scilla specification`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
 
 ## Examples
 
@@ -61,24 +61,28 @@ The internal transaction records will be added as a new field named as `transiti
 
 ## Rationale
 
-### Two possible solutions:
+There are at least two possible solutions to the problem of tracking internal transactions.
 
-To solve the problem, actually two possible solutions were raised during the discussion. The first one has been discribed above. Another one is to let seed node to run all the transactions happened in the previous epoch based on the states in the last epoch, then aggregates all the output emitted by the local Scilla interpreter and provide to the external interface. The following chart describes the mechanisms, pros and cons of two approaches:
+The first one is the one put forward in this proposal, i.e., the recording of those transactions in the contract transaction's receipt.
 
-|   solution    | mechanism | pros | cons |
-| ------------- | --------- | ---- | ---- |
-| **receipt**   | records all the internal transitions in transaction receipt | - simple <br> - no extra computation | - old transactions not supported |
-| **seed node** | seed node replay all transactions| - consensus independent, save bandwidth <br> - backward compatible | - difficult to implement <br> - heavy computation needed, may exceed epoch time since it burdens the computation over multiple shards|
+The alternative solution is to require seed nodes to re-run confirmed transactions as they come in each epoch, and based on the states from the last epoch. The output emitted by the seed node's Scilla interpreter are then aggregated and made accessible through an API call.
 
-Considering all the aspects above, the receipt approach is chosen for current adoption. However we will still be watching out for the potential of the second approach can bring along the way.
+The following table summarizes the mechanism and pros and cons of each approach.
 
-## Backwards Compatibility
+|   Solution    | Mechanism                                                   | Pros | Cons |
+| ------------- | ----------------------------------------------------------- | ---- | ---- |
+| Receipt       | Records all the internal transitions in transaction receipt | - Simple <br> - No extra computation | - Old transactions are not supported |
+| Seed node     | Seed node replays all transactions                          | - Consensus-independent, saving bandwidth <br> - Backward compatible | - Difficult to implement <br> - Computationally heavy and may exceed epoch time since it must be performed over all the shards' transactions |
+
+Considering all the aspects above, the receipt approach is chosen for current adoption.
+
+## Backward Compatibility
 
 Due to transaction receipt hashing, all the receipts have been generated before are immutable, thus only receipt generated after the [`release v6.1.0`](https://github.com/Zilliqa/Zilliqa/releases/tag/v6.1.0) can enjoy this feature.
 
-## Reference
-- [`Zilliqa API docs for GetTransaction`](https://apidocs.zilliqa.com/#gettransaction)
-- [`Scilla doc for interpreter output`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output)
+## References
+- [`Zilliqa API documentation for GetTransaction`](https://apidocs.zilliqa.com/#gettransaction)
+- [`Scilla documentation for interpreter output`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output)
 
 ## Copyright Waiver
 
