@@ -14,7 +14,7 @@ Due to `EIP-55` being not widely adopted by wallets and exchanges, the 20-bytes 
 
 Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native ZIL address and vice versa.
 
-The native protocol will still utilise the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
+The native protocol still utilizes the 20-byte `base16` checksum on the backend. This is a cosmetic change of the 20-byte `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only visible to end users.
 
 ## Specification
 
