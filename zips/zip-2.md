@@ -24,7 +24,7 @@ The `GetTransaction` API call returns a JSON message that includes a `receipt` f
 |     `depth`   | Depth of current transition if a tree call is invoked           |
 |     `msg`     | Message emitted by the Scilla interpreter for this transition   |
 
-- The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [`Scilla specification`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
+The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [`Scilla specification`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
 
 ## Examples
 
@@ -78,11 +78,11 @@ Considering all the aspects above, the receipt approach is chosen for current ad
 
 ## Backward Compatibility
 
-Due to transaction receipt hashing, all the receipts have been generated before are immutable, thus only receipt generated after the [`release v6.1.0`](https://github.com/Zilliqa/Zilliqa/releases/tag/v6.1.0) can enjoy this feature.
+Due to transaction receipt hashing, all the receipts that have been generated before this ZIP is implemented are immutable. Thus, only receipts generated after implementation can benefit from this feature, making this backward incompatible.
 
 ## References
-- [`Zilliqa API documentation for GetTransaction`](https://apidocs.zilliqa.com/#gettransaction)
-- [`Scilla documentation for interpreter output`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output)
+- [Zilliqa API documentation for GetTransaction](https://apidocs.zilliqa.com/#gettransaction)
+- [Scilla documentation for interpreter output](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output)
 
 ## Copyright Waiver
 
