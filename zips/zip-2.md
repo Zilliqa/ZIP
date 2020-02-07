@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 1  | Zilliqa Internal Transactions | Draft | Standards Track  | Haichuan Liu <haichuan@gmail.com> <br> Xiaohuo Ren <lulu@zilliqa.com>| 2019-06-23 | 2020-01-30
+| 1  | Zilliqa Internal Transactions | Draft | Standards Track  | Haichuan Liu <haichuan@zilliqa.com> <br> Xiaohuo Ren <lulu@zilliqa.com>| 2020-01-15 | 2020-02-05
 
 ## Abstract
 
@@ -8,9 +8,9 @@ This ZIP details the standard of how internal transactions are presented externa
 
 ## Motivation
 
-As more and more contracts are deployed on the Zilliqa blockchain, there becomes a need for a precise way to track inter-contract transitions and balance transfers in some cases (e.g., the rewardees and their corresponding reward amounts in the case of a bounty contract). Since a transaction sent to the blockchain only indicates which contract and what transition to be invoked, there is no apparent way to tell what exactly happened during the contract execution, which greatly inconveniences contract developers and users.
+As more and more contracts are deployed on the Zilliqa blockchain, there becomes a need for a precise way to track inter-contract transitions and balance transfers in some cases (e.g., the rewardees and their corresponding reward amounts in the case of a bounty contract). Since a transaction sent to the blockchain only indicates which contract and what transition to be invoked, there is no apparent way to tell what exactly happened during the contract execution, which causes inconveniences to contract developers and users.
 
-Hence, this ZIP proposes a way for users to track all the information in a contract transaction by recording those internal transactions in the contract transaction's receipt.
+Hence, this ZIP proposes a way for users to track all the information in a contract transaction by recording all internal transactions in the contract transaction's receipt.
 
 ## Specification
 
@@ -24,7 +24,7 @@ The `GetTransaction` API call returns a JSON message that includes a `receipt` f
 |     `depth`   | Depth of current transition if a tree call is invoked           |
 |     `msg`     | Message emitted by the Scilla interpreter for this transition   |
 
-The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [`Scilla specification`](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
+The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [Scilla specification](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
 
 ## Examples
 
@@ -65,7 +65,7 @@ There are at least two possible solutions to the problem of tracking internal tr
 
 The first one is the one put forward in this proposal, i.e., the recording of those transactions in the contract transaction's receipt.
 
-The alternative solution is to require seed nodes to re-run confirmed transactions as they come in each epoch, and based on the states from the last epoch. The output emitted by the seed node's Scilla interpreter are then aggregated and made accessible through an API call.
+The alternative solution is to require seed nodes to re-execute confirmed transactions in each epoch, and based on the states from the last epoch. The output emitted by the seed node's Scilla interpreter are then aggregated and made accessible through an API call.
 
 The following table summarizes the mechanism and pros and cons of each approach.
 
