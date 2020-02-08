@@ -10,11 +10,19 @@ This ZIP details the address standard adopted by the Zilliqa blockchain. This ZI
 
 ## Motivation
 
-Due to `EIP-55` being not widely adopted by wallets and exchanges, the 20-bytes `base16` checksum variation used by Zilliqa protocol to prevent the loss of funds sent to an Ethereum address is not viable.
+Ethereum's`EIP-55` proposed mixed-case checksum address encoding. Zilliqa uses a variant of `EIP-55` mixed-case checksum address.
 
-Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native ZIL address and vice versa.
+The rationale of using a different mixed-case checksum address are as such:
+- to prevent confusion with Ethereum mixed-case checksum address
+- to prevent the loss of funds arising from sending to the wrong network address
 
-The native protocol will still utilize the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
+> Note: Using Zilliqa’s native protocol address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
+
+However, `EIP-55` is still not widely adopted by wallets and exchanges within the Ethereum ecosystem. Checks for checksum are not present in some implementation wallets or exchanges integration. As such, the original intention of using a different mixed-cased checksum variation for Zilliqa address format to prevent the loss of funds become not viable.
+
+Hence, this ZIP proposes that Zilliqa adopts a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native $ZIL address and vice versa.
+
+The native protocol continues utilize the 20-bytes `base16` checksum on the backend. As such, this is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
 
 ## Specification
 
@@ -22,7 +30,7 @@ Please refer to [`bip-0173`](https://github.com/bitcoin/bips/blob/master/bip-017
 
 A Zilliqa `bech32` checksummed address consists of the following aspects:
 
-|               | Human-readable prefix | separator | `bech32` formatted address         | checksum |
+|               | Human-readable prefix | Separator | `bech32` formatted address         | Checksum |
 | ------------- | --------------------- | --------- | ---------------------------------- | -------- |
 | **Example 1** | `zil`                 | `1`       | `02n74869xnvdwq3yh8p0k9jjgtejruft` | `268tg8` |
 | **Example 2** | `zil`                 | `1`       | `48fy8yjxn6jf5w36kqc7x73qd3ufuu24` | `a4u8t9` |
@@ -33,15 +41,11 @@ A Zilliqa `bech32` checksummed address consists of the following aspects:
 
 ## Rationale
 
-### Previous solution
-
-Zilliqa's previous address format used a different 20 bytes checksum mechanism from Ethereum to prevent the issue of erroneous fund transfers between an Ethereum and a Zilliqa address. However, due to [EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) being not widely adopted by wallets and exchanges, this solution became not viable as a preventive mechanism.
-
 ### Bech32 address format
 
-The rationale to move to `Zilliqa Bech32 format` is to prevent confusion with Ethereum address. 
-
-Using Zilliqa’s native protocol address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
+Other address format such as `Base32` were explored. However, `Bech32` address format turns out to be a better fit due to
+- human-readable prefix explictly convey that the address is a Zilliqa address
+- Prevent confusion with Ethereum's checksummed address format
 
 ## Backward Compatibility
 
