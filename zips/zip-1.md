@@ -6,7 +6,7 @@
 
 ## Abstract
 
-This ZIP details the address standard adopted by the Zilliqa blockchain. This ZIP provides the concise details of the `bech32` address format customised for the Zilliqa protocol.
+This ZIP details the address standard adopted by the Zilliqa blockchain. This ZIP provides the concise details of the `bech32` address format customized for the Zilliqa protocol.
 
 ## Motivation
 
@@ -14,7 +14,7 @@ Due to `EIP-55` being not widely adopted by wallets and exchanges, the 20-bytes 
 
 Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native ZIL address and vice versa.
 
-The native protocol will still utilise the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
+The native protocol will still utilize the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
 
 ## Specification
 
@@ -72,7 +72,7 @@ This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a
 
 #### Sample sanity implementation
 
-In order to support both bech32 (DEFAULT) and legacy base16 (OPTIONAL) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by the [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
+In order to support both `bech32` (default) and legacy `base16` (optional) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by the [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
 
 ```javascript
   private normaliseAddress(address: string) {
