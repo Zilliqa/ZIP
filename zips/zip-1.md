@@ -41,7 +41,7 @@ Zilliqa's previous address format used a different 20 bytes checksum mechanism f
 
 The rationale to move to `Zilliqa Bech32 format` is to prevent confusion with Ethereum address. 
 
-Using Zilliqa’s address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
+Using Zilliqa’s native protocol address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
 
 ## Backward Compatibility
 
@@ -49,7 +49,7 @@ This ZIP is backward compatible as the required changes are only on the wallet a
 
 ## Test Cases 
 
-This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a7c7851e732a25e1d` as a testcase and example:
+This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a7c7851e732a25e1d` as a test case and example:
 
 - Mainnet legacy `base16` checksummed address: `0x7Aa7eA9f4534d8D70224b9c2FB165242F321F12b`
 - Mainnet `bech32` checksummed address: `zil102n74869xnvdwq3yh8p0k9jjgtejruft268tg8`
@@ -57,7 +57,7 @@ This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a
 
 ## Implementations
 
-### Reference encoder and decoder:
+### Reference encoder and decoder
 
 #### SDKs
 
@@ -90,7 +90,7 @@ In order to support both `bech32` (default) and legacy `base16` (optional) addre
 
 ### Explorer
 
-[Viewblock explorer](https://viewblock.io/zilliqa) supports both the new `bech32` and legacy `base16` checksummed address format in the search bar to ease the transition to `bech32` checksummed addresses for all Users.
+[Viewblock explorer](https://viewblock.io/zilliqa) supports both the new `bech32` and legacy `base16` checksummed address formats in the search bar to ease the transition to `bech32` checksummed addresses for all Users.
 
 ## References
 
