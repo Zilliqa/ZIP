@@ -20,7 +20,7 @@ The rationale of using a different mixed-case checksum address are as such:
 
 However, `EIP-55` is still not widely adopted by wallets and exchanges within the Ethereum ecosystem. Checks for checksum are not present in some implementation wallets or exchanges integration. As such, the original intention of using a different mixed-cased checksum variation for Zilliqa address format to prevent the loss of funds become not viable.
 
-Hence, this ZIP proposes that Zilliqa adopts a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native $ZIL address and vice versa.
+Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native $ZIL address and vice versa.
 
 The native protocol continues utilize the 20-bytes `base16` checksum on the backend. As such, this is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
 
