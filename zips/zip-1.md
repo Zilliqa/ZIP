@@ -45,7 +45,7 @@ A Zilliqa `bech32` checksummed address consists of the following aspects:
 
 Other address format such as `Base32` were explored. However, `Bech32` address format turns out to be a better fit due to
 - human-readable prefix explictly convey that the address is a Zilliqa address
-- Prevent confusion with Ethereum's checksummed address format
+- it prevents confusion with Ethereum's checksummed address format
 
 ## Backward Compatibility
 
