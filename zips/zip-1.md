@@ -12,17 +12,17 @@ This ZIP details the address standard adopted by the Zilliqa blockchain. This ZI
 
 Ethereum's`EIP-55` proposed mixed-case checksum address encoding. Zilliqa uses a variant of `EIP-55` mixed-case checksum address.
 
-The rationale of using a different mixed-case checksum address are as such:
+The rationale of using a different mixed-case checksum address are as follow:
 - to prevent confusion with Ethereum mixed-case checksum address
 - to prevent the loss of funds arising from sending to the wrong network address
 
 > Note: Using Zilliqa’s native protocol address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
 
-However, `EIP-55` is still not widely adopted by wallets and exchanges within the Ethereum ecosystem. Checks for checksum are not present in some implementation wallets or exchanges integration. As such, the original intention of using a different mixed-cased checksum variation for Zilliqa address format to prevent the loss of funds becomes not viable.
+However, `EIP-55` is still not widely adopted by wallets and exchanges within the Ethereum ecosystem. Checks for checksum are not present in some implementation wallets or exchanges integration. Hence, the original intention of using a different mixed-cased checksum variation for Zilliqa address format to prevent the loss of funds becomes not viable.
 
 Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native $ZIL address and vice versa.
 
-The native protocol continues utilize the 20-bytes `base16` checksum on the backend. As such, this is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
+The native protocol continues utilize the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
 
 ## Specification
 
