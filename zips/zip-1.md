@@ -6,29 +6,27 @@
 
 ## Abstract
 
-This ZIP details the address standard adopted by the Zilliqa blockchain. This ZIP provides the concise details of the `bech32` address format customized for the Zilliqa protocol.
+This ZIP details the [bech32](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki) address standard adopted by the Zilliqa blockchain. This ZIP has already been implemented and therefore is being proposed for documentation purposes.
 
 ## Motivation
 
-Ethereum's [EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) proposed mixed-case checksum address encoding. Zilliqa uses a variant of `EIP-55` mixed-case checksum address.
+Ethereum's [EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) proposed a checksum to detect mistyped addresses. The checksum algorithm takes as input a raw byte address (20 bytes) and converts it to hexadecimal characters. The algorithm then checks if the i-th hexadecimal character is a letter (i.e., it's one of `abcdef`), if so, it prints the character in uppercase if (4*i)-th bit of the hash of the lowercase hexadecimal address is 1, otherwise it prints the character in lowercase. The end result is a mixed-case hexadecimal string that embeds a checksum without increasing the size of the address. 
 
-The rationale of using a different mixed-case checksum address are as follows:
-- to prevent confusion with Ethereum mixed-case checksum address
-- to prevent the loss of funds arising from sending to the wrong network address
+With similar goals, Zilliqa adopted `EIP-55` but with some changes (e.g., by replacing 4 by a different number) so as to:
+- avoid confusion with an Ethereum mixed-case checksum address,
+- prevent the loss of funds arising from sending to the wrong network address as the checksum alone does not provide any information on the underlying network. 
 
-> Note: Using Zilliqa’s native protocol address format that consists of 20 bytes led to some confusion due to similarity with the Ethereum address format. Any tokens mistakenly sent to the wrong address would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
+However, `EIP-55` is still not widely adopted by wallets and exchanges within the Ethereum ecosystem. Checks for checksum are not present in some wallet implementations or exchanges. Hence, the original intention of using a different mixed-cased checksum variation for Zilliqa address format to prevent the loss of funds ended up becoming a not-so-viable solution.
 
-However, `EIP-55` is still not widely adopted by wallets and exchanges within the Ethereum ecosystem. Checks for checksum are not present in some implementation wallets or exchanges integration. Hence, the original intention of using a different mixed-cased checksum variation for Zilliqa address format to prevent the loss of funds becomes not viable.
+Hence, this ZIP proposes that Zilliqa adopt a variation of the [bech32]((https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki) ) format on the wallets/SDKs level to prevent users from sending ERC20 tokens from their Ethereum wallets (i.e., MyCrypto/MyEtherWallet) to a mainnet Zilliqa address and vice versa. The proposed change will be of cosmetic in nature and will only impact wallets and SDKs. It will only be visible to end-users and no change is required at the core-protocol layer.
 
-Hence, this ZIP proposes that Zilliqa adopt a variation of the `bech32` format on the wallets/SDKs level to prevent users from sending interim ERC20 ZIL tokens from their Ethereum wallets (i.e. MyCrypto/MyEtherWallet) to a native $ZIL address and vice versa.
-
-The native protocol continues utilize the 20-bytes `base16` checksum on the backend. This is a cosmetic change of the 20-bytes `base16` checksum address to `bech32` format on the wallets and SDKs level only. It is only be visible to end-users.
+> Note: Within the core protocol, Zilliqa uses the raw 20 bytes address (without any checksum), i.e., `base16`. Checksum is present only at the client-level such as wallets which send transactions to the Zilliqa network. Therefore, it is impossible to distinguish between an Ethereum address (without the checksum) and a Zilliqa address (without the checksum) at the core protocol-level.  Any tokens mistakenly sent to the wrong network therefore would have led to an irreversible loss of the tokens. This is because the private key corresponding to an address on Zilliqa does not correspond to the same private key on Ethereum, due to the difference of the underlying hash function used (`sha256` in Zilliqa vs `keccak` in Ethereum).
 
 ## Specification
 
 Please refer to [`bip-0173`](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32) for more details of the `bech32` technical specification.
 
-A Zilliqa `bech32` checksummed address consists of the following aspects:
+A Zilliqa `bech32` checksummed address consists of the following parts:
 
 |               | Human-readable prefix | Separator | `bech32` formatted address         | Checksum |
 | ------------- | --------------------- | --------- | ---------------------------------- | -------- |
@@ -36,26 +34,26 @@ A Zilliqa `bech32` checksummed address consists of the following aspects:
 | **Example 2** | `zil`                 | `1`       | `48fy8yjxn6jf5w36kqc7x73qd3ufuu24` | `a4u8t9` |
 | **Example 3** | `zil`                 | `1`       | `fdv7u7rll9epgcqv9xxh9lhwq427nsql` | `58qcs9` |
 
-- Do note that the human-readable prefix for [Zilliqa mainnet](https://viewblock.io/zilliqa) is `zil`, and the human-readable prefix for [Zilliqa Developer testnet](https://viewblock.io/zilliqa?network=testnet) is also `zil`.
-- Do also note that the last six characters of the data part form a checksum and contain no information.
+- Note that the human-readable prefix for [Zilliqa mainnet](https://viewblock.io/zilliqa) is `zil`, and the human-readable prefix for [Zilliqa Developer testnet](https://viewblock.io/zilliqa?network=testnet) is also `zil`.
+- Note that the last six characters of the data part form a checksum and contain no information.
 
 ## Rationale
 
 ### Bech32 address format
 
 Other address format such as `base32` were explored. However, `bech32` address format turns out to be a better fit since:
-- its human-readable prefix explicitly conveys that the address is a Zilliqa address
-- it prevents confusion with Ethereum's checksummed address format
+- its human-readable prefix explicitly conveys that the address is a Zilliqa address,
+- it prevents confusion with Ethereum's checksummed address format.
 
 ## Backward Compatibility
 
-This ZIP is backward compatible as the required changes are only on the wallet and SDKs level. There is no change required on the core protocol layer.
+This ZIP is backward compatible as the required changes are only at the wallet and the SDKs levels. There is no change required at the core protocol layer.
 
 ## Test Cases 
 
 This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a7c7851e732a25e1d` as a test case and example:
 
-- Mainnet legacy `base16` checksummed address: `0x7Aa7eA9f4534d8D70224b9c2FB165242F321F12b`
+- Mainnet legacy `base16` checksummed address (a la EIP-55):`0x7Aa7eA9f4534d8D70224b9c2FB165242F321F12b`
 - Mainnet `bech32` checksummed address: `zil102n74869xnvdwq3yh8p0k9jjgtejruft268tg8`
 - Testnet `bech32` checksummed address: `zil102n74869xnvdwq3yh8p0k9jjgtejruft268tg8`
 
@@ -76,7 +74,7 @@ This ZIP uses the public key `039fbf7df13d0b6798fa16a79daabb97d4424062d2f8bd4e9a
 
 #### Sample sanity implementation
 
-In order to support both `bech32` (default) and legacy `base16` (optional) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by the [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
+In order to support both `bech32` (default) and legacy `base16` checksummed (a la EIP-55) (deprecated) address formats, it is recommended to refer to the code snippet below to perform a sanity check with the utility tools provided by the [`zilliqa-js` SDK](https://github.com/Zilliqa/Zilliqa-JavaScript-Library):
 
 ```javascript
   private normaliseAddress(address: string) {
@@ -94,13 +92,14 @@ In order to support both `bech32` (default) and legacy `base16` (optional) addre
 
 ### Explorer
 
-[Viewblock explorer](https://viewblock.io/zilliqa) supports both the new `bech32` and legacy `base16` checksummed address formats in the search bar to ease the transition to `bech32` checksummed addresses for all Users.
+[Viewblock explorer](https://viewblock.io/zilliqa) supports both the new `bech32` and legacy `base16` checksummed address formats (a la EIP-55) in the search bar to ease the transition to `bech32` checksummed addresses for all users.
 
 ## References
 
 - [Zilliqa Migrates to New Address Format](https://blog.zilliqa.com/zilliqa-migrates-to-new-address-format-bf1fa6d7e41d)
-- [Zilliqa Address Standard wiki (Depreciated)](https://github.com/Zilliqa/Zilliqa/wiki/Address-Standard)
+- [Zilliqa Address Standard wiki (Deprecated)](https://github.com/Zilliqa/Zilliqa/wiki/Address-Standard)
 
 ## Copyright Waiver 
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+
