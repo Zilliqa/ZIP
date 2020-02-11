@@ -150,13 +150,13 @@ The reply from mainnet:
 }
 </code></pre>
 
-Notice there is a new field `transitions` in created in the `receipt` entry. 
+Notice that a new field `transitions` in created in the `receipt` entry. 
 
 ## Implementation
 
-This new ZIP is implemented by mreging these pull requests to Zilliqa master branch:
-https://github.com/Zilliqa/Zilliqa/pull/1982
-https://github.com/Zilliqa/Zilliqa/pull/1987
+This ZIP is implemented in the following pull requests in the Zilliqa core repository:
+- [PR 1982](https://github.com/Zilliqa/Zilliqa/pull/1982)
+- [PR 1987](https://github.com/Zilliqa/Zilliqa/pull/1987)
 
 
 ## References
