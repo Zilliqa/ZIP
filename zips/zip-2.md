@@ -4,13 +4,13 @@
 
 ## Abstract
 
-This ZIP details the standard of how internal transactions are presented externally by the Zilliqa blockchain.
+This ZIP details the standard to expose the internal transactions (commonly referred to as message calls) to external parties such as users, explorers. 
 
 ## Motivation
 
-As more and more contracts are deployed on the Zilliqa blockchain, there becomes a need for a precise way to track inter-contract transitions and balance transfers in some cases (e.g., the rewardees and their corresponding reward amounts in the case of a bounty contract). Since a transaction sent to the blockchain only indicates which contract and what transition to be invoked, there is no apparent way to tell what exactly happened during the contract execution, which causes inconveniences to contract developers and users.
+As more and more contracts get deployed on the Zilliqa blockchain, it becomes important to be able to track inter-contract message calls and balance transfers in some cases (e.g., the rewardees and their corresponding reward amounts in the case of a bounty contract). Since a transaction sent to the blockchain only indicates the first contract and the first transition to be invoked, there is no apparent way to tell which other contracts were invoked as a part of this transaction execution and the parameters that were passed along. This causes inconveniences to contract developers and end users.
 
-Hence, this ZIP proposes a way for users to track all the information in a contract transaction by recording all internal transactions in the contract transaction's receipt.
+This ZIP proposes a way for users to track all the relevant "internal" information by recording all internal message calls invoked while processing a transaction in the transaction's receipt.
 
 ## Specification
 
@@ -28,9 +28,7 @@ The `msg` field is fetched from the `message` field of the Scilla interpreter ou
 
 ## Rationale
 
-There are at least two possible solutions to the problem of tracking internal transactions.
-
-The first one is the one put forward in this proposal, i.e., the recording of those transactions in the contract transaction's receipt.
+There are at least two possible solutions to the problem of tracking internal transactions. The first one is the one put forth in this proposal, i.e., the recording of those transactions in the contract transaction's receipt.
 
 The alternative solution is to require seed nodes to re-execute confirmed transactions in each epoch, and based on the states from the last epoch. The output emitted by the seed node's Scilla interpreter are then aggregated and made accessible through an API call.
 
@@ -41,11 +39,11 @@ The following table summarizes the mechanism and pros and cons of each approach.
 | Receipt       | Records all the internal transitions in transaction receipt | - Simple <br> - No extra computation | - Old transactions are not supported |
 | Seed node     | Seed node replays all transactions                          | - Consensus-independent, saving bandwidth <br> - Backward compatible | - Difficult to implement <br> - Computationally heavy and may exceed epoch time since it must be performed over all the shards' transactions |
 
-Considering all the aspects above, the receipt approach is chosen for current adoption.
+Considering all the aspects above, the receipt approach is chosen for the current implementation.
 
 ## Backward Compatibility
 
-Due to transaction receipt hashing, all the receipts that have been generated before this ZIP is implemented are immutable. Thus, only receipts generated after implementation can benefit from this feature, making this backward incompatible.
+Due to transaction receipt hashing, all the receipts that have been generated before this ZIP is implemented are immutable. Thus, only receipts generated after implementation can benefit from this feature.
 
 ## Test Cases
 
@@ -58,7 +56,7 @@ curl -d '{
     "params": ["cd7f35b26710e3cf80fcdf2eceb169c8be0d008ad6838a458f83710953bef2bc"]
 }' -H "Content-Type: application/json" -X POST "https://api.zilliqa.com/"
 ```
-The reply from mainnet:
+<b>Expected Response: </b>
 <pre><code>
 {
    "id":"1",
@@ -150,7 +148,7 @@ The reply from mainnet:
 }
 </code></pre>
 
-Notice that a new field `transitions` in created in the `receipt` entry. 
+Notice that a new field `transitions` is created in the `receipt` entry. 
 
 ## Implementation
 
