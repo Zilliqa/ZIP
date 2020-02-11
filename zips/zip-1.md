@@ -10,7 +10,7 @@ This ZIP details the address standard adopted by the Zilliqa blockchain. This ZI
 
 ## Motivation
 
-Ethereum's`EIP-55` proposed mixed-case checksum address encoding. Zilliqa uses a variant of `EIP-55` mixed-case checksum address.
+Ethereum's [EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) proposed mixed-case checksum address encoding. Zilliqa uses a variant of `EIP-55` mixed-case checksum address.
 
 The rationale of using a different mixed-case checksum address are as follows:
 - to prevent confusion with Ethereum mixed-case checksum address
