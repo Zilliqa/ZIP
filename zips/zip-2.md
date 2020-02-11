@@ -26,39 +26,6 @@ The `GetTransaction` API call returns a JSON message that includes a `receipt` f
 
 The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [Scilla specification](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
 
-## Examples
-
-```
-"transitions": [
-                {
-                    "addr": "0x8b46edcfcdb5613da479805f9a943b4a75e544a5",
-                    "depth": 0,
-                    "msg": {
-                        "_amount": "0",
-                        "_recipient": "0x7825250c716f71e63c3819c029305ba52680c998",
-                        "_tag": "decreaseAllowance",
-                        "params": [
-                            {
-                                "type": "ByStr20",
-                                "value": "0xb2e51878722d8b6d2c0f97e995a7276d64c1618b",
-                                "vname": "spender"
-                            },
-                            {
-                                "type": "Uint128",
-                                "value": "10000",
-                                "vname": "value"
-                            },
-                            {
-                                "type": "ByStr20",
-                                "value": "0x9bfec715a6bd658fcb62b0f8cc9bfa2ade71434a",
-                                "vname": "initiator"
-                            }
-                        ]
-                    }
-                }
-            ]
-```
-
 ## Rationale
 
 There are at least two possible solutions to the problem of tracking internal transactions.
@@ -79,6 +46,118 @@ Considering all the aspects above, the receipt approach is chosen for current ad
 ## Backward Compatibility
 
 Due to transaction receipt hashing, all the receipts that have been generated before this ZIP is implemented are immutable. Thus, only receipts generated after implementation can benefit from this feature, making this backward incompatible.
+
+## Test Cases
+
+This ZIP uses the following curl request as a test and example:
+```
+curl -d '{
+    "id": "1",
+    "jsonrpc": "2.0",
+    "method": "GetTransaction",
+    "params": ["cd7f35b26710e3cf80fcdf2eceb169c8be0d008ad6838a458f83710953bef2bc"]
+}' -H "Content-Type: application/json" -X POST "https://api.zilliqa.com/"
+```
+The reply from mainnet:
+<pre><code>
+{
+   "id":"1",
+   "jsonrpc":"2.0",
+   "result":{
+      "ID":"cd7f35b26710e3cf80fcdf2eceb169c8be0d008ad6838a458f83710953bef2bc",
+      "amount":"0",
+      "data":"{\"_tag\":\"bestow\",\"params\":[{\"vname\":\"label\",\"value\":\"sindulgents\",\"type\":\"String\"},{\"vname\":\"owner\",\"value\":\"0x4816d2f109d7d8e5857e4bbe52188a2fe9a49383\",\"type\":\"ByStr20\"},{\"vname\":\"resolver\",\"value\":\"0x0000000000000000000000000000000000000000\",\"type\":\"ByStr20\"}]}",
+      "gasLimit":"5000",
+      "gasPrice":"1000000000",
+      "nonce":"2337",
+      "receipt":{
+         "cumulative_gas":"2671",
+         "epoch_num":"424061",
+         "event_logs":[
+            {
+               "_eventname":"Configured",
+               "address":"0x9611c53be6d1b32058b2747bdececed7e1216793",
+               "params":[
+                  {
+                     "type":"ByStr32",
+                     "value":"0xfbc5638b8e2e12034252da020297058737d3e15f53f165008b844a777b6151c6",
+                     "vname":"node"
+                  },
+                  {
+                     "type":"ByStr20",
+                     "value":"0x4816d2f109d7d8e5857e4bbe52188a2fe9a49383",
+                     "vname":"owner"
+                  },
+                  {
+                     "type":"ByStr20",
+                     "value":"0x0000000000000000000000000000000000000000",
+                     "vname":"resolver"
+                  }
+               ]
+            },
+            {
+               "_eventname":"NewDomain",
+               "address":"0x9611c53be6d1b32058b2747bdececed7e1216793",
+               "params":[
+                  {
+                     "type":"ByStr32",
+                     "value":"0x9915d0456b878862e822e2361da37232f626a2e47505c8795134a95d36138ed3",
+                     "vname":"parent"
+                  },
+                  {
+                     "type":"String",
+                     "value":"sindulgents",
+                     "vname":"label"
+                  }
+               ]
+            }
+         ],
+         "success":true,
+         <b>"transitions":[
+            {
+               "addr":"0xa11de7664f55f5bdf8544a9ac711691d01378b4c",
+               "depth":0,
+               "msg":{
+                  "_amount":"0",
+                  "_recipient":"0x9611c53be6d1b32058b2747bdececed7e1216793",
+                  "_tag":"bestow",
+                  "params":[
+                     {
+                        "type":"String",
+                        "value":"sindulgents",
+                        "vname":"label"
+                     },
+                     {
+                        "type":"ByStr20",
+                        "value":"0x4816d2f109d7d8e5857e4bbe52188a2fe9a49383",
+                        "vname":"owner"
+                     },
+                     {
+                        "type":"ByStr20",
+                        "value":"0x0000000000000000000000000000000000000000",
+                        "vname":"resolver"
+                     }
+                  ]
+               }
+            }
+         ] </b>
+      },
+      "senderPubKey":"0x036CA3314525C8A796F9224198E67F6AF95EDBBEE1FDA0C370E44C1B1C71E1C99E",
+      "signature":"0xFBB1DF2D9E73552576978A2425457ED770C8E98A5BEBC1A03E074440F4578937A0EF976A0E6F2904E7668B4E488C6295585BC0A041CB78897C176D49819A922C",
+      "toAddr":"a11de7664f55f5bdf8544a9ac711691d01378b4c",
+      "version":"65537"
+   }
+}
+</code></pre>
+
+Notice there is a new field `transitions` in created in the `receipt` entry. 
+
+## Implementation
+
+This new ZIP is implemented by mreging these pull requests to Zilliqa master branch:
+https://github.com/Zilliqa/Zilliqa/pull/1982
+https://github.com/Zilliqa/Zilliqa/pull/1987
+
 
 ## References
 - [Zilliqa API documentation for GetTransaction](https://apidocs.zilliqa.com/#gettransaction)
