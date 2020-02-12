@@ -8,7 +8,7 @@ ZIP-4 provides a way to store and retrieve the miner nodes that comprised the Zi
 
 ## Motivation
 
-Miner rewards are not recorded as transactions on the chain. This makes accurate data analytics (in particular, miner inflow and outflow) difficult to achieve.
+Since coinbase rewards are not recorded as transactions, miner addresses cannot be ascertained by analyzing the transactions on the chain. While other indirect sources can be used to track miner inflow and outflow activity, the lack of a direct means to obtain miner addresses still makes accurate data analytics a difficult exercise.
 
 In the absence of recorded transactions, the next recourse is to retrieve the network membership dating back to the genesis DS block. However, retrievable information is sparse and limited to the following:
 
