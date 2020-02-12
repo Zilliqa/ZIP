@@ -4,7 +4,7 @@
 
 ## Abstract
 
-This ZIP details the standard to expose the internal transactions (commonly referred to as message calls) to external parties such as users, explorers. 
+This ZIP details the standard to expose the internal transactions (commonly referred to as message calls) to external parties such as users and explorers.
 
 ## Motivation
 
