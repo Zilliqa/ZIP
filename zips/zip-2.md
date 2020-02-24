@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 1  | Zilliqa Internal Transactions | Draft | Standards Track  | Haichuan Liu <haichuan@zilliqa.com> <br> Xiaohuo Ren <lulu@zilliqa.com>| 2020-01-15 | 2020-02-05
+| 1  | Zilliqa Internal Transactions | Draft | Standards Track  | Haichuan Liu <haichuan@zilliqa.com> <br> Xiaohuo Ren <lulu@zilliqa.com>| 2020-01-15 | 2020-02-24
 
 ## Abstract
 
@@ -23,8 +23,11 @@ The `GetTransaction` API call returns a JSON message that includes a `receipt` f
 |     `addr`    | Address of the contract that emitted this transition            |
 |     `depth`   | Depth of current transition if a tree call is invoked           |
 |     `msg`     | Message emitted by the Scilla interpreter for this transition   |
+|     `accepted`| Whether this transition results in balance transfer             |
 
 The `msg` field is fetched from the `message` field of the Scilla interpreter output, for more detail, please refer to the [Scilla specification](https://scilla.readthedocs.io/en/latest/interface.html#interpreter-output).
+
+The `accepted` field resides both within each `transition` and directly under the receipt, with the latter one used to indicate whether the first transition within this transaction results in a balance transfer.
 
 ## Rationale
 
@@ -63,6 +66,7 @@ curl -d '{
    "jsonrpc":"2.0",
    "result":{
       "ID":"cd7f35b26710e3cf80fcdf2eceb169c8be0d008ad6838a458f83710953bef2bc",
+      "accepted":false,
       "amount":"0",
       "data":"{\"_tag\":\"bestow\",\"params\":[{\"vname\":\"label\",\"value\":\"sindulgents\",\"type\":\"String\"},{\"vname\":\"owner\",\"value\":\"0x4816d2f109d7d8e5857e4bbe52188a2fe9a49383\",\"type\":\"ByStr20\"},{\"vname\":\"resolver\",\"value\":\"0x0000000000000000000000000000000000000000\",\"type\":\"ByStr20\"}]}",
       "gasLimit":"5000",
@@ -113,6 +117,7 @@ curl -d '{
          "success":true,
          <b>"transitions":[
             {
+               "accepted":false,
                "addr":"0xa11de7664f55f5bdf8544a9ac711691d01378b4c",
                "depth":0,
                "msg":{
