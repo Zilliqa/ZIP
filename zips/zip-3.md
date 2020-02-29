@@ -226,7 +226,7 @@ A SSN in the `SSNList` contract with `stake_amount` falling below `minstake` is 
 
 #### Step 6 - Verifier performs regular checks
 
-The Verifier accesses the list of SSNs in the smart contract. For each active SSN, it performs the storage and API servicing checks at periodic intervals. The result of each check is recorded by the Verifier thru calling the `update_ssn_liveness` transition in the smart contract. If the check is successful, the transition updates (i.e., increments) the `alive_status` information for the SSN in the `ssnlist` table.
+The Verifier accesses the list of SSNs in the smart contract. For each active SSN, it performs the storage and API servicing checks at periodic intervals. The result of each check is recorded by the Verifier by calling the `update_ssn_liveness` transition in the smart contract. If the check is successful, the transition updates (i.e., increments) the `alive_status` information for the SSN in the `ssnlist` table.
 
 #### Step 7 - Verifier distributes rewards
 
