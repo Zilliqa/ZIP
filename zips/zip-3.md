@@ -294,6 +294,17 @@ When the Verifier calls the `assign_stake_reward` transition to perform the rewa
 reward_percent = EFFECTIVE_INTEREST_RATE x (alive_status / number of verification runs performed)
 ```
 
+### G. Operating Parameters
+
+These are the parameter settings for **Phase 0** of the staking mechanism.
+
+| Parameter                     | Value        |
+| ----------------------------- | ------------ |
+| Number of SSNs                | 2            |
+| Maximum overall staked amount | 700,000,000  | 
+| Annual interest rate          | 10%          |
+| Rewarding cycle               | 15 DS blocks |
+
 ## Rationale
 
 **Phase 0** staking mechanism design leverages on the existing infrastructure and therefore requires minimal changes as opposed to alternatives. Improvements to the design, such as time-sensitive and cryptographically stronger storage proofs, can be explored in future versions as explained in the [Design Considerations](#seed-node-staking-phase-0-design-considerations) section.
@@ -305,4 +316,3 @@ The staking mechanism is intended to work alongside the existing core protocol a
 ## Copyright Waiver
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
