@@ -57,8 +57,7 @@ The setup includes the following:
 3. A set of lookups provide the reference data to the Verifier, including publicly accessible data (through [api.zilliqa.com](https://api.zilliqa.com/)) and raw data with access limited to the Verifier.
 
 #### Within Hosting Entity
-1. A SSN node hosts a `zilliqa` instance that receives blockchain data from the multipliers.
-2. The same node also hosts a `ssn` instance that retrieves raw data from the `zilliqa` instance for the purpose of presenting proofs to the Verifier
+1. A SSN node acts as a typical seed node and receives blockchain data from the multipliers. It provides publicly accessible data through its own API address and raw data with access limited to the Verifier.
 
 ### C. Staking Proofs
 
@@ -77,7 +76,7 @@ SSN activation, which can be done anytime after, requires the SSN host to deposi
 
 The Verifier polls the SSN for raw blockchain data and API-retrievable data to effectively confirm that the SSN both stores the blockchain data and services API requests from end users.
 
-Raw blockchain data is accessible from the lookups on the Verifier's end and from the `zilliqa` process on the SSN host's end.
+Raw blockchain data is accessible from the lookups on the Verifier's end and from the SSN on the host's end.
 
 The diagram below shows the interaction between the different components for the storage and API checks.
 
@@ -216,9 +215,7 @@ transition drain_contract_balance ()
 
 #### Step 1 - Zilliqa Research sets up the staking components
 
-A dedicated machine running the `verifier` process is launched. A key pair is assigned to the Verifier.
-
-Zilliqa Research lookup nodes are configured to recognize the Verifier key, for use during JSONRPC requests via port 4401.
+A dedicated machine running the Verifier process is launched. A key pair is assigned to the Verifier.
 
 The `SSNList` smart contract is deployed and initialized with the address of the Verifier. The `update_minstake`, `update_maxstake`, and `update_admin` transitions are called to initialize the staking settings. The `deposit_funds` transition is also called to fund the contract for the rewards distribution.
 
@@ -230,19 +227,13 @@ The entity intending to host a SSN registers with the Zilliqa Research team. Zil
 
 The `zilliqa` process is launched in the host machine in the manner typical of a seed node. As a typical seed node, the SSN should be able to service API requests at this point through the host's own API domain (akin to [api.zilliqa.com](https://api.zilliqa.com)).
 
-Additionally, a separate `ssn` process is launched in the same machine. A key pair is assigned to the `ssn`. The `zilliqa` process launched earlier should have been configured to recognize this key, for use during JSONRPC requests via port 4401.
+#### Step 4 - Zilliqa Research adds SSN to smart contract
 
-Upon startup, the `ssn` process initiates contact with the Verifier node.
-
-#### Step 4 - Verifier adds SSN to smart contract
-
-The Verifier and SSN perform the initial checks on both the blockchain data stored in the SSN as well as the SSN's ability to respond to API requests. Upon successful completion, the Verifier calls the `add_ssn` transition in the smart contract, which creates an entry for the SSN in the `ssnlist` table in the contract. The `ip_addr` in the entry is initialized to the IP address of the SSN. The `blocknumber_when_alive_status_updated` is initialized to the Tx epoch number when the entry was created.
+Zilliqa Research calls the `add_ssn` transition in the smart contract, which creates an entry for the SSN in the `ssnlist` table in the contract. The `ip_addr` in the entry is initialized to the IP address of the SSN. The `blocknumber_when_alive_status_updated` is initialized to the Tx epoch number when the entry was created.
 
 #### Step 5 - Host deposits funds for staking
 
 A SSN in the `SSNList` contract with `stake_amount` falling below `minstake` is not considered active at this point, and is ignored by the Verifier. The host must activate its SSN by depositing funds into the contract through a single call to the `stake_deposit` transition.
-
-> Note: Stake fund depositing can only be performed once. In order to change the staked amount, the host will need to de-register and register back the SSN.
 
 #### Step 6 - Verifier performs regular checks
 
@@ -272,8 +263,6 @@ Finally, the entity requests the Zilliqa Research team to remove the IP address 
 
 SSN verification involves the checks listed in the [Staking Proofs](#c-staking-proofs) section.
 
-Verification is initially performed during the handshake period between the Verifier and the SSN, which ends with the addition of the SSN (still inactive at this point) into the smart contract.
-
 After SSN activation, verification is done a maximum of `NUM_OF_RUNS_EACH_REWARD_CYCLE` times within the span of `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` DS epochs, with the verification runs done at randomized intervals. Each verification result is recorded within the smart contract (i.e., through the `alive_status` field). The Verifier tracks the number of verification runs performed during the current reward cycle, and this count is applied across all SSNs.
 
 After `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` DS epochs, the Verifier calls the smart contract to trigger the rewards distribution.
@@ -300,7 +289,7 @@ These are the parameter settings for **Phase 0** of the staking mechanism.
 
 | Parameter                     | Value        |
 | ----------------------------- | ------------ |
-| Number of SSNs                | 2            |
+| Minimum stake amount          | 10,000,000   |
 | Maximum overall staked amount | 700,000,000  | 
 | Annual interest rate          | 10%          |
 | Rewarding cycle               | 15 DS blocks |
