@@ -140,7 +140,7 @@ As part of this staking mechanism, a smart contract named `SSNList` is deployed 
 
 | Name        | Type                                | Description                                        |
 | ----------- | ----------------------------------- | -------------------------------------------------- |
-| `ssnlist`   | `Map ByStr20 Ssn = Emp ByStr20 Ssn` | Mapping between SSN address and the following information: <br> - `alive_status` (`Uint32`) <br> - `stake_amount` (`Uint128`) <br> - `rewards` (`Uint128`) <br> - `blocknumber_when_alive_status_updated` (`BNum`) <br> - `ip_addr` (`String`)|
+| `ssnlist`   | `Map ByStr20 Ssn = Emp ByStr20 Ssn` | Mapping between SSN address and the following information: <br> - `active_status` (`Bool`) <br> - `stake_amount` (`Uint128`) <br> - `rewards` (`Uint128`) <br> - `urlraw` (`String`) <br> - `urlapi` (`String`)|
 | `minstake`  | `Uint128`                           | Minimum `stake_amount` required to activate a SSN |
 | `maxstake`  | `Uint128`                           | Maximum `stake_amount` allowed to activate a SSN |
 | `contractadmin` | `Option ByStr20  = None {ByStr20}` | Address of user with administrator access to this contract |
@@ -192,22 +192,13 @@ transition stake_deposit ()
 ```ocaml
 (* @dev: Adds new ssn to ssnlist. Used by verifier only. *)
 (* @param ssnaddr: Address of the ssn to be added *)
-(* @param ssnip: string representing "ip:por" of the ssn to be added *)
+(* @param urlraw: string representing "ip:port" of the ssn serving raw api request *)
+(* @param urlapi: string representing url exposed by ssn serving public api request *)
 (* @param blocknumber: Block number when the verifier invoked this transition *)
-transition add_ssn (ssnaddr : ByStr20, ssnip : String, blocknumber : BNum)
+transition add_ssn (ssnaddr : ByStr20, urlraw : String, urlapi : String)
 ```
 
-##### 7. update_ssn_liveness
-
-```ocaml
-(* @dev: update the liveness status of ssn. Used by verifier only. *)
-(* @param ssnaddr: Address of the ssn whose liveness is to be updated *)
-(* @param liveness: New liveness of the ssn to be updated *)
-(* @param blocknumber: Block number when the verifier invoked this transition *)
-transition update_ssn_liveness (ssnaddr : ByStr20, liveness : Uint32, blocknumber : BNum)
-```
-
-##### 8. assign_stake_reward
+##### 7. assign_stake_reward
 
 ```ocaml
 (* @dev: Assign stake reward to specific ssn from ssnlist. Used by verifier only. *)
@@ -216,14 +207,14 @@ transition update_ssn_liveness (ssnaddr : ByStr20, liveness : Uint32, blocknumbe
 transition assign_stake_reward (ssnaddr : ByStr20, reward_percent : Uint128)
 ```
 
-##### 9. withdraw_stake_rewards
+##### 8. withdraw_stake_rewards
 
 ```ocaml
 (* @dev: Withdraw stake reward. Used by ssn only. *)
 transition withdraw_stake_rewards ()
 ```
 
-##### 10. withdraw_stake_amount
+##### 9. withdraw_stake_amount
 
 ```ocaml
 (* @dev: Move token amount from contract account to _sender. Used by ssn only. *)
@@ -231,7 +222,7 @@ transition withdraw_stake_rewards ()
 transition withdraw_stake_amount (amount : Uint128 )
 ```
 
-##### 11. remove_ssn
+##### 10. remove_ssn
 
 ```ocaml
 (* @dev: Remove a specific ssn from ssnlist. Used by verifier only. *)
@@ -239,7 +230,7 @@ transition withdraw_stake_amount (amount : Uint128 )
 transition remove_ssn (ssnaddr : ByStr20)
 ```
 
-##### 12. drain_contract_balance
+##### 11. drain_contract_balance
 
 ```ocaml
 (* @dev: Set the admin of contract. Used by verifier only. *)
@@ -265,7 +256,7 @@ The `zilliqa` process is launched in the host machine in the manner typical of a
 
 #### Step 4 - Zilliqa Research adds SSN to smart contract
 
-Zilliqa Research calls the `add_ssn` transition in the smart contract, which creates an entry for the SSN in the `ssnlist` table in the contract. The `ip_addr` in the entry is initialized to the IP address of the SSN. The `blocknumber_when_alive_status_updated` is initialized to the Tx epoch number when the entry was created.
+Zilliqa Research calls the `add_ssn` transition in the smart contract, which creates an entry for the SSN in the `ssnlist` table in the contract. The `ip_addr` in the entry is initialized to the IP address of the SSN. The entry's `urlraw` and `urlapi` values are also set to indicate the addresses to query the SSN node's raw data (via port 4501) and publicly accessible data (via port 4201).
 
 #### Step 5 - Host deposits funds for staking
 
@@ -273,11 +264,11 @@ A SSN in the `SSNList` contract with `stake_amount` falling below `minstake` is 
 
 #### Step 6 - Verifier performs regular checks
 
-The Verifier accesses the list of SSNs in the smart contract. For each active SSN, it performs the storage and API servicing checks at periodic intervals. The result of each check is recorded by the Verifier by calling the `update_ssn_liveness` transition in the smart contract. If the check is successful, the transition updates (i.e., increments) the `alive_status` information for the SSN in the `ssnlist` table.
+The Verifier accesses the list of SSNs in the smart contract. For each active SSN, it performs the storage and API servicing checks at periodic intervals.
 
 #### Step 7 - Verifier distributes rewards
 
-For each SSN, the Verifier calls the `assign_stake_reward` transition in the smart contract at periodic intervals to trigger the rewards distribution. The reward amount is added to the `reward` for the SSN in the `ssnlist` table. The `alive_status` value and number of verification runs are also reset afterwards, readying the SSN for the next verification and rewarding cycle. See the [Rewarding Algorithm](#f-rewarding-algorithm) section for the details.
+For each SSN, the Verifier calls the `assign_stake_reward` transition in the smart contract at periodic intervals to trigger the rewards distribution. The reward amount is added to the `reward` for the SSN in the `ssnlist` table. See the [Rewarding Algorithm](#f-rewarding-algorithm) section for the details.
 
 #### Step 8 - Host withdraws rewards
 
@@ -299,7 +290,7 @@ Finally, the entity requests the Zilliqa Research team to remove the IP address 
 
 SSN verification involves the checks listed in the [Staking Proofs](#c-staking-proofs) section.
 
-After SSN activation, verification is done a maximum of `NUM_OF_RUNS_EACH_REWARD_CYCLE` times within the span of `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` DS epochs, with the verification runs done at randomized intervals. Each verification result is recorded within the smart contract (i.e., through the `alive_status` field). The Verifier tracks the number of verification runs performed during the current reward cycle, and this count is applied across all SSNs.
+After SSN activation, verification is done a maximum of `NUM_OF_RUNS_EACH_REWARD_CYCLE` times within the span of `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` DS epochs, with the verification runs done at randomized intervals. The Verifier tracks the number of verification runs performed during the current reward cycle, and this count is applied across all SSNs.
 
 After `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` DS epochs, the Verifier calls the smart contract to trigger the rewards distribution.
 
@@ -311,12 +302,12 @@ The Verifier is configured to dispense `EFFECTIVE_INTEREST_RATE` as the effectiv
 EFFECTIVE_INTEREST_RATE = annual interest rate / reward cycles per year
 ```
 
-SSNs are rewarded based on the percentage of successful verification runs performed within the `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` cycle. This means that a SSN earns the maximum rewards if its `alive_status` in the smart contract is equal to the total number of verification runs performed across all SSNs within the cycle. A SSN can potentially earn less than that if it either fails one or more verification runs or if it joins in the middle of a rewarding cycle and is unable to undergo the full number of verification runs.
+SSNs are rewarded based on the percentage of successful verification runs performed within the `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` cycle. A SSN can potentially earn less than the potential maximum reward for the cycle if it either fails one or more verification runs or if it joins in the middle of a rewarding cycle and is unable to undergo the full number of verification runs.
 
 When the Verifier calls the `assign_stake_reward` transition to perform the rewarding, the `reward_percent` parameter is thus set as:
 
 ```
-reward_percent = EFFECTIVE_INTEREST_RATE x (alive_status / number of verification runs performed)
+reward_percent = EFFECTIVE_INTEREST_RATE x success rate of verification runs
 ```
 
 ## Backward Compatibility
