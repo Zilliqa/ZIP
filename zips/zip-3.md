@@ -8,17 +8,19 @@ ZIP-3 defines a staking mechanism at the core protocol to promote and regulate t
 
 ## Background & Motivation
 
-The Zilliqa network architecture consists of several types of nodes with different functionalities and responsibilities. One of such nodes is called the _seed nodes_. These nodes do not validate transactions and as a result do not run the consensus protocol. Seed nodes can therefore be considered as an ancillary set of nodes that play a supporting role in the overall Zilliqa network architecture.
+The Zilliqa network architecture consists of several types of nodes with different functionalities and responsibilities. One of such nodes is called the _seed nodes_. The main role of seed nodes is to serve as direct access points (for end users and clients) to the core Zilliqa network that validates transactions. Seed nodes consolidate transaction requests and forward these to the _lookup nodes_ (another type of nodes) for distribution to the shards in the network. As "archival nodes", they further maintain the entire transaction history and the global state of the blockchain which is needed to provide services such as block explorers.  
 
-The main role of seed nodes is to serve as direct access points (for end users and clients) to the core Zilliqa network that validates transactions. As "archival nodes", they further maintain the entire transaction history and the global state of the blockchain, which is needed to provide services such as block explorers. They also consolidate transaction requests and forward these to the _lookup nodes_ (another type of node) for distribution to the shards in the network. Seed nodes therefore present an ancillary yet critical component in the network architecture. 
+Seed nodes can therefore be considered as an ancillary set of nodes that play a supporting yet critical role in the overall Zilliqa network architecture. 
 
-Seed nodes are currently being run by several major exchanges, application providers such as [Xfers](https://www.xfers.com/sg/), the Zilliqa Team itself and the block explorer provider [ViewBlock](https://viewblock.io/zilliqa). Most of these seed nodes are however "closed", i.e., they only serve the needs of the seed operator and not the broader community.
+> Note:  Seed nodes however do not validate transactions themselves and as a result do not run any consensus protocol. 
 
-In order to "open up" some of these nodes and decentralize the overall seed node architecture, a proper incentive mechanism must be put in place. With the right monetary incentive, seed nodes can potentially be hosted by any entity including, say, wallet providers, as well as the entire community at large. In the interest of decentralization, a means to facilitate the addition and management of seed nodes must also be implemented within the protocol. In order to maintain the overall health of the network, it is also essential to establish a minimum performance threshold for these seed nodes.
+Seed nodes are currently being run by several major exchanges, application providers such as [Xfers](https://www.xfers.com/sg/), the Zilliqa Team itself and the block explorer provider [ViewBlock](https://viewblock.io/zilliqa). Most of these seed nodes are however "closed", i.e., they only serve the needs of the seed node operator and not the broader community.
 
-Staking provides one approach to both promoting widespread participation and ensuring an acceptable level of performance from participants. The idea of staking is to pre-qualify seed hosts by requiring them to stake a certain amount of ZILs for the duration of the service provided. Within this duration, the host presents regular proofs of its ability to provide the service. In return, the hosts are rewarded a proportional amount of ZILs in a predetermined manner.
+The purpose of this ZIP is to propose a mechanism to "open up" some of these nodes and decentralize the overall seed node architecture. To this end, a proper incentive mechanism must be put in place. With the right monetary incentive, seed nodes can potentially be hosted by any entity including, say, wallet providers, as well as the entire community at large. In the interest of decentralization, a means to facilitate the addition and management of seed nodes must also be implemented within the protocol. In order to maintain the overall health of the network, it is also essential to establish a minimum performance threshold for these seed nodes.
 
-## Seed Node Staking Phase 0: Design Considerations
+Staking provides one approach to both promoting widespread participation and ensuring an acceptable level of performance from participants. The idea of staking is to pre-qualify seed hosts by requiring them to stake a certain minimum amount of ZILs for the duration of the service provided. Within this duration, the host presents regular proofs of its ability to provide the service. In return, the hosts are rewarded a proportional amount of ZILs in a predetermined manner.
+
+## Seed Node Staking Phase 0: Overview & Design Considerations
 
 This ZIP presents the first phase (dubbed **Phase 0**) for implementing staking for seed nodes. In this first phase of implementation, the main idea is to implement staking via a smart contract without slashing, i.e., node operators who wish to host a seed node will have to deposit a certain minimum number of ZILs in a smart contract by transferring the tokens to the contract. 
 
@@ -26,13 +28,33 @@ In return, if the nodes provide the expected service, they will be granted a par
 
 A seed node operator that does not have the minimum number of ZILs to stake may open up this service to other token holders who may not have the right expertise to run a seed node themselves. The way in which the custody of tokens is handled is left to the seed node operator.
 
-Due to these design considerations, **Phase 0** is not extremely intrusive to the core protocol. However, it does present some areas for improvement which will be the goal of the next phases. For instance, **Phase 0** requires seed node operators to deposit the stake to a smart contract. One possible improvement would be to not require an operator to transfer funds but instead lock those funds at the core protocol level, i.e., funds do not move but only stay locked. This will require handling the entire staking architecture at the protocol level, which, due to its intrusive nature, can be handled in the next phase based on the success of **Phase 0**.
+Due to these design considerations, **Phase 0** is not extremely intrusive to the core protocol. However, it does present some areas for improvement which will be the goal of the next phases. For instance, **Phase 0** requires seed node operators to deposit the stake in a smart contract. One possible improvement would be to not require an operator to transfer funds but instead lock those funds at the core protocol level, i.e., funds do not move but only stay locked. This will require handling the entire staking architecture at the protocol-level, which, due to its intrusive nature, can be handled in the next phases based on the success of **Phase 0**.
 
-In **Phase 0**, the Verifier implements rather simple checks to monitor the health of a seed node, such as checking if the seed node holds data for randomly chosen blocks and is alive when a fetch request (for block data) is made. One improvement that can be implemented in the next phase is to implement a [Proof of Retrievability protocol](http://www.arijuels.com/wp-content/uploads/2013/09/BJO09b.pdf) - a protocol that runs between a client and a data storage provider that guarantees that the data storage provider indeed holds a certain data that the client has outsourced to the storage provider.
+In **Phase 0**, the Verifier implements rather simple checks to monitor the health of a seed node, such as checking if the seed node holds data for randomly chosen blocks and is alive when a fetch request (for a block data) is made. One possible improvement could be to implement a [Proof of Retrievability protocol](http://www.arijuels.com/wp-content/uploads/2013/09/BJO09b.pdf) - a protocol that runs between a client and a data storage provider that guarantees that the data storage provider indeed holds a certain data that the client has outsourced to the storage provider.
 
-Another area of improvement in the next phases would be to have a decentralized layer of Verifiers, where any node can potentially become a Verifier node and monitor seed nodes and report any proof of poor service and get rewarded for it. Such designs have been extensively explored in the past for example in [TrueBit](https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf).
+Another area of improvement in the next phases would be to have a decentralized layer of Verifiers, where any node can potentially become a Verifier node and monitor seed nodes and report any Proof of Poor Service (or PoPS) and get rewarded for it. Such designs have been extensively explored in the past for example in [TrueBit](https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf).
 
-An alert reader may argue that requiring seed nodes to stake may not be necessary. Instead, they could simply be rewarded for the service they provide. **Phase 0**, however, includes staking so as to prepare for the later phases when slashing will be implemented. Slashed ZILs can also be given to the Verifiers who monitor and fish for inactive seed nodes.
+ >Note: An alert reader may argue that in **Phase 0**, requiring seed nodes to stake may not be necessary from an engineering perspective specially when the design does not include slashing. Indeed, seed nodes could simply be rewarded for the service they provide. We however argue that "opening up" the seed node architecture has to be addressed from both engineering and economic angles. The network architecture has to support seed nodes hosted by different parties, without breaking security - this has to be addressed though engineering. But, there has to be a motivation to host the seed nodes - without that, no party would be interested. The platform has to therefore incentivize. This is done by rewarding the seed node operators. But, how can the rewarding be fair? This is achieved by staking (the proportion of “skin in the game”). The staking approach has the added benefit of getting token holders to participate and get rewarded - they can stake a portion of their holding together with the seed node operators.  Furthermore, including staking will allow to prepare for the later phases when slashing could be implemented. Slashed ZILs could also be given to the Verifiers who monitor and fish for inactive seed nodes.
+
+# Economic Parameters
+
+Given that there is a monetary incentive at play, the economic parameters of the system has to be attractive for seed node operators. However, this should not happen at the expense of added inflation and diluting the total supply. The total supply should remain fixed at 21 billion ZILs. 
+
+The Zilliqa protocol currently reserves 5% of block rewards to reward lookup nodes, we therefore propose to use this pool to reward seed nodes. In other words, block rewards will be split between miners (validating transactions) getting 95% and seed node operators (providing the supporting role) receiving 5% of the block reward.
+
+Other crucial economic parameters of the system are presented in the table below:
+
+| Parameter                     | Value        |
+| ----------------------------- | ------------ |
+| Maximum overall staked amount (in ZIL) | 700,000,000  | 
+| Minimum stake amount (in ZIL) per seed node | 10,000,000   |
+| Annual interest rate          | 10%          |
+| Rewarding cycle               | 15 DS blocks (~1 day) |
+
+
+We propose to limit the total staked amount across all seed nodes so as to ensure that the interest rate remains attractive for each seed node operator. This is fixed to 700 million ZILs (~USD 4.2 million with 1 ZIL = USD 0.006). 
+
+Each seed node operator will have to stake a minimum of 10 million ZILs (~ USD 60k with 1 ZIL = USD 0.006). This minimum requirement is at the seed node level and not at the individual user or token holder level. Each seed node operator is in fact free to decide a minimum that it thinks is reasonable to attract end users and become the preferred seed node operator in the market.
 
 ## Specification
 
@@ -282,17 +304,6 @@ When the Verifier calls the `assign_stake_reward` transition to perform the rewa
 ```
 reward_percent = EFFECTIVE_INTEREST_RATE x (alive_status / number of verification runs performed)
 ```
-
-### G. Operating Parameters
-
-These are the parameter settings for **Phase 0** of the staking mechanism.
-
-| Parameter                     | Value        |
-| ----------------------------- | ------------ |
-| Minimum stake amount          | 10,000,000   |
-| Maximum overall staked amount | 700,000,000  | 
-| Annual interest rate          | 10%          |
-| Rewarding cycle               | 15 DS blocks |
 
 ## Rationale
 
