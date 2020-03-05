@@ -311,9 +311,9 @@ reward_percent = EFFECTIVE_INTEREST_RATE x success rate of verification runs
 ```
 
 ### H. Minimum System Requirements
-- x64 Ubuntu operating system (e.g `Ubuntu 16.04.05 LTS`, `18.04.4 LTS`)
-- Quad core processor (eg. `Intel Xeon Skylake` family)
-- 16GB ram
+- x64 Ubuntu operating system (e.g., `Ubuntu 16.04.05 LTS`, `Ubuntu 18.04.4 LTS`)
+- Quad core processor (e.g., `Intel Xeon Skylake` family)
+- 16GB RAM
 - 300GB SSD
 - 200Mbps (up/down) bandwidth
 - 24/7 uptime 
