@@ -38,7 +38,7 @@ Another area of improvement in the next phases would be to have a decentralized 
 
 ## Economic Parameters
 
-Given that there is a monetary incentive at play, the economic parameters of the system has to be attractive for seed node operators. However, this should not happen at the expense of increased inflation or diluting the total supply. The total supply should remain fixed at 21 billion ZILs. 
+Given that there is a monetary incentive at play, the economic parameters of the system has to be attractive for seed node operators. However, this should not happen at the expense of increased inflation or diluting the max supply. The max supply should remain fixed at 21 billion ZILs. 
 
 The Zilliqa protocol currently reserves 5% of block rewards to reward lookup nodes. We therefore propose to use this pool to reward seed nodes, i.e., block rewards will be split between miners (validating transactions) getting 95% and seed node operators (providing the supporting role) receiving 5% of the block reward. The table below presents further breakdown. Note that block rewards get distributed at the end of each DS epoch. In the rest of the discussion, we assume 1 ZIL = USD 0.006 (price at the time of writing this ZIP).
 
