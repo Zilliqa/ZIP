@@ -268,7 +268,7 @@ The Verifier accesses the list of SSNs in the smart contract. For each active SS
 
 #### Step 7 - Verifier distributes rewards
 
-For each SSN, the Verifier calls the `assign_stake_reward` transition in the smart contract at periodic intervals to trigger the rewards distribution. The reward amount is added to the `reward` for the SSN in the `ssnlist` table. See the [Rewarding Algorithm](#f-rewarding-algorithm) section for the details.
+For each SSN, the Verifier calls the `assign_stake_reward` transition in the smart contract at periodic intervals to trigger the rewards distribution. The reward amount is added to the `reward` for the SSN in the `ssnlist` table. See the [Rewarding Algorithm](#g-rewarding-algorithm) section for the details.
 
 #### Step 8 - Host withdraws rewards
 
@@ -286,7 +286,7 @@ The second step above automatically removes the SSN from the `ssnlist`.
 
 Finally, the entity requests the Zilliqa Research team to remove the IP address of the SSN from the network's whitelist.
 
-### E. Verification and Rewarding Frequencies
+### F. Verification and Rewarding Frequencies
 
 SSN verification involves the checks listed in the [Staking Proofs](#c-staking-proofs) section.
 
@@ -294,7 +294,7 @@ After SSN activation, verification is done a maximum of `NUM_OF_RUNS_EACH_REWARD
 
 After `NUM_OF_DSBLOCK_EACH_REWARD_CYCLE` DS epochs, the Verifier calls the smart contract to trigger the rewards distribution.
 
-### F. Rewarding Algorithm
+### G. Rewarding Algorithm
 
 The Verifier is configured to dispense `EFFECTIVE_INTEREST_RATE` as the effective interest rate per rewarding cycle. This has to be set based on the annual interest rate divided by the expected number of reward cycles within a year. That is:
 
