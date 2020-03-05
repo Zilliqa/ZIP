@@ -310,6 +310,17 @@ When the Verifier calls the `assign_stake_reward` transition to perform the rewa
 reward_percent = EFFECTIVE_INTEREST_RATE x success rate of verification runs
 ```
 
+### H. Minimum System Requirements
+- x64 Ubuntu operating system (e.g `Ubuntu 16.04.05 LTS`, `18.04.4 LTS`)
+- Quad core processor (eg. `Intel Xeon Skylake` family)
+- 16GB ram
+- 300GB SSD
+- 200Mbps (up/down) bandwidth
+- 24/7 uptime 
+- Public IP address
+- Domain name
+- Valid SSL certificate
+
 ## Backward Compatibility
 
 The staking mechanism is intended to work alongside the existing core protocol and should be fully backward compatible with all its components, i.e., no change in behavior should be observable on the mainnet operation with this mechanism in place.
