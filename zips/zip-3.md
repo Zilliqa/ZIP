@@ -1,6 +1,6 @@
 | ZIP | Title                        | Status | Type  | Author                                                                                                                       | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | ---------------------------- | ------ | ----- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
-| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Amrit Kumar <amrit@zilliqa.com> <br> Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> | 2020-01-30           | 2020-03-05           |
+| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Amrit Kumar <amrit@zilliqa.com> <br> Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> <br> Tan Jun Hao <junhao@zilliqa.com> | 2020-01-30           | 2020-03-05           |
 
 ## Abstract
 
@@ -127,14 +127,15 @@ As part of this staking mechanism, a smart contract named `SSNList` is deployed 
 | Name            | Description                                       |
 | --------------- | ------------------------------------------------- |
 | `verifier`      | The Verifier node                                 |
-| `contractadmin` | A user with administrator access to this contract |
+| `init_admin`    | The initial admin to this contract                |
+| `contractadmin` | The current admin to this contract                |
 | `ssn`           | A registered SSN node                             |
 
 #### Immutable Variables
 
-| Name        | Type      | Description             |
-| ----------- | --------- | ----------------------- |
-| `verifier`  | `ByStr20` | Address of the Verifier |
+| Name          | Type      | Description                   |
+| ------------- | --------- | ----------------------------- |
+| `init_admin`  | `ByStr20` | Address of the initial admin  |
 
 #### Mutable Fields
 
@@ -166,19 +167,25 @@ transition update_maxstake (max_stake : Uint128)
 ##### 3. update_admin
 
 ```ocaml
-(* @dev: Set the admin of contract. Used by verifier only. *)
+(* @dev: Set the admin of contract. Used by admin only. *)
 (* @param min_stake: New admin value *)
 transition update_admin (admin : ByStr20)
 ```
 
-##### 4. deposit_funds
+##### 4. update_verifier
+```ocaml
+(* @dev: Set the verifier of contract. Used by admin only. *)
+(* @param min_stake: New admin value *)	(* @param verif: New verifier value *)
+```
+
+##### 5. deposit_funds
 
 ```ocaml
 (* @dev: Move token amount from _sender to recipient i.e. contract address. *)
 transition deposit_funds ()
 ```
 
-##### 5. stake_deposit
+##### 6. stake_deposit
 
 ```ocaml
 (* @dev: Moves an amount tokens from _sender to the recipient. Used by token_owner. i.e. ssn *)
@@ -187,7 +194,7 @@ transition deposit_funds ()
 transition stake_deposit ()
 ```
 
-##### 6. add_ssn
+##### 7. add_ssn
 
 ```ocaml
 (* @dev: Adds new ssn to ssnlist. Used by verifier only. *)
@@ -198,7 +205,7 @@ transition stake_deposit ()
 transition add_ssn (ssnaddr : ByStr20, urlraw : String, urlapi : String)
 ```
 
-##### 7. assign_stake_reward
+##### 8. assign_stake_reward
 
 ```ocaml
 (* @dev: Assign stake reward to specific ssn from ssnlist. Used by verifier only. *)
@@ -207,14 +214,14 @@ transition add_ssn (ssnaddr : ByStr20, urlraw : String, urlapi : String)
 transition assign_stake_reward (ssnaddr : ByStr20, reward_percent : Uint128)
 ```
 
-##### 8. withdraw_stake_rewards
+##### 9. withdraw_stake_rewards
 
 ```ocaml
 (* @dev: Withdraw stake reward. Used by ssn only. *)
 transition withdraw_stake_rewards ()
 ```
 
-##### 9. withdraw_stake_amount
+##### 10. withdraw_stake_amount
 
 ```ocaml
 (* @dev: Move token amount from contract account to _sender. Used by ssn only. *)
@@ -230,7 +237,7 @@ transition withdraw_stake_amount (amount : Uint128 )
 transition remove_ssn (ssnaddr : ByStr20)
 ```
 
-##### 11. drain_contract_balance
+##### 12. drain_contract_balance
 
 ```ocaml
 (* @dev: Set the admin of contract. Used by verifier only. *)
