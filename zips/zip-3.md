@@ -52,15 +52,16 @@ The Zilliqa protocol currently allocates 5% of block rewards to reward lookup no
 | Total reward available for seed nodes per DS epoch (in ZIL) | 263,699 x 0.05 = 13,185 |
 | Total reward available for seed nodes per year (in ZIL) | 5,533 x 13,185 = 72,947,368|
 
-As shown in the table below, if 5% of block rewards goes to the seed nodes, then a total of ~72 million ZIL per year ( ~USD 437k) can be used to provide the necessary incentives. With this total reward available, we propose the following economic parameters for staking: 
+As shown in the table below, if 5% of block rewards goes to the seed nodes, then a total of ~72 million ZIL per year (~USD 437k) can be used to provide the necessary incentives. With this total reward available, we propose the following economic parameters for staking:
 
-| Staking parameter                     | Value        |
-| ----------------------------- | ------------ |
-| Maximum overall staked amount (in ZIL) | 700,000,000  | 
-| Minimum stake amount (in ZIL) per seed node | 10,000,000   |
-| Annual interest rate          | 10.42%          |
-| Rewarding cycle               | 15 DS blocks (~1 day) |
-
+| Staking parameter                           | Value                 |
+| ------------------------------------------- | --------------------- |
+| Maximum overall staked amount (in ZIL)      | 700,000,000           |
+| Maximum stake amount (in ZIL) per seed node | 70,000,000            |
+| Minimum stake amount (in ZIL) per seed node | 10,000,000            |
+| Maximum number of seed nodes                | 10                    |
+| Annual interest rate                        | 10.42%                |
+| Rewarding cycle                             | 15 DS blocks (~1 day) |
 
 We propose to limit the total staked amount across all seed nodes so as to ensure that the interest rate remains attractive for each seed node operator. This is fixed to 700 million ZILs (~USD 4.2 million). In other words, a maximum of 700 million ZILs will ever be locked. With this overall maximum, if 20 seed node operators participate in the staking program, then each seed node could stake up to 35 million ZILs (~USD 210k). However, with 10 seed nodes, the maximum that each seed node would be able to stake will be higher at 70 million ZILs (~USD 420k).
 
