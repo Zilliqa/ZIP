@@ -75,7 +75,7 @@ As shown in the table above, if 5% of block reward goes to the seed nodes, then 
 
 We propose to limit the total staked amount across all seed nodes so as to ensure that the interest rate remains attractive for each seed node operator. This is fixed to 700 million ZILs (~USD 4.2 million). In other words, a maximum of 700 million ZILs will ever be locked. 
 
-With this overall maximum, if 20 seed node operators participate in the staking program, then each seed node could stake up to 35 million ZILs (~USD 210k). However, with 10 seed nodes, the maximum that each seed node would be able to stake will be higher at 70 million ZILs (~USD 420k). For **Phase 0**, we propose to start with a maximum of 10 seed nodes -- a number that we can revisit depending on the success of **Phase 0**. 
+With this overall maximum, if 20 seed node operators participate in the staking program, then each seed node could stake up to 35 million ZILs (~USD 210k). However, with 10 seed nodes, the maximum that each seed node would be able to stake will be higher at 70 million ZILs (~USD 420k). For **Phase 0**, we propose to start with a maximum of 10 seed nodes - a number that we can revisit depending on the success of **Phase 0**.
 
 Given that 72,947,368 ZILs is the maximum possible reward that can be disbursed per year, the annual percentage yield for the maximum staked amount of 700 million ZILs is (72,947,368 / 700,000,000) x 100 = 10.42%.
 
