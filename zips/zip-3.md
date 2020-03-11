@@ -1,6 +1,6 @@
 | ZIP | Title                        | Status | Type  | Author                                                                                                                       | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | ---------------------------- | ------ | ----- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
-| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Amrit Kumar <amrit@zilliqa.com> <br> Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> | 2020-01-30           | 2020-03-08           |
+| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Amrit Kumar <amrit@zilliqa.com> <br> Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> | 2020-01-30           | 2020-03-11           |
 
 ## Abstract
 
@@ -163,98 +163,119 @@ As part of this staking mechanism, a smart contract named `SSNList` is deployed 
 ##### 1. update_minstake
 
 ```ocaml
-(* @dev: Set the minstake of contract. Used by verifier only. *)
+(* @dev: Set the minstake of contract. Used by admin only. *)
 (* @param min_stake: New minstake value *)
-transition update_minstake (min_stake : Uint128)
+(* @param initiator: The original caller who called the proxy *)
+transition update_minstake (min_stake : Uint128, initiator : ByStr20)
 ```
 
 ##### 2. update_maxstake
 
 ```ocaml
-(* @dev: Set the maxstake of contract. Used by verifier only. *)
+(* @dev: Set the maxstake of contract. Used by admin only. *)
 (* @param max_stake: New maxstake value *)
-transition update_maxstake (max_stake : Uint128)
+(* @param initiator: The original caller who called the proxy *)
+transition update_maxstake (max_stake : Uint128, initiator : ByStr20)
 ```
 
-##### 3. update_admin
+##### 3. update_contractmaxstake
+
+```ocaml
+(* @dev: Set the maxstake of contract. Used by admin only. *)
+(* @param max_stake: New maxstake value *)
+(* @param initiator: The original caller who called the proxy *)
+transition update_contractmaxstake (max_stake : Uint128, initiator : ByStr20)
+```
+
+##### 4. update_admin
 
 ```ocaml
 (* @dev: Set the admin of contract. Used by admin only. *)
-(* @param min_stake: New admin value *)
-transition update_admin (admin : ByStr20)
+(* @param admin: New admin value *)
+(* @param initiator: The original caller who called the proxy *)
+transition update_admin (admin : ByStr20, initiator: ByStr20)
 ```
 
-##### 4. update_verifier
+##### 5. update_verifier
+
 ```ocaml
 (* @dev: Set the verifier of contract. Used by admin only. *)
-(* @param min_stake: New admin value *)	(* @param verif: New verifier value *)
+(* @param verif: New verifier value *)
+(* @param initiator: The original caller who called the proxy *)
+transition update_verifier (verif : ByStr20, initiator: ByStr20)
 ```
 
-##### 5. deposit_funds
+##### 6. deposit_funds
 
 ```ocaml
-(* @dev: Move token amount from _sender to recipient i.e. contract address. *)
-transition deposit_funds ()
+(* @dev: Move token amount from initiator to recipient i.e. contract address. *)
+(* @param initiator: The original caller who called the proxy *)
+transition deposit_funds (initiator : ByStr20)
 ```
 
-##### 6. stake_deposit
+##### 7. stake_deposit
 
 ```ocaml
-(* @dev: Moves an amount tokens from _sender to the recipient. Used by token_owner. i.e. ssn *)
-(* @dev: Stake amount of exisitng ssn in ssnlist will be updated with new amount only if existing stake amount is 0. 
-         Balance of contract account will increase. Balance of _sender will decrease.      *)
-transition stake_deposit ()
+(* @dev: Moves an amount tokens from initiator to the recipient. Used by token_owner. i.e. ssn *)
+(* @dev: Stake amount of exisitng ssn in ssnlist will be updated with new amount only if existing stake amount is 0. Balance of contract account will increase. Balance of initiator will decrease.      *)
+(* @param initiator: The original caller who called the proxy *)
+transition stake_deposit (initiator: ByStr20)
 ```
 
-##### 7. add_ssn
+##### 8. add_ssn
 
 ```ocaml
 (* @dev: Adds new ssn to ssnlist. Used by verifier only. *)
 (* @param ssnaddr: Address of the ssn to be added *)
 (* @param urlraw: string representing "ip:port" of the ssn serving raw api request *)
 (* @param urlapi: string representing url exposed by ssn serving public api request *)
-(* @param blocknumber: Block number when the verifier invoked this transition *)
-transition add_ssn (ssnaddr : ByStr20, urlraw : String, urlapi : String)
+(* @param buffered_deposit: Any buffered stake deposit *)
+(* @param initiator: The original caller who called the proxy *)
+transition add_ssn (ssnaddr : ByStr20, active_status : Bool, stake_amount : Uint128, rewards : Uint128, urlraw : String, urlapi : String, buffered_deposit : Uint128, initiator : ByStr20)
 ```
 
-##### 8. assign_stake_reward
+##### 9. assign_stake_reward
 
 ```ocaml
-(* @dev: Assign stake reward to specific ssn from ssnlist. Used by verifier only. *)
-(* @param ssnaddr: Address of the ssn to be awarded the reward *)
-(* @param reward_percent: reward share awarded to ssn *)
-transition assign_stake_reward (ssnaddr : ByStr20, reward_percent : Uint128)
+(* @dev: Assign stake reward to all ssn from ssnlist. Used by verifier only. *)
+(* @param ssnrewardlist: List of SsnRewardShare *)
+(* @param reward_blocknum: tx block num when ssns were verified *)
+(* @param initiator: The original caller who called the proxy *)
+transition assign_stake_reward (ssnreward_list : List SsnRewardShare, reward_blocknum : Uint32, initiator: ByStr20)
 ```
 
-##### 9. withdraw_stake_rewards
+##### 10. withdraw_stake_rewards
 
 ```ocaml
 (* @dev: Withdraw stake reward. Used by ssn only. *)
-transition withdraw_stake_rewards ()
+(* @param initiator: The original caller who called the proxy *)
+transition withdraw_stake_rewards (initiator : ByStr20)
 ```
 
-##### 10. withdraw_stake_amount
+##### 11. withdraw_stake_amount
 
 ```ocaml
-(* @dev: Move token amount from contract account to _sender. Used by ssn only. *)
+(* @dev: Move token amount from contract account to initiator. Used by ssn only. *)
 (* @param amount: token amount to be withdrawed *)
-transition withdraw_stake_amount (amount : Uint128 )
+(* @param initiator: The original caller who called the proxy *)
+transition withdraw_stake_amount (amount : Uint128, initiator: ByStr20)
 ```
 
-##### 10. remove_ssn
+##### 12. remove_ssn
 
 ```ocaml
-(* @dev: Remove a specific ssn from ssnlist. Used by verifier only. *)
+(* @dev: Remove a specific ssn from ssnlist. Used by admin only. *)
 (* @param ssnaddr: Address of the ssn to be removed *)
-transition remove_ssn (ssnaddr : ByStr20)
+(* @param initiator: The original caller who called the proxy *)
+transition remove_ssn (ssnaddr : ByStr20, initiator: ByStr20)
 ```
 
-##### 12. drain_contract_balance
+##### 13. drain_contract_balance
 
 ```ocaml
-(* @dev: Set the admin of contract. Used by verifier only. *)
-(* @param min_stake: New admin value *)
-transition drain_contract_balance ()
+(* @dev: Set the admin of contract. Used by current admin only. *)
+(* @param initiator: The original caller who called the proxy *)
+transition drain_contract_balance (initiator : ByStr20)
 ```
 
 ### E. Staking Procedure
