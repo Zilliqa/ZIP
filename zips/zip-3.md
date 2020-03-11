@@ -225,13 +225,15 @@ transition stake_deposit (initiator: ByStr20)
 ##### 8. add_ssn
 
 ```ocaml
-(* @dev: Adds new ssn to ssnlist. Used by verifier only. *)
+(* @dev: Adds new ssn to ssnlist. Used by admin only. *)
 (* @param ssnaddr: Address of the ssn to be added *)
+(* @param stake_amount: Stake amount of ssn *)
+(* @param rewards: Rewards of the ssn to be added *)
 (* @param urlraw: string representing "ip:port" of the ssn serving raw api request *)
 (* @param urlapi: string representing url exposed by ssn serving public api request *)
 (* @param buffered_deposit: Any buffered stake deposit *)
 (* @param initiator: The original caller who called the proxy *)
-transition add_ssn (ssnaddr : ByStr20, active_status : Bool, stake_amount : Uint128, rewards : Uint128, urlraw : String, urlapi : String, buffered_deposit : Uint128, initiator : ByStr20)
+transition add_ssn (ssnaddr : ByStr20, stake_amount : Uint128, rewards : Uint128, urlraw : String, urlapi : String, buffered_deposit : Uint128, initiator : ByStr20)
 ```
 
 ##### 9. assign_stake_reward
