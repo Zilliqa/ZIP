@@ -1,6 +1,6 @@
 | ZIP | Title                        | Status | Type  | Author                                                                                                                       | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | ---------------------------- | ------ | ----- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
-| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Amrit Kumar <amrit@zilliqa.com> <br> Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> | 2020-01-30           | 2020-03-11           |
+| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> <br> Yaoqi Jia <yaoqi@parity.io> <br> Amrit Kumar <amrit@zilliqa.com> | 2020-01-30           | 2020-03-13           |
 
 ## Abstract
 
