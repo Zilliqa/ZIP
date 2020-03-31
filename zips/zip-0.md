@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 0  | ZIP Purpose and Guidelines | Draft | Meta  | Antonio Nunez <antonio@zilliqa.com> | 2020-01-23 | 2020-01-23 
+| 0  | ZIP Purpose and Guidelines | Draft | Meta  | Antonio Nunez <antonio@zilliqa.com> | 2020-01-23 | 2020-03-31 
 
 ## What is a ZIP?
 
@@ -21,7 +21,7 @@ A ZIP must meet certain minimum criteria. It must be a clear and complete descri
 
 Parties involved in the process are you, the champion or *ZIP author*, the [*ZIP editors*](#zip-editors), and the [*Zilliqa Core Developers*](https://github.com/orgs/Zilliqa/people).
 
-Before you begin writing a formal ZIP, you should vet your idea. Ask the Zilliqa community first if an idea is original to avoid wasting time on something that will be be rejected based on prior research. It is thus recommended to use one of the groups on the [Zilliqa Discord Channel](https://discord.gg/8tpGXrB),  or [the Issues section of this repository](https://github.com/Zilliqa/ZIP/issues). 
+Before you begin writing a formal ZIP, you should vet your idea. Ask the Zilliqa community first if an idea is original to avoid wasting time on something that will be be rejected based on prior research. It is thus recommended to use one of the groups on the [Zilliqa Discord Channel](https://discord.gg/XMRE9tt),  or [the Issues section of this repository](https://github.com/Zilliqa/ZIP/issues). 
 
 In addition to making sure your idea is original, it will be your role as the author to make your idea clear to reviewers and interested parties, as well as inviting editors, developers and community to give feedback on the aforementioned channels. You should try and gauge whether the interest in your ZIP is commensurate with both the work involved in implementing it and how many parties will have to conform to it.  Negative community feedback will be taken into consideration and may prevent your ZIP from moving past the Draft stage.
 
