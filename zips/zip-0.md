@@ -168,8 +168,6 @@ The current ZIP editors are
 
 - Antonio Nunez ([**@ansnunez**](https://github.com/ansnunez))
 
-- Clark Yang ([**@ckyang**](https://github.com/ckyang))
-
 - Haichuan Liu ([**@kaikawaliu**](https://github.com/kaikawaliu)).
 
 - Han Wen Chua ([**@evesnow91**](https://github.com/evesnow91))
