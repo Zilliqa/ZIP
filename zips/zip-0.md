@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 0  | ZIP Purpose and Guidelines | Draft | Meta  | Antonio Nunez <antonio@zilliqa.com> | 2020-01-23 | 2020-03-31 
+| 0  | ZIP Purpose and Guidelines | Draft | Meta  | Antonio Nunez <antonio@zilliqa.com> | 2020-01-23 | 2020-04-08 
 
 ## What is a ZIP?
 
@@ -124,7 +124,7 @@ The `resolution` header can be used to point to a URL where the pronouncement ab
 
 #### `discussions-to` header
 
-While a ZIP is a draft, a `discussions-to` header will indicate the mailing list or URL where the ZIP is being discussed. As mentioned above, examples for places to discuss your ZIP include [Zilliqa Discord Channel](https://discord.gg/8tpGXrB), an issue in this repo or in a fork of this repo.
+While a ZIP is a draft, a `discussions-to` header will indicate the mailing list or URL where the ZIP is being discussed. As mentioned above, examples for places to discuss your ZIP include [Zilliqa Discord Channel](https://discord.gg/XMRE9tt), an issue in this repo or in a fork of this repo.
 
 No `discussions-to` header is necessary if the ZIP is being discussed privately with the author.
 
