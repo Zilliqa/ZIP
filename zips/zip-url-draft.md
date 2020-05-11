@@ -40,7 +40,7 @@ Where:
 - `chain_id` (optional), contains the decimal chain ID, such that transactions on various test- and private networks can be requested. If no chain_id is present, the client’s current network setting remains effective
 - `function_name` (optional), if missing the URL is requesting payment in the native token of the blockchain, which is ZIL in our case. The amount is specified in `amount` parameter, in the atomic unit (i.e. QA)
 - parameters:
-  - `amount` (optional) the indicated amount is only a suggestion which the user is free to change. With no indicated amount, the user should be prompted to enter the amount to be paid. For ZRC-2 token transfers `amount` parameter should be used to indicate an amount to transfer, since ZRC-2 tokens are smart contracts it's possible to indicate the amount in `Uint128-amount` parameter. If `amount` and `Uint128-amount` are both present and have different values, the URL should be considered invalid.
+  - `amount` (optional) the indicated amount is only a suggestion which the user is free to change. With no indicated amount, the user should be prompted to enter the amount to be paid. For ZRC-2 token transfers `amount` parameter should be used to indicate an amount to transfer; since ZRC-2 tokens are smart contracts it's possible to indicate the amount in `Uint128-amount` parameter. If `amount` and `Uint128-amount` are both present and have different values, the URL should be considered invalid.
   - `to` - this is just an alias for `ByStr20-to`, for making ZRC-2 transfer request url more readable
   - `gasLimit` and `gasPrice` (optional) are suggested user-editable values for gas limit and gas price, respectively, for the requested transaction
 
