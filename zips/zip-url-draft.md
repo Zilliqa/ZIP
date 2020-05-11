@@ -8,7 +8,7 @@ URLs embedded in QR-codes, hyperlinks in web-pages, buttons in native applicatio
 
 ## Motivation
 
-The convenience of representing payment requests by standard URLs has been a major factor in the wide adoption of Bitcoin. Bringing a similarly convenient mechanism to Zilliqa would speed up its acceptance as a payment platform among end-users. In particular, URLs embedded in broadcast Intents are the preferred way of launching applications on the Android operating system and work across practically all applications, iOS has a simmilar feature. Desktop web browsers have a standardized way of defining protocol handlers for URLs with specific protocol specifications. Other desktop applications typically launch the web browser upon encountering a URL. Thus, payment request URLs could be delivered through a very broad, ever growing selection of channels.
+The convenience of representing payment requests by standard URLs has been a major factor in the wide adoption of Bitcoin. Bringing a similarly convenient mechanism to Zilliqa would speed up its acceptance as a payment platform among end-users. In particular, URLs embedded in broadcast Intents are the preferred way of launching applications on the Android operating system and work across practically all applications. iOS has a similar feature. Desktop web browsers have a standardized way of defining protocol handlers for URLs with specific protocol specifications. Other desktop applications typically launch the web browser upon encountering a URL. Thus, payment request URLs could be delivered through a very broad, ever growing selection of channels.
 
 ## Specification
 
