@@ -1,6 +1,6 @@
 | ZIP | Title                                      | Status | Type            | Author                         | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | ------------------------------------------ | ------ | --------------- | ------------------------------ | -------------------- | -------------------- |
-| -   | URL Scheme Format for Transaction Requests | -      | Standards Track | Tibi Krisboi <tibi@moonlet.io> | 2019-05-06           | 2019-05-06           |
+| -   | URL Scheme Format for Transaction Requests | -      | Standards Track | Tibi Krisboi <tibi@moonlet.io> | 2020-05-06           | 2020-05-06           |
 
 ## Abstract
 
