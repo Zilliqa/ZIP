@@ -1,6 +1,6 @@
 | ZIP | Title                        | Status | Type  | Author                                                                                                                       | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | ---------------------------- | ------ | ----- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
-| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> <br> Yaoqi Jia <jiayaoqijia@gmail.com> <br> Amrit Kumar <amrit@zilliqa.com> | 2020-01-30           | 2020-03-13           |
+| 3   | Seed Node Staking Mechanism | Draft  | Standards Track | Antonio Nunez <antonio@zilliqa.com> <br> Arthur Cheong <arthurcheong1@gmail.com> <br> Clark Yang <clark@zilliqa.com> <br> Jun Hao Tan <junhao@zilliqa.com> <br> Sandip Bhoir <sandip@zilliqa.com> <br> Yaoqi Jia <jiayaoqijia@gmail.com> <br> Amrit Kumar <amrit@zilliqa.com> | 2020-01-30           | 2020-06-08           |
 
 ## Abstract
 
@@ -49,36 +49,34 @@ Given that there is a monetary incentive at play, the economic parameters of the
 
 The Zilliqa protocol currently allocates 5% of block rewards (that gets disbursed to the miners every hour or so) to reward lookup nodes. We, therefore, propose to use this pool to reward seed nodes, i.e., block rewards will be split between miners (validating transactions) getting 95% and seed node operators (providing the supporting role) receiving 5% of the block reward. The table below presents a further breakdown. Note that block rewards get distributed at the end of each DS epoch. 
 
-In the rest of the discussion, we assume 1 ZIL = USD 0.006 (price at the time of writing this ZIP).
-
 | Mainnet parameter                   | Value        |
 | ----------------------------- | ------------ |
-| Total mining reward distributed per DS epoch  (in ZIL) | 263,699  | 
-| Average duration of a DS epoch (in mins) | 95  |
-| Number of DS epochs per day        | 15          |
-| Number of DS epochs per year |5,533 |
+| Total mining reward distributed per DS epoch  (in ZIL) | 197,244  | 
+| Average duration of a DS epoch (in mins) | 83  |
+| Number of DS epochs per day        | 17          |
+| Number of DS epochs per year | 6,205 |
 | Percentage of reward proposed for seed nodes | 5% | 
-| Total reward available for seed nodes per DS epoch (in ZIL) | 263,699 x 0.05 = 13,185 |
-| Total reward available for seed nodes per year (in ZIL) | 5,533 x 13,185 = 72,947,368|
+| Total reward available for seed nodes per DS epoch (in ZIL) | 197,244 x 0.05 = 9,862 |
+| Total reward available for seed nodes per year (in ZIL) | 6,205 x 9,862 = 61,193,710|
 
-As shown in the table above, if 5% of block reward goes to the seed nodes, then a total of ~72 million ZILs per year (~USD 437k) can be used to provide the necessary incentives. With this total reward available, we propose the following economic parameters for staking:
+As shown in the table above, if 5% of block reward goes to the seed nodes, then a total of ~61 million ZILs per year can be used to provide the necessary incentives. With this total reward available, we propose the following economic parameters for staking:
 
 | Staking parameter                           | Value                 |
 | ------------------------------------------- | --------------------- |
-| Maximum overall staked amount (in ZIL)      | 700,000,000           |
-| Maximum stake amount (in ZIL) per seed node | 70,000,000            |
+| Maximum overall staked amount (in ZIL)      | 610,000,000           |
+| Maximum stake amount (in ZIL) per seed node | 61,000,000            |
 | Minimum stake amount (in ZIL) per seed node | 10,000,000            |
 | Maximum number of seed nodes                | 10                    |
-| Annual interest rate                        | 10.42%                |
-| Rewarding cycle                             | 15 DS blocks (~1 day) |
+| Annual interest rate                        | 10.03%                |
+| Rewarding cycle                             | 17 DS blocks (~1 day) |
 
-We propose to limit the total staked amount across all seed nodes so as to ensure that the interest rate remains attractive for each seed node operator. This is fixed to 700 million ZILs (~USD 4.2 million). In other words, a maximum of 700 million ZILs will ever be locked. 
+We propose to limit the total staked amount across all seed nodes so as to ensure that the interest rate remains attractive for each seed node operator. This is fixed to 610 million ZILs. In other words, a maximum of 610 million ZILs will ever be staked inside the smart contract. 
 
-With this overall maximum, if 20 seed node operators participate in the staking program, then each seed node could stake up to 35 million ZILs (~USD 210k). However, with 10 seed nodes, the maximum that each seed node would be able to stake will be higher at 70 million ZILs (~USD 420k). For **Phase 0**, we propose to start with a maximum of 10 seed nodes - a number that we can revisit depending on the success of **Phase 0**.
+With this overall maximum, if 20 seed node operators participate in the staking program, then each seed node could stake up to 30.5 million ZILs. However, with 10 seed nodes, the maximum that each seed node would be able to stake will be higher at 61 million ZILs. For **Phase 0**, we propose to start with a maximum of 10 seed nodes - a number that we can revisit depending on the success of **Phase 0**.
 
-Given that 72,947,368 ZILs is the maximum possible reward that can be disbursed per year, the annual percentage yield for the maximum staked amount of 700 million ZILs is (72,947,368 / 700,000,000) x 100 = 10.42%.
+Given that 61,193,710 ZILs is the maximum possible reward that can be disbursed per year, the annual percentage yield for the maximum staked amount of 610 million ZILs is (61,193,710 / 610,000,000) x 100 = 10.03%.
 
-Each seed node operator will have to stake a minimum of 10 million ZILs (~USD 60k) to ensure that each operator has enough "skin in the game". This minimum requirement is at the seed node level and not at the individual user or token holder level. Each seed node operator is, in fact, free to decide a minimum that it thinks is reasonable to attract end users and become the preferred seed node operator in the market.
+Each seed node operator will have to stake a minimum of 10 million ZILs to ensure that each operator has enough "skin in the game". This minimum requirement is at the seed node level and not at the individual user or token holder level. Each seed node operator is, in fact, free to decide a minimum that it thinks is reasonable to attract end users and become the preferred seed node operator in the market.
 
 As for locking, any seed node is free to withdraw its deposit and reward at any point of time. This is to allow no active lockup of tokens in the contract.
 
