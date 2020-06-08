@@ -1,6 +1,6 @@
 | ZIP | Title                        | Status | Type  | Author                                                                                                                       | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | ---------------------------- | ------ | ----- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
-| 4   | GetMinerNodes API | Draft  | Standards Track | Antonio Nunez <antonio@zilliqa.com> | 2020-02-12           | 2020-02-12           |
+| 4   | GetMinerNodes API | Implemented  | Standards Track | Antonio Nunez <antonio@zilliqa.com> | 2020-02-12           | 2020-06-08           |
 
 ## Abstract
 
