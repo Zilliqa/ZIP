@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 1  | Zilliqa Internal Transactions | Draft | Standards Track  | Haichuan Liu <haichuan@zilliqa.com> <br> Xiaohuo Ren <lulu@zilliqa.com>| 2020-01-15 | 2020-02-24
+| 1  | Zilliqa Internal Transactions | Implemented | Standards Track  | Haichuan Liu <haichuan@zilliqa.com> <br> Xiaohuo Ren <lulu@zilliqa.com>| 2020-01-15 | 2020-06-08
 
 ## Abstract
 
