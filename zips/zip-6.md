@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 6  | Zilliqa Isolated Server | Draft | Standards Track  | Kaustubh Shamshery <kaustubh@zilliqa.com>| 2020-05-06 | 2020-05-06
+| 6  | Zilliqa Isolated Server | Implemented | Standards Track  | Kaustubh Shamshery <kaustubh@zilliqa.com>| 2020-05-06 | 2020-06-08
 
 ## Abstract
 
