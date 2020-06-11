@@ -1,83 +1,84 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 8  | Adopting MPT for Contract State Hashing | Draft | Standards Track  | Liu Haichuan <haichuan@zilliqa.com>| 2020-06-05 | 2020-06-08
+| 8  | Adopting MPT for Contract State Hashing | Draft | Standards Track  | Liu Haichuan <haichuan@zilliqa.com>| 2020-06-05 | 2020-06-05
 
 ## Abstract
 
-This ZIP details how **Merkle Partricia Trie** is adopted to improve the performance of contract state hashing. 
+This ZIP details how **Merkle Partricia Trie** (MPT) is adopted to improve the performance of contract state hashing.
 
 ## Motivation
 
-In the past, generating the representation of contract state is achieved by hashing the byte data of the whole state storage, which is of linear computational complexity. If there are millions of entry in a contract storage, which could be common nowadays, it would take extremely long time for this process to end. Since MPT(Merkle Partricia Trie) is a tree formed key-value storage data structure, whose lookup, insert, and delete opration are of O(logN) computation complexity. Besides, it can also provide the representation of the data stored by its top root hash. it will be a great match if we can integrate it for our scenario.
+In the past, generating the representation of contract state is achieved by hashing the byte data of the whole state storage, which is of linear *O(N)* computational complexity. If there are millions of entries in a contract's storage, which could be common nowadays, it would take an extremely long time for this process to end. Since MPT is a tree-formed key-value storage data structure, its lookup, insert, and delete operations are of *O(logN)* computational complexity. Additionally, it can also provide the representation of the data stored by its top root hash. It will thus be of great benefit to integrate MPT into the Zilliqa core.
 
 ## Specification
 
-### Merkle Partricia Tree
-Please refer to [*Modified Merkle Patricia Trie — How Ethereum saves a state*](https://medium.com/codechain/modified-merkle-patricia-trie-how-ethereum-saves-a-state-e6d7555078dd) for more details of Merkle Partricia Trie.
+### Merkle Patricia Trie
+Please refer to this [article](https://medium.com/codechain/modified-merkle-patricia-trie-how-ethereum-saves-a-state-e6d7555078dd) for more details on Merkle Patricia Trie.
 
-To be simplified, here are some related points to grab:
-1. MPT is key-value storage data structure with complete certainty.
-2. O(logN) complexity for inserting, searching and deleting.
-3. The address of each tree node is the hash of its value part, which can be used for locating the node in the tree, and serves as the key in database.
+These are the main points to consider:
+1. MPT is a collision-resistant key-value storage data structure.
+2. It has O(logN) complexity for inserting, searching, and deleting operations.
+3. The address of each tree node is the hash of its value part, which can be used for locating the node in the tree, and which also serves as the key in a database.
 
 ### Trie
-Here we will explain how MPT is architected within our system, it includes these parts:
-- [*TrieDB.h*](https://github.com/Zilliqa/Zilliqa/blob/master/src/depends/libTrie/TrieDB.h): the core logic part for realizing Merkle Partricia Tree
-- [*MemoryDB.h*](https://github.com/Zilliqa/Zilliqa/blob/master/src/depends/libDatabase/MemoryDB.h): provides in-memory container for storing the tree nodes
-- [*OverlayDB.h*](https://github.com/Zilliqa/Zilliqa/blob/master/src/depends/libDatabase/OverlayDB.h): An inherented class of MemoryDB, interfacing with database for commiting the in-memory data to permanent storage and accessing it.
+Here we explain how MPT is architected within our system. It includes these parts:
+- [*TrieDB.h*](https://github.com/Zilliqa/Zilliqa/blob/master/src/depends/libTrie/TrieDB.h): The core logic part for realizing Merkle Patricia Trie
+- [*MemoryDB.h*](https://github.com/Zilliqa/Zilliqa/blob/master/src/depends/libDatabase/MemoryDB.h): Provides in-memory container for storing the tree nodes
+- [*OverlayDB.h*](https://github.com/Zilliqa/Zilliqa/blob/master/src/depends/libDatabase/OverlayDB.h): An inherited class of MemoryDB that interfaces with database for committing the in-memory data to permanent storage, and accessing it.
 
 ![Architecture of Trie](../assets/zip-8/Trie.png)
 
-however, this is not sufficient since for contract storage the following features have to be met:
-- Delta formation
-- Atomic commitment
-- Revertibility
+However, the system above is not sufficient since for contract storage the following features have to be met:
+- Delta formation: Can comply with different tiers of `AccountStore` to generate contract-related state delta.
+- Atomic commitment: Can cache the temporary updates during transaction processing, and commit in one shot after success (or discard otherwise).
+- Reversibility: Even though states are committed into permanent storage, it is still possible to roll back changes if the network triggered a view change.
 
 ### MPT for Contract State Storage
-The following diagram shows how MTP is structured and utilized for contract state storage.
+The following diagram shows how MPT is structured and utilized for contract state storage.
 ![MPT for contract state storage](../assets/zip-8/ContractStorageTrie.png)
 
-* **TempTrie**: corresponds to AccountStoreTemp, generating storage root hash of contract account after applying contract transaction
-* **PermTrie**: corresponds to AccountStore, generating storage root hash for finalized contract states (after committing delta during final block consensus).
-* **OverlayMap**: a variadic template class which provides the four essential operations (exists, lookup, insert, kill) required by Trie, with arbitrary numbers of embedded container layers to traverse recursively. The followings are the basic logics of handling those operations:
-  - exists: if found the key in head layer, return true. Otherwise check the next layer. If reached the last layer and still not found, return false.
-  - lookup: if found the key in head layer, return its value. Otherwise check the next layer. If reached the last layer and still not found, return empty string.
-  - insert: insert key-value pair to the head layer.
-  - kill: kill key-value pair from head layer by key.
+* **TempTrie**: Corresponds to `AccountStoreTemp` in the current implementation. It generates storage root hash of contract account after applying the contract transaction.
+* **PermTrie**: Corresponds to `AccountStore` in the current implementation. It generates storage root hash for finalized contract states (after committing the delta during FinalBlock consensus).
+* **OverlayMap**: A variadic template class which provides the four essential operations (exists, lookup, insert, kill) required by Trie, with arbitrary numbers of embedded container layers to traverse recursively. The following are the basic logics of handling those operations:
+  - **exists**: If key is found in head layer, return `true`. Otherwise, check the next layer. If reached the last layer and still not found, return `false`.
+  - **lookup**: If key is found in head layer, return its value. Otherwise, check the next layer. If reached the last layer and still not found, return empty string.
+  - **insert**: Insert key-value pair into the head layer.
+  - **kill**: Remove key-value pair from current layer.
 * **AddDeleteMap**:
-  - m_adds: newly added or updated key-value pair of contract state.
-  - m_deletes: keys to be deleted from database later. Before the commitment happens, it will be used as a filter to exclude values found from m_adds in the lower layers.
+  - `m_adds`: Newly added or updated key-value pair of contract state.
+  - `m_deletes`: Keys to be deleted from database later. Before the commitment happens, it will be used as a filter to exclude values found from `m_adds` in the lower layers.
 
-### Demonstration on why can all the contracts share one database table for storage.
+### Demonstration on How Contracts Share One Database Table for Storage
 
 ![Multiple contracts sharing same table](../assets/zip-8/ShareTable.png)
 
-- It shows how two state tries co-exists in one single database table, each node has a hash string as key.
-- All the Red blocks represent the nodes of the state trie for contract A, if we want to fetch the value stored in NodeA-1-0, firstly we will initialize the trie with the root node NodeA0 by its key as rootHash, then extract the value in NodeA-1-0 by searching algorithm defined in MPT. Similar for all the other operations such as insert, remove etc..
+- The diagram above shows how two state tries can co-exist in one single database table. Each node in a trie has a hash string as its key.
+- All the red blocks represent the nodes of the state trie for contract A. If we want to fetch the value stored in Node A1-0, firstly we will initialize the trie with the root node Node A0 and set rootHash to its key. Then, we extract the value in Node A1-0 using the search algorithm defined in MPT. The process is similar for all the other operations (insert, remove, etc.)
 
 ## Implementation
 
 This ZIP is implemented in the following pull requests in the Zilliqa core repository:
-- [PR2088](https://github.com/Zilliqa/Zilliqa/pull/2088)
+- [PR 2088](https://github.com/Zilliqa/Zilliqa/pull/2088)
 
-## Benchmark
+### Benchmarks
 
 ![Benchmark result](../assets/zip-8/Benchmark.png)
 
-The above is the benchmark result of comparing direct data hashing against trie storage. Each entry represents a new field in a map data type for contract Simple-Map (seen in Appendix:A). The time is measured in microsecond.
-To simulate the real scenario, with every 100 new fields added by processing transactions, we dump them from temporary state map into the permanent state map; and with every 1000 new fields added, we dump all the in memory state into disk, and clean the memory at meantime.
+The diagram above is the benchmark result of comparing direct data hashing against trie storage. Each entry represents a new field in a map data type for contract Simple-Map (see [Appendix A](#a-simple-map-contract) below). The time is measured in microseconds.
 
-From observation, for direct data hashing, we can find a linear increment of time spent against to the number of entries in the map. While for trie hashing, the trend almost complies to the expectation of O(logN).
+To simulate a realistic scenario, for every 100 new fields added by processing transactions, we dump the fields from the temporary state map into the permanent state map. For every 1,000 new fields added, we dump all the in-memory state into disk, and clear the memory thereafter.
 
-However, when the amount of entry is small, direct hashing takes much less time. So if there is no map data type in the contract, we can still adopt the previous solution.
+For direct data hashing, we can observe a linear trend for the time spent over the number of entries in the map. For trie hashing, the trend almost complies to the expectation of O(logN).
+
+However, when the number of entries is small, direct hashing takes much less time. So, if there is no map data type in the contract, we can still choose to adopt the current solution instead of MPT.
 
 ## Backward Compatibility
 
-The way of generating the storage hash will be different, and a data migration is needed to apply the change to all the affected existing contracts, thus this feature is not backward compatible and cannot be applied to the blockchain before the point of implementation.
+The way of generating the storage hash will be different, and a data migration is needed to apply the change to all the affected existing contracts. Thus, this feature is not backward compatible and cannot be applied to the blockchain before the point of implementation.
 
 ## Appendix
 
-### A.Simple-Map Contract
+### A. Simple-Map Contract
 ```
 scilla_version 0
 library SimpleMap
