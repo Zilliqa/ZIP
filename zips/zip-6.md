@@ -1,6 +1,6 @@
-|  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
+|  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)|
 |--|--|--|--| -- | -- | -- |
-| 6  | Zilliqa Isolated Server | Implemented | Standards Track  | Kaustubh Shamshery <kaustubh@zilliqa.com>| 2020-05-06 | 2020-06-08
+| 6  | Zilliqa Isolated Server | Implemented | Standards Track  | Kaustubh Shamshery <kaustubh@zilliqa.com>| 2020-05-06 | 2020-07-01 |
 
 ## Abstract
 
@@ -11,22 +11,23 @@ This ZIP details the use of a standalone binary used to mimic the behaviour of a
 Before this utility, developers testing a transaction had to send it to either the developer testnet or mainnet, where they had to wait a non-trivial amount of time to check if the transaction is correct. The issue becomes manifold if a complicated smart contract transaction is
 being deployed. For every bug encountered, the developer would have had to wait some time, modify the contract and try to deploy the transaction again. A standalone binary which mimics the behaviour of a Zilliqa node would make this process faster. It would be able to instantaneously tell if the transaction is correct or not.
 
-
 ## Specification
 
 The transaction is sent to the Isolated Server in the same way as it would have been to a Zilliqa network, i.e., through a JSON-RPC API call [CreateTransaction](https://apidocs.zilliqa.com/#createtransaction). The returned message from the JSON-RPC API call is also similar. Interacting with the created transaction can then be done through the transaction-related APIs.
 
 The APIs available in the Isolated Server are:
 
-* `CreateTransaction` 
+* `CreateTransaction`
 * `GetSmartContractSubState`
 * `GetSmartContractCode`
 * `GetMinimumGasPrice`
 * `GetBalance`
-* `GetSmartContracts` 
-* `GetNetworkID` 
-* `GetSmartContractInit` 
-* `GetTransaction` 
+* `GetSmartContracts`
+* `GetNetworkID`
+* `GetSmartContractInit`
+* `GetTransaction`
+* `GetRecentTransactions`
+* `GetTransactionsForTxBlock`
 
 Refer to [API docs](https://apidocs.zilliqa.com) for more information for these APIs.
 
@@ -40,7 +41,7 @@ APIs specific to the Isolated Server:
 
 The Isolated Server has two variants, i.e., `time-triggered` and `event-triggered`.
 In a time-triggered system, the transaction block number increases at fixed time intervals. This interval can be user-defined.
-In an event-triggered system, the transaction block number is increased by using a JSON-RPC API call `IncreaseBlocknum`. 
+In an event-triggered system, the transaction block number is increased by using a JSON-RPC API call `IncreaseBlocknum`.
 
 The variant can be specified with parameter `-t` when starting the system. See [Isolated Server Boostrap Options](https://github.com/Zilliqa/Zilliqa/blob/master/ISOLATED_SERVER_setup.md#bootstrap-options) for more details.
 
@@ -61,16 +62,14 @@ To test a transaction, however, two approaches emerged.
 
 The Isolated Server is just a layer above the original Zilliqa code. Hence, most of the updates in the Zilliqa code base are automatically applied to the Isolated Server.
 
-
 ## Test Cases
 
 - Run an instance of the Isolated Server. Refer to [Isolated Server Instructions](https://github.com/Zilliqa/Zilliqa/blob/master/ISOLATED_SERVER_setup.md)
 . Example bootstrap command:
 
-```bash 
+```bash
 ./build/bin/isolatedServer -f isolated-server-accounts.json -t 100
 ```
-
 
 - Issue a `CreateTransaction` to the Isolated Server to test the transaction. Example to deploy a smart contract (Fungible Token):
 
@@ -87,7 +86,9 @@ curl -d '{
 Where `https://localhost:5555` is the location of the Isolated Server.
 
 - Use `GetTransaction` to check the receipt and check if the transaction has succeeded.
+
   Example of a successful deployment:
+
 ```json
   {
   "id": "1",
@@ -116,10 +117,10 @@ Where `https://localhost:5555` is the location of the Isolated Server.
 
 - The API calls can also be made using [Zilliqa SDKs](https://dev.zilliqa.com/docs/en/api-sdk).
 
-
 ## Implementation
 
 This ZIP is implemented in the following pull requests in the Zilliqa core repository:
+
 - [PR 2065](https://github.com/Zilliqa/Zilliqa/pull/2065)
 - [PR 1879](https://github.com/Zilliqa/Zilliqa/pull/1987)
 
