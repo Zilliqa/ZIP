@@ -77,9 +77,9 @@ This will translate to roughly ~8.8% annual inflation relative to current circul
 
 ### Simulation
 
-Taking into account of a ZRC-2 compliant Fungible-token `Transfer()` transition, assuming the gas used of each ZRC-2 transfer is `1819` and we have `gasLimit = 2300000` per TX block, it will be mean a TX block to handle up to ~1264 ZRC-2 transfers within each TX epoch. (or ~29 TPS of ZRC-2 transfers transactions at the current block time of 43 seconds)
+Taking into account of a ZRC-2 compliant Fungible-token `Transfer()` transition, assuming the gas used of each ZRC-2 transfer is `1819` and we have `gasLimit = 2500000` per TX block, it will be mean a TX block to handle up to ~1374 ZRC-2 transfers within each TX epoch. (or ~31.95 TPS of ZRC-2 transfers transactions at the current block time of 43 seconds)
 
-Achieving this rate of ZRC-2 transfers will not be difficult to do assuming the mass adoption of Zilliqa for micro-payments in advertising or social rewards use cases. Therefore, in this simulation, the target of a healthy network will be to hit ~29 TPS (of ZRC-2 token transfers transactions) constantly or even exceed it in order to hit the net annual inflation of <= 0%.
+Achieving this rate of ZRC-2 transfers will not be difficult to do assuming the mass adoption of Zilliqa for micro-payments in advertising or social rewards use cases. Therefore, in this simulation, the target of a healthy network will be to hit ~31.95 TPS (of ZRC-2 token transfers transactions) constantly or even exceed it in order to hit the net annual inflation of <= 0%.
 
 ## Implementation
 
