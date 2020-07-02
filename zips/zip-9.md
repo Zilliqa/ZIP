@@ -40,11 +40,11 @@ In this manner, miners are always incentivised to include as many transactions a
 
 ### Parameters
 
-- `BASE_COINBASE_REWARD_PER_DS`: 200000
+- `BASE_COINBASE_REWARD_PER_DS`: 198000
 - `DS_MICROBLOCK_GAS_LIMIT` = 1000000
 - `SHARD_MICROBLOCK_GAS_LIMIT` = 500000
 - `GAS_CONGESTION_PERCENT`: 80
-- `GAS_PRICE_MIN_VALUE`: See below for calculation
+- `GAS_PRICE_MIN_VALUE`: 0.001
 
 ### Proposal
 
@@ -55,16 +55,16 @@ Therefore, we have to adjust the `GAS_PRICE_MIN_VALUE` using the formula below t
 ```javascript
 // Since gasLimit = DS_MICROBLOCK_GAS_LIMIT + 3 * SHARD_MICROBLOCK_GAS_LIMIT = 3,250,000
 BASE_COINBASE_REWARD_PER_DS = GAS_CONGESTION_PERCENT/100 * gasLimit * TX blocks in DS epoch * gasMinPrice
-							= 0.8 * 2500000 * 99 * gasMinPrice
-							= 198000000 * gasMinPrice
+			    = 0.8 * 2500000 * 99 * gasMinPrice
+			    = 198000000 * gasMinPrice
 // Therefore:
 gasMinPrice = BASE_COINBASE_REWARD_PER_DS / 198000000
 ```
 
-If we were to set `BASE_COINBASE_REWARD_PER_DS = 200000` as of current settings, then:
+If we were to set `BASE_COINBASE_REWARD_PER_DS = 197,244.577625571` as of current settings, then:
 
 ```
-gasMinPrice = 0.00101010101
+gasMinPrice = 0.00099618473
 ```
 
 However, due to the unease of setting `gasMinPrice` to such as awkward number, a target `gasMinPrice = 0.001 ZIL` can be chosen, and the `BASE_COINBASE_REWARD_PER_DS` shall follows the formula above. Hence, we get:
