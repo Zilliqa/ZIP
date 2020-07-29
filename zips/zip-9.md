@@ -40,46 +40,38 @@ In this manner, miners are always incentivised to include as many transactions a
 
 ### Parameters
 
-- `BASE_COINBASE_REWARD_PER_DS`: 198000
+- `BASE_COINBASE_REWARD_PER_DS`: 275000
 - `DS_MICROBLOCK_GAS_LIMIT` = 1000000
 - `SHARD_MICROBLOCK_GAS_LIMIT` = 500000
-- `GAS_CONGESTION_PERCENT`: 80
-- `GAS_PRICE_MIN_VALUE`: 0.001
+- `GAS_CONGESTION_PERCENT`: 55
+- `GAS_PRICE_MIN_VALUE`: 0.002
 
 ### Proposal
 
-In order for the fees and inflation per DS epoch to reach parity, we need to tune some of the current blockchain parameters to make this possible. First, we have to make sure that the `BASE_COINBASE_REWARD_PER_DS` must be equal to all fees allocated to 80% (`GAS_CONGESTION_PERCENT`) of the gasLimit for that DS epoch.
+In order for the fees and inflation per DS epoch to reach parity, we need to tune some of the current blockchain parameters to make this possible. First, we have to make sure that the `BASE_COINBASE_REWARD_PER_DS` must be equal to all fees allocated to 55% (`GAS_CONGESTION_PERCENT`) of the gasLimit for that DS epoch.
 
 Therefore, we have to adjust the `GAS_PRICE_MIN_VALUE` using the formula below to derive a logical value:
 
 ```javascript
-// Since gasLimit = DS_MICROBLOCK_GAS_LIMIT + 3 * SHARD_MICROBLOCK_GAS_LIMIT = 3,250,000
+// Since gasLimit = DS_MICROBLOCK_GAS_LIMIT + 3 * SHARD_MICROBLOCK_GAS_LIMIT = 2,500,000
 BASE_COINBASE_REWARD_PER_DS = GAS_CONGESTION_PERCENT/100 * gasLimit * TX blocks in DS epoch * gasMinPrice
-			    = 0.8 * 2500000 * 99 * gasMinPrice
-			    = 198000000 * gasMinPrice
-// Therefore:
-gasMinPrice = BASE_COINBASE_REWARD_PER_DS / 198000000
+			    = 0.55 * 2500000 * 99 * gasMinPrice
+			    = 1237500000 * gasMinPrice
 ```
 
-If we were to set `BASE_COINBASE_REWARD_PER_DS = 197,244.577625571` as of current settings, then:
-
-```
-gasMinPrice = 0.00099618473
-```
-
-However, due to the unease of setting `gasMinPrice` to such as awkward number, a target `gasMinPrice = 0.001 ZIL` can be chosen, and the `BASE_COINBASE_REWARD_PER_DS` shall follows the formula above. Hence, we get:
+If we set a target `gasMinPrice = 0.002 ZIL`, we get:
 
 ```javascript
-BASE_COINBASE_REWARD_PER_DS = 198000000 * gasMinPrice = 198000;
+BASE_COINBASE_REWARD_PER_DS = 13750000 * 0.002 = 275000;
 ```
 
-This will translate to roughly ~8.8% annual inflation relative to current circulating supply if there are no guard nodes, and ~5.98% inflation if there are 770 guard nodes (520 DS guards + 250 Shard guards) as guard nodes are not rewarded in the network.
+Without the fees being "burned" due to no transactions on the Zilliqa blockchain, the proposed coinbase rewards will translate to roughly ~12.2% annual inflation relative to current circulating supply. If we take into account of miner:staker allocation of 6:4 for coinbase rewards, and disregard the staker allocation as they are considered "locked" supply (meaning non-circulating), the actual inflation is 7.32%. Last but not least, as the network still has 720 guard nodes (520 DS guard + 200 shard guards) that are not qualifed for mining rewards, hence decreasing the actual inflation lower to 5.124%. This is a still a manageable amount considering no transactions happenning to the chain at any moment, but of course that is not we want to see happen.
 
 ### Simulation
 
-Taking into account of a ZRC-2 compliant Fungible-token `Transfer()` transition, assuming the gas used of each ZRC-2 transfer is `1819` and we have `gasLimit = 2500000` per TX block, it will be mean a TX block to handle up to ~1374 ZRC-2 transfers within each TX epoch. (or ~31.95 TPS of ZRC-2 transfers transactions at the current block time of 43 seconds)
+Taking into account of a ZRC-2 compliant Fungible-token `Transfer()` transition, assuming the gas used of each ZRC-2 transfer is `~228` and we have `gasLimit = 2500000` per TX block, it will be mean a TX block to handle up to ~10,964 ZRC-2 transfers within each TX epoch. (or ~255 TPS of ZRC-2 transfers transactions at the current block time of 43 seconds)
 
-Achieving this rate of ZRC-2 transfers will not be difficult to do assuming the mass adoption of Zilliqa for micro-payments in advertising or social rewards use cases. Therefore, in this simulation, the target of a healthy network will be to hit ~31.95 TPS (of ZRC-2 token transfers transactions) constantly or even exceed it in order to hit the net annual inflation of <= 0%.
+Achieving this rate of ZRC-2 transfers will not be difficult to do assuming the mass adoption of Zilliqa for micro-payments in advertising or social rewards use cases. Therefore, in this simulation, the target of a healthy network will be to hit ~255 TPS (of ZRC-2 token transfers transactions) constantly or even exceed it in order to hit the net annual inflation of <= 0%.
 
 ## Implementation
 
