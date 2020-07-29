@@ -8,7 +8,7 @@ ZIP-9 defines a mechanism to capture the network's growth by means of "burning" 
 
 ## Motivation
 
-Measuring the growth of a blockchain network is difficult when there is no explicit token sink mechanism in place to captures the network's growth. Hence, this ZIP proposes a simple mechanism to measure network's activity by opting to "burn" the transaction fees, by means of sending them to the 0x0 address (mining reward pool), instead of rewarding them directly to the miners. This will help ensure that the value of $ZIL is tied directly to its fee market demand, and also ensure that the annual inflation of $ZIL as result of mining block rewards is sustainable in the long run.
+Measuring the growth of a blockchain network is difficult when there is no explicit token sink mechanism in place to capture the network's growth. Hence, this ZIP proposes a simple mechanism to measure network activity by opting to "burn" the transaction fees, by means of sending them to the 0x0 address (mining reward pool), instead of rewarding them directly to the miners. This will help ensure that the value of $ZIL is tied directly to its fee market demand, and also ensure that the annual inflation of $ZIL as result of mining block rewards is sustainable in the long run.
 
 If this is implemented, the goal of the network will be to achieve the following:
 
