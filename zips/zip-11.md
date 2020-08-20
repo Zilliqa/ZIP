@@ -50,7 +50,7 @@ ZIP-9 proposes several key changes in the tokenomic design of ZIL tokens. The
 most pertinent change for the proposal herein is the increase of allocation of
 block reward for seed node operators from 5% to 40%.
 
-# Phase I Design Considerations
+# Design Considerations
 
 ## ZIP-3 vs ZIP-11
 
