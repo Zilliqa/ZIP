@@ -15,7 +15,7 @@ introduces some key changes in the staking parameters such as lifting the cap
 on the total stake deposit (a consequence of the tokenomic changes as proposed
 in [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md)).
 
-# Background and Motivation
+# Background
 
 Before reading any further, we strongly recommend readers to go through
 [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md) and
@@ -45,6 +45,8 @@ client-unique address provided by the seed node operator which pooled all the
 tokens and the deposited them in a Scilla contract. The operator upon receiving
 rewards (which gets distributed daily) then distributes back the reward to the
 delegators in proportion to their stake.  
+
+# Phase I Design Considerations
 
 ## ZIP-3 (Phase 0) vs ZIP-11 (Phase I): Through the Lens of ZIP-9
 
@@ -119,8 +121,10 @@ way to delegate tokens.
 
 ## Bonded Tokens aka bZIL
 
+## Limitations and Future Work
 
-## Backward Compatibility
+
+# Backward Compatibility
 
 The staking mechanism is intended to work alongside the existing core protocol
 and should be fully backward compatible with all its components, i.e., no
