@@ -21,10 +21,10 @@ Before reading any further, we strongly recommend readers to go through
 [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md) and
 [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md). 
 
-To summarize, ZIP-3 presents the key idea of _seed node staking_ a staking
+To summarize, ZIP-3 presents the key idea of _seed node staking_ --- a staking
 mechanism to open up the _seed nodes_ for developers and the broader community.
 Seed nodes are special nodes that do not participate in the consensus but
-instead archive historical transaction data.Seed nodes are important to provide
+instead archive historical transaction data. Seed nodes are important to provide
 services like explorer. 
 
 The proposal put forth in ZIP-3 sets aside 5% of the mining rewards to reward
@@ -40,11 +40,15 @@ their own have the possibility to allow other token holders to delegate their
 tokens to the operator and in return earn rewards. The seed node operator may
 take a commission to cover its operational expenses. 
 
-Delegation of tokens were required token holders to transfer their tokens to a
+Delegation of tokens required token holders to transfer their tokens to a
 client-unique address provided by the seed node operator which pooled all the
 tokens and the deposited them in a Scilla contract. The operator upon receiving
 rewards (which gets distributed daily) then distributes back the reward to the
 delegators in proportion to their stake.  
+
+ZIP-9 proposes several key changes in the tokenomic design of ZIL tokens. The
+most pertinent change for the proposal herein is the increase of allocation of
+block reward for seed node operators from 5% to 40%.
 
 # Phase I Design Considerations
 
