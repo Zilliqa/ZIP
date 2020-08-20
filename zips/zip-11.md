@@ -85,7 +85,7 @@ lift the cap of 610 million tokens and yet be able to provide a healthy yield.
 ZIP-11 incorporates the change proposed in ZIP-9 thereby solving the issue of
 oversubscription. 
 
-## A Note on Self-custodial vs Non-Custodial
+## A Note on "Self-custodial or Non-Custodial?"
 
 Even though there does not seem to be well-defined distinction between
 self-custodial asset management and non-custodial management and are often used
