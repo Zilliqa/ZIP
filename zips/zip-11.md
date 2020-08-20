@@ -48,7 +48,7 @@ delegators in proportion to their stake.
 
 # Phase I Design Considerations
 
-## ZIP-3 (Phase 0) vs ZIP-11 (Phase I): Through the Lens of ZIP-9
+## ZIP-3 vs ZIP-11
 
 ZIP-3 (aka Seed Node Staking Phase 0) had two key limitations. The first being
 that the delegation was custodial, i.e., token holders had to transfer their
