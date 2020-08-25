@@ -1,6 +1,11 @@
-| ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
-| --- | ---------------------------- | ------ | ----- | ----------------- | -------------------- | -------------------- |
-| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track | Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>, <br> Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17| 2020-08-17|
+| ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated
+(yyyy-mm-dd) | | --- | ---------------------------- | ------ | ----- |
+----------------- | -------------------- | -------------------- | | 11   | Seed
+Node Staking Mechanism: Phase I | Draft  | Standards Track | Han Wen Chua
+<hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>, <br> Lulu Ren
+<lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Antonio Nunez
+<antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|
+2020-08-17|
 
 
 # Abstract
@@ -24,8 +29,8 @@ Before reading any further, we strongly recommend readers to go through
 To summarize, ZIP-3 presents the key idea of _seed node staking_ --- a staking
 mechanism to open up the _seed nodes_ for developers and the broader community.
 Seed nodes are special nodes that do not participate in the consensus but
-instead archive historical transaction data. Seed nodes are important to provide
-services like explorer. 
+instead archive historical transaction data. Seed nodes are important to
+provide services like explorer. 
 
 The proposal put forth in ZIP-3 sets aside 5% of the mining rewards to reward
 seed node operators who in return are expected to archive all historical
@@ -35,10 +40,10 @@ periodically querying for block data for randomly chosen blockheights and by
 comparing the response with the one returned by a "trusted" oracle. 
 
 In order to become a seed node operator, one has to stake a minimum of 10 mil
-ZIL tokens. However, operators who cannot meet the minimum requirement on
-their own have the possibility to allow other token holders to delegate their
-tokens to the operator and in return earn rewards. The seed node operator may
-take a commission to cover its operational expenses. 
+ZIL tokens. However, operators who cannot meet the minimum requirement on their
+own have the possibility to allow other token holders to delegate their tokens
+to the operator and in return earn rewards. The seed node operator may take a
+commission to cover its operational expenses. 
 
 Delegation of tokens required token holders to transfer their tokens to a
 client-unique address provided by the seed node operator which pooled all the
@@ -52,7 +57,7 @@ block reward for seed node operators from 5% to 40%.
 
 # Design Considerations
 
-## ZIP-3 vs ZIP-11
+## Non-custodial Staking
 
 ZIP-3 (aka Seed Node Staking Phase 0) had two key limitations. The first being
 that the delegation was custodial, i.e., token holders had to transfer their
@@ -68,6 +73,32 @@ delegated by each user with each seed node operator. It also computes on-chain
 the reward that each delegator should get which is proportional to the number
 of tokens delegated by a holder. 
 
+>Note: **Self-custodial or Non-Custodial?** <br>Even though there does not seem
+>to be well-defined distinction between
+self-custodial asset management and non-custodial management and are often used
+interchangeably in the blockchain space, we argue that there is a difference
+between the two. <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
+wallet of the token holder. In case of ZIP-3, the tokens move from the holder's
+wallet address to an address (unique to the holder) assigned by the operator.
+Once enough tokens have been pooled to meet the minimum stake deposit, the
+tokens get pooled from the different addresses (provided by the operator to the
+holders) into one single wallet address. All the pooled tokens then get
+transferred from this pool address to the contract. The safety of the assets
+held in the contract relies on the security of the contract. <br> In case of
+ZIP-11, tokens holders can directly deposit their tokens into the contract by
+providing the information on the address of the operator with which they wish
+to stake. ZIP-11 removes the need of the intermediate addresses.  ZIP-11
+therefore provides a non-custodial mechanism to delegate tokens. The
+non-custodial property comes from the fact that there is no single entity that
+holds the asset on behalf of holders at any point of time. Assets are either in
+the hands of the holder or held in a contract on-chain. This is in line with
+all the DeFi applications. <br> Compare this with a mechanism where assets do
+not leave the holder's wallet. The holder always holds the custody of the
+asset. We refer to this as _self-custody_. <br> ZIP-11 does not provide a
+self-custodial staking mechanism but a non-custodial way to delegate tokens. 
+
+## Uncapped Staking
+
 The second limitation with ZIP-3 was related to the total number of tokens that
 could ever be delegated. Given that only 5% of the block reward were available
 to reward the operators, the more tokens get staked, the thinner the
@@ -76,56 +107,58 @@ the reward and the commission becomes so low that it could not cover the
 operational expense of running a seed node. In order to tackle this issue,
 ZIP-3 proposed a cap of 61 million tokens to be staked on each operator and a
 total of 610 million tokens across all operators. This was to ensure that the
-operator would be a yield of ~10% per year. 
+operator would be get an yield of ~10% per year. 
 
 However, due an excessive demand in the market, the seed node operators had to
 stretch beyond the 61 million cap. Due to the custodial nature of the contract
 design, it was possible for the operators to accept 2x61 million tokens but
 deposit only 61 million in the contract but dividing the reward earned from 61
 million tokens to delegator contributing  2x61 million tokens, thereby reducing
-the yield from ~10% to ~5% per year. 
+the yield from ~10% to ~5% per year.
 
 In light of this, ZIP-9 was proposed to increase the block reward allocated for
 seed node rewards from 5% to 40%. With this change, it will become possible to
 lift the cap of 610 million tokens and yet be able to provide a healthy yield.
 ZIP-11 incorporates the change proposed in ZIP-9 thereby solving the issue of
-oversubscription. 
+oversubscription.
 
-## Self-custodial or Non-Custodial?
+## Governance Tokens aka gZIL
 
-Even though there does not seem to be well-defined distinction between
-self-custodial asset management and non-custodial management and are often used
-interchangeably in the blockchain space, we argue that there is a difference
-between the two. 
+This ZIP also introduces gZILs (short for _governance ZILs_). gZILs will be
+ZRC-2 compliant fungible tokens that will be earned alongside staking rewards.
+More concretely, whenever, a delegator decides to withdraw her stake rewards,
+an equivalent number of gZILs will be minted and issued to the delegator.
+Since, the reward earned is proportional to the stake deposit and the staking
+duration, the number of gZILs earned by a delegator will capture the long-term
+belief of token holders. In other words, the longer a delegator stakes her
+tokens and the larger her stake is, the more gZILs she will earn.
 
-Notice that in both ZIP-3 and ZIP-11, assets leave the wallet of the token
-holder. In case of ZIP-3, the tokens move from the holder's wallet address to
-an address (unique to the holder) assigned by the operator. Once enough tokens
-have been pooled to meet the minimum stake deposit, the tokens get pooled from
-the different addresses (provided by the operator to the holders) into one
-single wallet address. All the pooled tokens then get transferred from this
-pool address to the contract. The safety of the assets held in the contract
-relies on the security of the contract. 
+gZILs will later be used to govern a DAO-like structure that will invest in
+community projects. A Gitcoin-like DAO will be setup with funds from Zilliqa
+Research to fund ecosystem projects and initiatives. The end goal is to move
+move all ecosystem funding currently done by Zilliqa Research (as a part of
+ZILHive) to the DAO making the community responsible for making decisions on
+funding ecosystem projects. The community holding gZILs will vote on proposals
+instead of Zilliqa Research making decisions. More on this will be released as
+a separate ZIP.
 
-In case of ZIP-11, tokens holders can directly deposit their tokens into the
-contract by providing the information on the address of the operator with which
-they wish to stake. ZIP-11 removes the need of the intermediate addresses.
-ZIP-11 therefore provides a non-custodial mechanism to delegate tokens. The
-non-custodial property comes from the fact that there is no single entity that
-holds the asset on behalf of holders at any point of time. Assets are either in
-the hands of the holder or held in a contract on-chain. This is in line with
-all the DeFi applications.
+Since the purpose of gZIL will mainly be in voting in a DAO, gZIL must capture
+token holders that are long-term ecosystem participants with a deep-rooted
+interest in making the Zilliqa ecosystem grow and succeed. Issuing gZIL
+alongside staking rewards aims to capture those token holders.
 
-Compare this with a mechanism where assets do not leave the holder's wallet.
-The holder always holds the custody of the asset. We refer to this as
-_self-custody_. 
+The issuance curve of gZIL is hard to predict given that it depends on the
+number of ZILs staked in the contract and the frequency of reward withdrawal by
+token holders. Since, rewards earned are not automatically staked in a
+cumulative manner, token holders will have to manually withdraw their rewards
+and in doing so they will receive gZILs.
 
-ZIP-11 does not provide a self-custodial staking mechanism but a non-custodial
-way to delegate tokens. 
+gZIL will have no pre-defined exchange rate pegged with ZIL, i.e., gZILs cannot
+be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
+we believe that a secondary market for gZIL may open up that will help with the
+price discovery of gZIL.
 
-## Bonded Tokens aka bZIL
-
-## Limitations and Future Work
+# Limitations and Future Work
 
 
 # Backward Compatibility
