@@ -42,7 +42,7 @@ commission to cover its operational expenses.
 
 Delegation of tokens required token holders to transfer their tokens to a
 client-unique address provided by the seed node operator which pooled all the
-tokens and the deposited them in a Scilla contract. The operator upon receiving
+tokens and then deposited them in a Scilla contract. The operator upon receiving
 rewards (which gets distributed daily) then distributes back the reward to the
 delegators in proportion to their stake.  
 
@@ -63,23 +63,23 @@ holders' behalf, thereby creating custody risks.
 ZIP-11 (aka Seed Node Staking Phase I) aims to address this by proposing a
 contract design that allows token holders to directly deposit their stake in a
 contract thereby eliminating the need to send their tokens to a custodian. The
-contract now takes over the accounting responsibility to keep a track of tokens
+contract now takes over the accounting responsibility to keep track of tokens
 delegated by each user with each seed node operator. It also computes on-chain
 the reward that each delegator should get which is proportional to the number
 of tokens delegated by a holder. 
 
->Note: **Self-custodial or Non-Custodial?** <br>Even though there does not seem
+>Note: **Self-custodial or Non-Custodial?** Even though there does not seem
 >to be well-defined distinction between
 self-custodial asset management and non-custodial management and are often used
 interchangeably in the blockchain space, we argue that there is a difference
-between the two. <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
+between the two. <br> <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
 wallet of the token holder. In case of ZIP-3, the tokens move from the holder's
 wallet address to an address (unique to the holder) assigned by the operator.
 Once enough tokens have been pooled to meet the minimum stake deposit, the
 tokens get pooled from the different addresses (provided by the operator to the
 holders) into one single wallet address. All the pooled tokens then get
 transferred from this pool address to the contract. The safety of the assets
-held in the contract relies on the security of the contract. <br> In case of
+held in the contract relies on the security of the contract. <br> <br> In case of
 ZIP-11, tokens holders can directly deposit their tokens into the contract by
 providing the information on the address of the operator with which they wish
 to stake. ZIP-11 removes the need of the intermediate addresses.  ZIP-11
@@ -87,9 +87,9 @@ therefore provides a non-custodial mechanism to delegate tokens. The
 non-custodial property comes from the fact that there is no single entity that
 holds the asset on behalf of holders at any point of time. Assets are either in
 the hands of the holder or held in a contract on-chain. This is in line with
-all the DeFi applications. <br> Compare this with a mechanism where assets do
+all the DeFi applications. <br> <br> Compare this with a mechanism where assets do
 not leave the holder's wallet. The holder always holds the custody of the
-asset. We refer to this as _self-custody_. <br> ZIP-11 does not provide a
+asset. We refer to this as _self-custody_. <br><br> ZIP-11 does not provide a
 self-custodial staking mechanism but a non-custodial way to delegate tokens. 
 
 ## Uncapped Staking
