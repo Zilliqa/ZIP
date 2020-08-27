@@ -146,20 +146,18 @@ The issuance curve of gZIL is hard to predict given that it depends on the
 number of ZILs staked in the contract and the frequency of reward withdrawal by
 token holders. Since, rewards earned are not automatically staked in a
 cumulative manner, token holders will have to manually withdraw their rewards
-and in doing so they will receive gZILs.
+and in doing so they will receive gZILs. gZILs will only be issued for the first 2 years after the launch of the staking contract. This is to encourage the early supporters to get involved in the staking program. 
 
 gZIL will have no pre-defined exchange rate pegged with ZIL, i.e., gZILs cannot
 be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
 we believe that a secondary market for gZIL may open up that will help with the
-price discovery of gZIL.
+price discovery of gZIL. 
 
 # Non-Custodial Seed Node Staking Overview
 
 ## Staking Parameters
 
-As proposed in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md), seed node staking will not dilute the maximum token supply which remains fixed to 21 billion tokens.
-
-With ZIP-9 in place, the Zilliqa protocol will now allocate 40% of block rewards (that gets disbursed to the miners every hour or so) to reward seed nodes. The table below presents a further breakdown. Note that block rewards get distributed at the end of each DS epoch. 
+As proposed in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md), seed node staking will not dillute the maximum token supply which remains fixed to 21 billion tokens. However, with [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md) in place, the Zilliqa protocol will now allocate 40% of block rewards (that gets disbursed to the miners every hour or so) to reward seed nodes. The table below presents a further breakdown pre-ZIP-9 and post-ZIP-9. Note that block rewards get distributed at the end of each DS epoch. 
 
 | Mainnet parameter  | Pre-ZIP-9 Value        | Post ZIP-9 Value |
 | ----------------------------- | ------------ | --------------- |
@@ -173,7 +171,7 @@ With ZIP-9 in place, the Zilliqa protocol will now allocate 40% of block rewards
 
 As shown in the table above, if 40% of block reward goes to the seed nodes, then a total of ~682 million ZILs per year can be used to provide the necessary incentives. With this total reward available, we propose the following economic parameters for staking:
 
-| Staking parameter                           | Pre-ZIP-9 Value       | Post-ZIP-9 Value |
+| Staking parameter                           | ZIP-3 Value       | ZIP-11 Value |
 | ------------------------------------------- | --------------------- |----------------- |
 | Maximum overall staked amount (in ZIL)      | 610,000,000           | Uncapped         |
 | Maximum stake amount (in ZIL) per seed node | 61,000,000            | Uncapped         |       
@@ -184,22 +182,63 @@ As shown in the table above, if 40% of block reward goes to the seed nodes, then
 | Rewarding cycle                             | 17 DS blocks (~1 day) | 17 DS block (~1 day) |
 | Lockup period                               |  NA                   | NA |
 
+The rationale behind introducing a mininum stake amount for delegators is to ensure that the staked reward is not less than the gas paid to withdraw it. 
 
 ## Verifier
 
+The role of the verifier in ZIP-11 is the same as the one in ZIP-3. The (trusted) verifier which sits off-the chain periodically checks the health of each SSN node for example by querying for random transaction data via the public APIs. For each SSN, it computes `verification_passed` which is the percentage of tests that the SSN has passed. 
+
+The reward earned (in ZIL) by a given SSN is then computed in the following way: It takes into account the total reward available for seed nodes per DS epoch (which is 110,000), the total number of DS epoch per reward cycle (roughtly 17), the verification success rate in percentage. This reward is then distributed proportional to the stake deposited, hence the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)
+
+```
+SSNRewardForCurrentCycle = (NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed) * TotalStakeAtSSN / TotalStakeAcrossAllSSNs
+
+```
+
+The first half of the computatition `(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` is computed off-the chain, while the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` has to be computed on-chain using the smart contract that has the most updated data as a part of the contract state. 
+
+The verifier computes `NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` as an integer value for every cycle off-the-chain and calls the following transition in the proxy contract to computed stake reward for each reward cycle. 
+
+```
+ transition AssignStakeReward(ssnreward_list: List SsnRewardShare, verifier_reward: Uint128)
+
+```
+
+The first parameter of the transition is a list of `SsnRewardShare` data type which basically is a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The second element of the pair is `(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)`. The transition then iterates over all the SSNs and computes the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns reward. A small percentage of these rewards goes to the SSN operators in the form of commission to over operational excpense while the remaining bulk is to reward the delegators.
+
+In the case where, the total reward meant to be distributed to the seed nodes cannot be attributed to seed nodes (owing to poor peformance of any of the seed nodes or more concretely, when `VerificationPassed` is not 100% for any of the SSNs), then the left-over reward is given to the verifier. This is captured via the parameter `verifier_reward` passed in the transition.
+
 ## Seed Node Operator
+
+We intend to start with 10 seed node operators and revisit the number in the future. Each seed node operators will have to be registed by the smart contract admin. Once registered, it can invoke the following transitions in the proxy contract:
+
+1. `transition UpdateComm(new_rate: Uint128)` to update the commission.
+2. `transition WithdrawComm(ssnaddr: ByStr20)` to withdraw the commission earned. 
+3. `transition UpdateReceivingAddr(new_addr: ByStr20)` to update the address to receive commission.
+
 
 ## Delegator
 
+Delegators can stake their ZILs by directly calling the contract. They can call the following transitions:
+
+1. `transition DelegateStake(ssnaddr: ByStr20)` to delegate their funds to a specific SSN.
+2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their stake rewards from a specific SSN and mint gZIL tokens. 
+3. `transition WithdrawStakeAmt(ssn: ByStr20, amt: Uint128)` to withdraw a specifi amount from the stake.
+
+More details on the contract specification can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
+
 # Limitations and Future Work
+
+While, ZIP-11 makes improvments over ZIP-3 in terms of providing a non-custodial way for token holders to delegate their stake with an SSN. It does not address the trust component that a single verifier brings. We list below two key improvements for the next phase of seed node staking.
+
+* **Detecting Cheating/Malicious Operators:** In **Phase 1** as in **Phase 0**, the Verifier implements rather simple checks to monitor the health of a seed node, such as checking if the seed node holds data for randomly chosen blocks and is alive when a fetch request (for a block data) is made. One possible improvement could be to implement a [Proof of Retrievability protocol](http://www.arijuels.com/wp-content/uploads/2013/09/BJO09b.pdf) - a protocol that runs between a client and a data storage provider that guarantees that the data storage provider indeed holds a certain data that the client has outsourced to the storage provider.
+
+* **Decentralizing Verifiers:** Another area for improvement in the next phases would be to have a decentralized layer of Verifiers, where any node can potentially become a Verifier node and monitor seed nodes and report any Proof of Poor Service (or PoPS) and get rewarded for it. Such designs have been extensively explored in the past for example in [TrueBit](https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf).
 
 
 # Backward Compatibility
 
-The staking mechanism is intended to work alongside the existing core protocol
-and should be fully backward compatible with all its components, i.e., no
-change in behavior should be observable on the mainnet operation with this
-mechanism in place.
+The non-custodial staking will be implemented as a new contract and the older contract will be deprecated. This staking also introduces some backward incomptabile changes inherited from ZIP-9 particulary the 40% block reward allocation. 
 
 ## Copyright Waiver
 
