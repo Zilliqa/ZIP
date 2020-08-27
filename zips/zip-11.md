@@ -1,13 +1,13 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track | Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>, <br> Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-08-17|
+| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-08-17|
 
 
 # Abstract
 
 ZIP-11 is the Phase I extension of the seed node staking proposal as presented
 in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md). This new
-proposal introduces a non-custodial mechanism to stake tokens with a seed node
+proposal introduces a _non-custodial_ mechanism to stake tokens with a seed node
 operator via a Scilla contract. Non-custodial here meaning that any tokens that
 need to be staked can now be deposited directly in the contract and therefore
 need not go through any intermediary entity acting as a custodian. ZIP-11 also
@@ -17,9 +17,9 @@ in [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md)).
 
 # Background
 
-Before reading any further, we strongly recommend readers to go through
+We strongly recommend readers to go through
 [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md) and
-[ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md). 
+[ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md) as they pave the foundation for the current proposal.
 
 To summarize, ZIP-3 presents the key idea of _seed node staking_ --- a staking
 mechanism to open up the _seed nodes_ for developers and the broader community.
