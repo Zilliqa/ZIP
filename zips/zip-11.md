@@ -31,7 +31,7 @@ The proposal put forth in ZIP-3 sets aside 5% of the mining rewards to reward
 seed node operators who in return are expected to archive all historical
 transaction data. The architecture assumes a set of verifiers (currently the
 cardinality of the set being 1), that periodically check data availability by
-periodically querying for block data for randomly chosen blockheights and by
+periodically querying for block data for randomly chosen block heights and by
 comparing the response with the one returned by a "trusted" oracle. 
 
 In order to become a seed node operator, one has to stake a minimum of 10 mil
@@ -73,7 +73,7 @@ self-custodial asset management and non-custodial management and are often used
 interchangeably in the blockchain space, we argue that there is a difference
 between the two. <br> <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
 wallet of the token holder. In case of ZIP-3, the tokens move from the holder's
-wallet address to an address (unique to the holder) assigned and controllled by the operator.
+wallet address to an address (unique to the holder) assigned and controlled by the operator.
 Once enough tokens have been pooled together to meet the minimum stake deposit, they are
 transferred to the contract. The safety of the assets
 held in the contract relies on the security of the contract. <br> <br> In case of
@@ -154,7 +154,7 @@ price discovery of gZIL.
 
 ## Staking Parameters
 
-As proposed in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md), seed node staking will not dillute the maximum token supply which remains fixed to 21 billion tokens. However, with [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md) in place, the Zilliqa protocol will now allocate 40% of block rewards (that gets disbursed to the miners every hour or so) to reward seed nodes. The table below presents a further breakdown pre-ZIP-9 and post-ZIP-9. Note that block rewards get distributed at the end of each DS epoch. 
+As proposed in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md), seed node staking will not dilute the maximum token supply which remains fixed to 21 billion tokens. However, with [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md) in place, the Zilliqa protocol will now allocate 40% of block rewards (that gets disbursed to the miners every hour or so) to reward seed nodes. The table below presents a further breakdown pre-ZIP-9 and post-ZIP-9. Note that block rewards get distributed at the end of each DS epoch. 
 
 | Mainnet parameter  | Pre-ZIP-9 Value        | Post ZIP-9 Value |
 | ----------------------------- | ------------ | --------------- |
@@ -179,7 +179,7 @@ As shown in the table above, if 40% of block reward goes to the seed nodes, then
 | Rewarding cycle                             | 17 DS blocks (~1 day) | 17 DS block (~1 day) |
 | Lockup period                               |  NA                   | NA |
 
-The rationale behind introducing a mininum stake amount for delegators is to ensure that the staked reward is not less than the gas paid to withdraw it. 
+The rationale behind introducing a minimum stake amount for delegators is to ensure that the staked reward is not less than the gas paid to withdraw it. 
 
 ## Verifier
 
@@ -192,7 +192,7 @@ SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 * Ver
 
 ```
 
-The first part of the computatition `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` is computed off-the chain, while the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` has to be computed on-chain using the smart contract that has the most updated data as a part of the contract state. 
+The first part of the computation `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` is computed off-the chain, while the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` has to be computed on-chain using the smart contract that has the most updated data as a part of the contract state. 
 
 The verifier computes the off-chain part as an integer value for every cycle and calls the following transition in the proxy contract to compute stake reward for each reward cycle. 
 
@@ -201,13 +201,13 @@ The verifier computes the off-chain part as an integer value for every cycle and
 
 ```
 
-The first parameter of the transition is a list of `SsnRewardShare` data type which basically is a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The second element of the pair is `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)`. The transition iterates over all the SSNs and computes the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns reward to each SSN. A small percentage of these rewards goes to the SSN operators in the form of commission to cover operational excpenses while the remaining bulk is to reward the delegators.
+The first parameter of the transition is a list of `SsnRewardShare` data type which basically is a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The second element of the pair is `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)`. The transition iterates over all the SSNs and computes the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns reward to each SSN. A small percentage of these rewards goes to the SSN operators in the form of commission to cover operational expenses while the remaining bulk is to reward the delegators.
 
-In the case where, the total reward meant to be distributed to the seed nodes cannot be assigned to seed nodes (owing to poor peformance of any of the seed nodes or more concretely, when `VerificationPassed` is not 100% for any of the SSNs), then the left-over reward is given to the verifier. This is captured via the parameter `verifier_reward` passed in the transition.
+In the case where, the total reward meant to be distributed to the seed nodes cannot be assigned to seed nodes (owing to poor performance of any of the seed nodes or more concretely, when `VerificationPassed` is not 100% for any of the SSNs), then the left-over reward is given to the verifier. This is captured via the parameter `verifier_reward` passed in the transition.
 
 ## Seed Node Operator
 
-We intend to start with 10 seed node operators and revisit the number in the future. Each seed node operator will have to be registed by the smart contract admin. Once registered, it can invoke the following transitions in the proxy contract:
+We intend to start with 10 seed node operators and revisit the number in the future. Each seed node operator will have to be registered by the smart contract admin. Once registered, it can invoke the following transitions in the proxy contract:
 
 1. `transition UpdateComm(new_rate: Uint128)` to update the commission. The contract puts some restrictions on the frequency of commission rate updates to dissuade unscrupulous operators from advertising a low commission to attract delegators and once the delegators have delegated their stake later increase the commission rate to a high value. An operator cannot change the commission twice in the same reward cycle (i.e, within a day).
 2. `transition WithdrawComm(ssnaddr: ByStr20)` to withdraw the commission earned. 
@@ -218,17 +218,17 @@ We intend to start with 10 seed node operators and revisit the number in the fut
 
 Delegators can stake their ZILs by directly calling the contract. They can call the following transitions:
 
-1. `transition DelegateStake(ssnaddr: ByStr20)` to delegate their funds to a specific SSN. As mentioned earlier, a delegator must stake a minimum of 1000 ZILs. This to ensure that the gas needed to withdraw the reward does not outweigh the reward itself. If the SSN is active (i.e., 10 mil ZILs have been already staked with this SSN and that it is already operational), then the deposited stake will be buffered for a cycle and will be included in the SSN's stake pool in the next cycle. If the SSN is inactive, then the stake amount deposited can be directly included as a part of the SSN's stake pool. 
+1. `transition DelegateStake(ssnaddr: ByStr20)` to delegate their funds to a specific SSN. As mentioned earlier, a delegator must stake a minimum of 1000 ZILs. This to ensure that the gas needed to withdraw the reward does not outweigh the reward itself. If the SSN is active (i.e., 10 mil ZILs have been already staked with this SSN and that it is already operational), then the deposited stake will be buffered for a cycle and will be included in the SSN's stake pool in the next cycle. If the SSN is inactive, then the stake amount deposited can be directly included as a part of the SSN's stake pool.1 
 
-2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their stake rewards from a specific SSN and mint gZIL tokens. Re-delegation of stake rewards is manual and a two step process. First, the delegator has to withdraw the rewards and then it will have to delegate the withdrawn reward as stake.
+2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their stake rewards from a specific SSN and mint gZIL tokens. Re-delegation of stake rewards is manual and a two step process. First, the delegator has to withdraw the rewards and then it will have to delegate the withdrawn reward as stake. Wallet providers can make this user experience seamless. 
 
-3. `transition WithdrawStakeAmt(ssn: ByStr20, amt: Uint128)` to withdraw a specifi amount from the stake.
+3. `transition WithdrawStakeAmt(ssn: ByStr20, amt: Uint128)` to withdraw a specific amount from the stake.
 
 More details on the contract specification can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
 
 # Limitations and Future Work
 
-While, ZIP-11 makes improvments over ZIP-3 in terms of providing a non-custodial way for token holders to delegate their stake with an SSN. It does not address the trust component that a single verifier brings. We list below two key improvements for the next phase of seed node staking.
+While, ZIP-11 makes improvements over ZIP-3 in terms of providing a non-custodial way for token holders to delegate their stake with an SSN. It does not address the trust component that a single verifier brings. We list below two key improvements for the next phase of seed node staking.
 
 * **Detecting Cheating/Malicious Operators:** In **Phase 1** as in **Phase 0**, the Verifier implements rather simple checks to monitor the health of a seed node, such as checking if the seed node holds data for randomly chosen blocks and is alive when a fetch request (for a block data) is made. One possible improvement could be to implement a [Proof of Retrievability protocol](http://www.arijuels.com/wp-content/uploads/2013/09/BJO09b.pdf) - a protocol that runs between a client and a data storage provider that guarantees that the data storage provider indeed holds a certain data that the client has outsourced to the storage provider.
 
@@ -237,7 +237,7 @@ While, ZIP-11 makes improvments over ZIP-3 in terms of providing a non-custodial
 
 # Backward Compatibility
 
-The non-custodial staking will be implemented as a new contract and the older contract will be deprecated. This staking also introduces some backward incomptabile changes inherited from ZIP-9 particulary the 40% block reward allocation. 
+The non-custodial staking will be implemented as a new contract and the older contract will be deprecated. This ZIP also introduces some backward incompatible changes inherited from ZIP-9 particularly the 40% block reward allocation. 
 
 ## Copyright Waiver
 
