@@ -153,6 +153,44 @@ be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
 we believe that a secondary market for gZIL may open up that will help with the
 price discovery of gZIL.
 
+# Non-Custodial Seed Node Staking Overview
+
+## Staking Parameters
+
+As proposed in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md), seed node staking will not dilute the maximum token supply which remains fixed to 21 billion tokens.
+
+With ZIP-9 in place, the Zilliqa protocol will now allocate 40% of block rewards (that gets disbursed to the miners every hour or so) to reward seed nodes. The table below presents a further breakdown. Note that block rewards get distributed at the end of each DS epoch. 
+
+| Mainnet parameter  | Pre-ZIP-9 Value        | Post ZIP-9 Value |
+| ----------------------------- | ------------ | --------------- |
+| Total mining reward distributed per DS epoch  (in ZIL) | 197,244  | 275,000 |
+| Average duration of a DS epoch (in mins) | 83  | 83 |
+| Number of DS epochs per day        | 17          | 17 |
+| Number of DS epochs per year | 6,205 | 6,205 |
+| Percentage of reward proposed for seed nodes | 5% | 40% |
+| Total reward available for seed nodes per DS epoch (in ZIL) | 197,244 x 0.05 = 9,862 |275,000 x 0.4 = 110,000 |
+| Total reward available for seed nodes per year (in ZIL) | 6,205 x 9,862 = 61,193,710| 6,205 x 110,000 = 682,550,000|
+
+As shown in the table above, if 40% of block reward goes to the seed nodes, then a total of ~682 million ZILs per year can be used to provide the necessary incentives. With this total reward available, we propose the following economic parameters for staking:
+
+| Staking parameter                           | Pre-ZIP-9 Value       | Post-ZIP-9 Value |
+| ------------------------------------------- | --------------------- |----------------- |
+| Maximum overall staked amount (in ZIL)      | 610,000,000           | Uncapped         |
+| Maximum stake amount (in ZIL) per seed node | 61,000,000            | Uncapped         |       
+| Minimum stake amount (in ZIL) per seed node | 10,000,000            | NA               |
+| Minimum stake amount (in ZIL) for delegators |        NA            | 1,000            |
+| Maximum number of seed nodes                | 10                    | 10               |
+| Annual interest rate                        | 10.03%                | Variable         |
+| Rewarding cycle                             | 17 DS blocks (~1 day) | 17 DS block (~1 day) |
+| Lockup period                               |  NA                   | NA |
+
+
+## Verifier
+
+## Seed Node Operator
+
+## Delegator
+
 # Limitations and Future Work
 
 
