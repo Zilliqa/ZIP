@@ -79,11 +79,11 @@ transferred to the contract. The safety of the assets
 held in the contract relies on the security of the contract. <br> <br> In case of
 ZIP-11, tokens holders can directly deposit their tokens into the contract by
 providing the information on the address of the operator with which they wish
-to stake. ZIP-11 removes the need of the intermediate addresses.  ZIP-11
+to stake. ZIP-11 removes the need of any intermediate addresses.  ZIP-11
 therefore provides a non-custodial mechanism to delegate tokens. The
 non-custodial property comes from the fact that there is no single entity that
 holds the asset on behalf of holders at any point of time. Assets are either in
-the hands of the holder or held in a contract on-chain. This is in line with
+the hands of the holder or held in a contract on-chain the mechanics of which is transparent. This is in line with
 all the DeFi applications. <br> <br> Compare this with a mechanism where assets do
 not leave the holder's wallet. The holder always holds the custody of the
 asset. We refer to this as _self-custody_. <br><br> ZIP-11 does not provide a
@@ -94,7 +94,7 @@ self-custodial staking mechanism but a non-custodial way to delegate tokens.
 The second limitation with ZIP-3 was related to the total number of tokens that
 could ever be delegated. Given that only 5% of the block reward were available
 to reward the operators, the more tokens get staked, the thinner the
-distribution of the rewards becomes potentially resulting in a situation where
+distribution of the rewards becomes, thereby, potentially resulting in a situation where
 the reward and the commission becomes so low that it could not cover the
 operational expense of running a seed node. In order to tackle this issue,
 ZIP-3 proposed a cap of 61 million tokens to be staked on each operator and a
