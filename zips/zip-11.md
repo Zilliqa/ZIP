@@ -66,18 +66,16 @@ contract thereby eliminating the need to send their tokens to a custodian. The
 contract now takes over the accounting responsibility to keep track of tokens
 delegated by each user with each seed node operator. It also computes on-chain
 the reward that each delegator should get which is proportional to the number
-of tokens delegated by a holder. 
+of tokens delegated. 
 
->**Self-custodial or Non-Custodial?** Even though there does not seem to be well-defined distinction between
+>**Self-custodial or Non-Custodial?** Even though there does not seem to be a well-defined distinction between
 self-custodial asset management and non-custodial management and are often used
 interchangeably in the blockchain space, we argue that there is a difference
 between the two. <br> <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
 wallet of the token holder. In case of ZIP-3, the tokens move from the holder's
 wallet address to an address (unique to the holder) assigned by the operator.
-Once enough tokens have been pooled to meet the minimum stake deposit, the
-tokens get pooled from the different addresses (provided by the operator to the
-holders) into one single wallet address. All the pooled tokens then get
-transferred from this pool address to the contract. The safety of the assets
+Once enough tokens have been pooled together to meet the minimum stake deposit, they are
+transferred to the contract. The safety of the assets
 held in the contract relies on the security of the contract. <br> <br> In case of
 ZIP-11, tokens holders can directly deposit their tokens into the contract by
 providing the information on the address of the operator with which they wish
