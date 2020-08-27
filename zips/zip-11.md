@@ -105,7 +105,7 @@ However, due an excessive demand in the market, the seed node operators had to
 stretch beyond the 61 million cap. Due to the custodial nature of the contract
 design, it was possible for the operators to accept say 2x61 million tokens but
 deposit only 61 million in the contract but dividing the reward earned from 61
-million tokens to delegator contributing  2x61 million tokens, thereby reducing
+million tokens to delegators contributing  2x61 million tokens, thereby reducing
 the yield from ~10% to ~5% per year.
 
 In light of this, ZIP-9 was proposed to increase the block reward allocated for
