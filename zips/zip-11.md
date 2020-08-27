@@ -212,7 +212,7 @@ In the case where, the total reward meant to be distributed to the seed nodes ca
 
 We intend to start with 10 seed node operators and revisit the number in the future. Each seed node operators will have to be registed by the smart contract admin. Once registered, it can invoke the following transitions in the proxy contract:
 
-1. `transition UpdateComm(new_rate: Uint128)` to update the commission.
+1. `transition UpdateComm(new_rate: Uint128)` to update the commission. The contract puts some restrictions on the frequency of commission rate updates to dissuade unscrupulous operators from advertising a low commission to attract delegators and once the delegators have delegated their stake later increase the commission rate to a high value. An operator cannot change the commission twice in the same reward cycle (i.e, within a day).
 2. `transition WithdrawComm(ssnaddr: ByStr20)` to withdraw the commission earned. 
 3. `transition UpdateReceivingAddr(new_addr: ByStr20)` to update the address to receive commission.
 
@@ -221,8 +221,10 @@ We intend to start with 10 seed node operators and revisit the number in the fut
 
 Delegators can stake their ZILs by directly calling the contract. They can call the following transitions:
 
-1. `transition DelegateStake(ssnaddr: ByStr20)` to delegate their funds to a specific SSN.
-2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their stake rewards from a specific SSN and mint gZIL tokens. 
+1. `transition DelegateStake(ssnaddr: ByStr20)` to delegate their funds to a specific SSN. As mentioned earlier, a delegator must stake a minimum of 1000 ZILs. This to ensure that the gas needed to withdraw the reward does not outweigh the reward itself. If the SSN is active (i.e., 10 mil ZILs have been already staked with this SSN and that it is already operational), then the deposited stake will be buffered for a cycle and will be included in the SSN's stake pool in the next cycle. If the SSN is inactive, then the stake amount deposited can be directly included as a part of the SSN's stake pool. 
+
+2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their stake rewards from a specific SSN and mint gZIL tokens. Re-delegation of stake rewards is manual and a two step process. First, the delegator has to withdraw the rewards and then it will have to delegate the withdrawn reward as stake.
+
 3. `transition WithdrawStakeAmt(ssn: ByStr20, amt: Uint128)` to withdraw a specifi amount from the stake.
 
 More details on the contract specification can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
