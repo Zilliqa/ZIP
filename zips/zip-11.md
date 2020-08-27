@@ -188,11 +188,11 @@ The role of the verifier in ZIP-11 is the same as the one in ZIP-3. The (trusted
 The reward earned (in ZIL) by a given SSN is then computed in the following way: The computation takes into account the total reward available for seed nodes per DS epoch (which is 110,000 Cf, table above), the total number of DS epoch per reward cycle (roughly 17) and the verification success rate in percentage. This reward is then distributed in proportion to the stake deposited, hence the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)`.
 
 ```
-SSNRewardForCurrentCycle = (NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed) * TotalStakeAtSSN / TotalStakeAcrossAllSSNs
+SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)) x floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)
 
 ```
 
-The first half of the computatition `(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` is computed off-the chain, while the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` has to be computed on-chain using the smart contract that has the most updated data as a part of the contract state. 
+The first part of the computatition `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` is computed off-the chain, while the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` has to be computed on-chain using the smart contract that has the most updated data as a part of the contract state. 
 
 The verifier computes `NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` as an integer value for every cycle off-the-chain and calls the following transition in the proxy contract to computed stake reward for each reward cycle. 
 
