@@ -121,12 +121,12 @@ ZRC-2 compliant fungible tokens that will be earned alongside staking rewards.
 More concretely, whenever, a delegator decides to withdraw her stake rewards,
 an equivalent number of gZILs will be minted and issued to the delegator.
 Since, the reward earned is proportional to the stake deposit and the staking
-duration, the number of gZILs earned by a delegator will capture the long-term
-belief of token holders. In other words, the longer a delegator stakes her
+duration, the number of gZILs earned will capture the long-term
+belief of a token holder. In other words, the longer a delegator stakes her
 tokens and the larger her stake is, the more gZILs she will earn.
 
 gZILs will later be used to govern a DAO-like structure that will invest in
-community projects. A Gitcoin-like DAO will be setup with funds from Zilliqa
+community projects. A [Gitcoin](https://gitcoin.co/)-like DAO will be setup with funds from Zilliqa
 Research to fund ecosystem projects and initiatives. The end goal is to move
 move all ecosystem funding currently done by Zilliqa Research (as a part of
 ZILHive) to the DAO making the community responsible for making decisions on
