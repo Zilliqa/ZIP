@@ -73,7 +73,7 @@ self-custodial asset management and non-custodial management and are often used
 interchangeably in the blockchain space, we argue that there is a difference
 between the two. <br> <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
 wallet of the token holder. In case of ZIP-3, the tokens move from the holder's
-wallet address to an address (unique to the holder) assigned by the operator.
+wallet address to an address (unique to the holder) assigned and controllled by the operator.
 Once enough tokens have been pooled together to meet the minimum stake deposit, they are
 transferred to the contract. The safety of the assets
 held in the contract relies on the security of the contract. <br> <br> In case of
