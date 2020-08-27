@@ -99,7 +99,7 @@ the reward and the commission becomes so low that it could not cover the
 operational expense of running a seed node. In order to tackle this issue,
 ZIP-3 proposed a cap of 61 million tokens to be staked on each operator and a
 total of 610 million tokens across all operators. This was to ensure that the
-operator would be get an yield of ~10% per year. 
+operator would get an yield of ~10% per year. 
 
 However, due an excessive demand in the market, the seed node operators had to
 stretch beyond the 61 million cap. Due to the custodial nature of the contract
