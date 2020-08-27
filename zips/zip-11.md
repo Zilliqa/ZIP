@@ -130,11 +130,11 @@ community projects. A [Gitcoin](https://gitcoin.co/)-like DAO will be setup with
 Research to fund ecosystem projects and initiatives. The end goal is to move
 move all ecosystem funding currently done by Zilliqa Research (as a part of
 ZILHive) to the DAO making the community responsible for making decisions on
-funding ecosystem projects. The community holding gZILs will vote on proposals
-instead of Zilliqa Research making decisions. More on this will be released as
+funding ecosystem projects. The community holding gZILs will be able to vote on proposals
+alongside Zilliqa Research on making decisions. More on this will be released as
 a separate ZIP.
 
-Since the purpose of gZIL will mainly be in voting in a DAO, gZIL must capture
+Since the purpose of gZIL will mainly be in voting in a DAO (and potentially earning benefits from the DAO), gZIL must capture
 token holders that are long-term ecosystem participants with a deep-rooted
 interest in making the Zilliqa ecosystem grow and succeed. Issuing gZIL
 alongside staking rewards aims to capture those token holders.
@@ -150,7 +150,7 @@ be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
 we believe that a secondary market for gZIL may open up that will help with the
 price discovery of gZIL. 
 
-# Non-Custodial Seed Node Staking Overview
+# Non-custodial Seed Node Staking Overview
 
 ## Staking Parameters
 
@@ -172,7 +172,7 @@ As shown in the table above, if 40% of block reward goes to the seed nodes, then
 | ------------------------------------------- | --------------------- |----------------- |
 | Maximum overall staked amount (in ZIL)      | 610,000,000           | Uncapped         |
 | Maximum stake amount (in ZIL) per seed node | 61,000,000            | Uncapped         |       
-| Minimum stake amount (in ZIL) per seed node | 10,000,000            | NA               |
+| Minimum stake amount (in ZIL) per seed node | 10,000,000            | 10,000,000              |
 | Minimum stake amount (in ZIL) for delegators |        NA            | 1,000            |
 | Maximum number of seed nodes                | 10                    | 10               |
 | Annual interest rate                        | 10.03%                | Variable         |
@@ -185,7 +185,7 @@ The rationale behind introducing a mininum stake amount for delegators is to ens
 
 The role of the verifier in ZIP-11 is the same as the one in ZIP-3. The (trusted) verifier which sits off-the chain periodically checks the health of each SSN node for example by querying for random transaction data via the public APIs. For each SSN, it computes `verification_passed` which is the percentage of tests that the SSN has passed. 
 
-The reward earned (in ZIL) by a given SSN is then computed in the following way: It takes into account the total reward available for seed nodes per DS epoch (which is 110,000), the total number of DS epoch per reward cycle (roughtly 17), the verification success rate in percentage. This reward is then distributed proportional to the stake deposited, hence the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)
+The reward earned (in ZIL) by a given SSN is then computed in the following way: The computation takes into account the total reward available for seed nodes per DS epoch (which is 110,000 Cf, table above), the total number of DS epoch per reward cycle (roughly 17) and the verification success rate in percentage. This reward is then distributed in proportion to the stake deposited, hence the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)`.
 
 ```
 SSNRewardForCurrentCycle = (NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed) * TotalStakeAtSSN / TotalStakeAcrossAllSSNs
