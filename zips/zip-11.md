@@ -194,16 +194,16 @@ SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 * Ver
 
 The first part of the computatition `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` is computed off-the chain, while the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` has to be computed on-chain using the smart contract that has the most updated data as a part of the contract state. 
 
-The verifier computes `NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)` as an integer value for every cycle off-the-chain and calls the following transition in the proxy contract to computed stake reward for each reward cycle. 
+The verifier computes the off-chain part as an integer value for every cycle and calls the following transition in the proxy contract to compute stake reward for each reward cycle. 
 
-```
+```ocaml
  transition AssignStakeReward(ssnreward_list: List SsnRewardShare, verifier_reward: Uint128)
 
 ```
 
-The first parameter of the transition is a list of `SsnRewardShare` data type which basically is a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The second element of the pair is `(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)`. The transition then iterates over all the SSNs and computes the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns reward. A small percentage of these rewards goes to the SSN operators in the form of commission to over operational excpense while the remaining bulk is to reward the delegators.
+The first parameter of the transition is a list of `SsnRewardShare` data type which basically is a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The second element of the pair is `floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)`. The transition iterates over all the SSNs and computes the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns reward to each SSN. A small percentage of these rewards goes to the SSN operators in the form of commission to cover operational excpenses while the remaining bulk is to reward the delegators.
 
-In the case where, the total reward meant to be distributed to the seed nodes cannot be attributed to seed nodes (owing to poor peformance of any of the seed nodes or more concretely, when `VerificationPassed` is not 100% for any of the SSNs), then the left-over reward is given to the verifier. This is captured via the parameter `verifier_reward` passed in the transition.
+In the case where, the total reward meant to be distributed to the seed nodes cannot be assigned to seed nodes (owing to poor peformance of any of the seed nodes or more concretely, when `VerificationPassed` is not 100% for any of the SSNs), then the left-over reward is given to the verifier. This is captured via the parameter `verifier_reward` passed in the transition.
 
 ## Seed Node Operator
 
