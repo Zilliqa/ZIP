@@ -68,8 +68,7 @@ delegated by each user with each seed node operator. It also computes on-chain
 the reward that each delegator should get which is proportional to the number
 of tokens delegated by a holder. 
 
->Note: **Self-custodial or Non-Custodial?** Even though there does not seem
->to be well-defined distinction between
+>**Self-custodial or Non-Custodial?** Even though there does not seem to be well-defined distinction between
 self-custodial asset management and non-custodial management and are often used
 interchangeably in the blockchain space, we argue that there is a difference
 between the two. <br> <br> Notice that in both ZIP-3 and ZIP-11, assets leave the
