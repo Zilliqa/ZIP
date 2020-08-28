@@ -214,12 +214,12 @@ each SSN node for example by querying for random transaction data via the
 public APIs. For each SSN, it computes `verification_passed` which is the
 percentage of tests that the SSN has passed.
 
-The reward earned (in ZIL) by a given SSN is then computed in the following
-way: The computation takes into account the total reward available for seed
-nodes per DS epoch (which is 110,000 Cf, table above), the total number of DS
-epoch per reward cycle (roughly 17) and the verification success rate in
-percentage. This reward is then distributed in proportion to the stake
-deposited, hence the factor `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)`.
+The reward earned (in ZIL) by a given SSN is then computed by taking into
+account the total reward available for seed nodes per DS epoch (which is
+110,000 Cf, table above), the total number of DS epoch per reward cycle
+(roughly 17) and the verification success rate in percentage. This reward is
+then distributed in proportion to the stake deposited, hence the factor
+`(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)`.
 
 ```ocaml
 SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)) x floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)
