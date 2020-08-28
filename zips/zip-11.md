@@ -48,9 +48,11 @@ then deposited them in a Scilla contract. The operator upon receiving rewards
 (which gets distributed daily) then distributes back the reward to the
 delegators in proportion to their stake.  
 
-ZIP-9 proposes several key changes in the tokenomic design of ZIL tokens. The
-most pertinent change for the proposal herein is the increase of allocation of
-block reward for seed node operators from 5% to 40%.
+ZIP-9 somewhat complements ZIP-3 by proposing several key changes in the
+tokenomic design of ZIL tokens. The most pertinent change for the proposal
+herein is the increase of allocation of block reward for seed node operators
+from 5% to 40%. With this increase, more delegators can be accommodated in the
+system as more rewards become available.
 
 # Design Considerations
 
