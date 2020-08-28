@@ -124,7 +124,7 @@ oversubscription.
 
 ## Governance Tokens aka gZIL
 
-This ZIP also introduces gZILs (short for _governance ZILs_). gZILs will be
+This ZIP also introduces _gZILs_ (short for _governance ZILs_). gZILs will be
 ZRC-2 compliant fungible tokens that will be earned alongside staking rewards.
 More concretely, whenever, a delegator decides to withdraw her stake rewards,
 an equivalent number of gZILs will be minted and issued to the delegator.
