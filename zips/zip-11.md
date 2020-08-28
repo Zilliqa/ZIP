@@ -144,15 +144,15 @@ long-term ecosystem participants with a deep-rooted interest in making the
 Zilliqa ecosystem grow and succeed. Issuing gZIL alongside staking rewards aims
 to capture those token holders.
 
-The issuance curve of gZIL is hard to predict given that it depends on the
+The issuance curve of gZIL is hard to predict due to its dependence on the
 number of ZILs staked in the contract and the frequency of reward withdrawal by
-token holders. Since rewards earned are not automatically staked in a
-cumulative manner, token holders will have to manually withdraw their rewards
-and in doing so they will receive gZILs. **gZILs will only be issued for 1
-year.** This is to create scarcity and encourage and incentivize the early
-birds to get involved in the staking program.
+the token holders. Since rewards earned are not automatically staked in a
+cumulative manner, delegators will be required to manually withdraw their
+rewards, and in doing so will receive gZILs. Note that, **gZILs will be issued
+only for 1 year**, with the objective to create scarcity and incentivize the
+early birds to get involved in the staking program.
 
-gZIL will have no pre-defined exchange rate pegged with ZIL, i.e., gZILs cannot
+gZIL will have no pre-defined exchange rate pegged to ZIL, i.e., gZILs cannot
 be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
 we believe that a secondary market for gZIL may open up that will help with the
 price discovery of gZIL.
