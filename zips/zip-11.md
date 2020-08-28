@@ -295,7 +295,7 @@ deposited can be directly included as a part of the SSN's stake pool.
 
 2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their
    stake rewards from a specific SSN and mint gZIL tokens. Re-delegation of
-stake rewards is manual and a two step process. First, the delegator has to
+stake rewards is manual and a two-step process. First, the delegator has to
 withdraw the rewards and then it will have to delegate the withdrawn reward as
 stake. Wallet providers can make this user experience seamless.
 
