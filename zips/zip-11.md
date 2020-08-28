@@ -272,8 +272,8 @@ delegators and once the delegators have delegated their stake later increase
 the commission rate to a high value. The contract restricts operators from
 changing the commission more than once during the same reward cycle (i.e,
 within a day). Additionally, to avoid drastic spike or drip in the commission
-rate for SSN operator, the commission change rate per cycle is bounded by
-`maxcommchangerate`
+rate for SSN operators, the change in the commission per cycle is bounded by
+`maxcommchangerate` (initially set to 1%).
 2. `transition WithdrawComm(ssnaddr: ByStr20)` to withdraw the commission
    earned.
 3. `transition UpdateReceivingAddr(new_addr: ByStr20)` to update the address to
