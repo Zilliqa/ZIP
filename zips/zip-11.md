@@ -291,7 +291,7 @@ outweigh the reward itself. If the SSN is active (i.e., 10 mil ZILs have been
 already staked with this SSN and that it is already operational), then the
 deposited stake will be buffered for a cycle and will be included in the SSN's
 stake pool in the next cycle. If the SSN is inactive, then the stake amount
-deposited can be directly included as a part of the SSN's stake pool.1
+deposited can be directly included as a part of the SSN's stake pool.
 
 2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their
    stake rewards from a specific SSN and mint gZIL tokens. Re-delegation of
