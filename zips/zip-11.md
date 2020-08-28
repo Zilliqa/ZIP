@@ -137,8 +137,8 @@ gZILs will later be used to govern a DAO-like structure that will invest in
 community projects. A [Gitcoin](https://gitcoin.co/)-like DAO will be setup
 with funds from Zilliqa Research to fund ecosystem projects and initiatives.
 The end goal is to move move all ecosystem funding currently done by Zilliqa
-Research (as a part of ZILHive) to the DAO making the community responsible for
-making decisions on funding ecosystem projects. The community holding gZILs
+Research (as a part of ZILHive) to the DAO, making the community responsible
+for making decisions on funding ecosystem projects. The community holding gZILs
 will be able to vote on proposals alongside Zilliqa Research on making
 decisions. More on this will be released as a separate ZIP.
 
