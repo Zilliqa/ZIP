@@ -62,7 +62,7 @@ ZIP-3 (aka Seed Node Staking Phase 0) had two key limitations. The first being
 that the delegation was custodial, i.e., delegators had to transfer their
 tokens to a seed node operator (such as an exchange) which pooled tokens
 together and then deposited them in a contract. The operator also collected
-yields on token holders' behalf, thereby creating custody risks.
+yields on delegators' behalf, thereby creating custody risks.
 
 ZIP-11 (aka Seed Node Staking Phase I) aims to address this by proposing a
 contract design that allows token holders to directly deposit their stake in a
