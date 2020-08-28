@@ -29,12 +29,12 @@ Seed nodes are special nodes that do not participate in the consensus but
 instead archive historical transaction data. Seed nodes are important to
 provide services like explorer.
 
-The proposal put forth in ZIP-3 sets aside 5% of the mining rewards to reward
-seed node operators who in return are expected to archive all historical
-transaction data. The architecture assumes a set of verifiers (currently the
-cardinality of the set being 1), that periodically check data availability by
-periodically querying for block data for randomly chosen block heights and by
-comparing the response with the one returned by a "trusted" oracle.
+The proposal put forth in ZIP-3 sets aside 5% of the mining rewards for seed
+node operators who in return are expected to archive all historical transaction
+data. The architecture assumes a set of verifiers (currently the cardinality of
+the set being 1), that periodically check data availability by periodically
+querying for block data for randomly chosen block heights and by comparing the
+response with the one returned by a "trusted" oracle.
 
 In order to become a seed node operator, one has to stake a minimum of 10 mil
 ZIL tokens. However, operators who cannot meet the minimum requirement on their
