@@ -209,7 +209,7 @@ ensure that the staked reward is not less than the gas paid to withdraw it.
 ## Verifier
 
 The role of the verifier in ZIP-11 is the same as the one in ZIP-3. The
-(trusted) verifier which sits off-the chain periodically checks the health of
+(trusted) verifier which sits off-chain periodically checks the health of
 each SSN node for example by querying for random transaction data via the
 public APIs. For each SSN, it computes `verification_passed` which is the
 percentage of tests that the SSN has passed.
