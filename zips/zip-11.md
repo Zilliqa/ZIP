@@ -233,8 +233,8 @@ within the smart contract by using the most updated data which is stored as a
 part of the contract state.
 
 The verifier computes the off-chain part as an integer value for every cycle
-and calls the following transition in the proxy contract to compute stake
-reward for each reward cycle.
+and calls the following transition in the contract to compute stake reward for
+each reward cycle.
 
 ```ocaml
  transition AssignStakeReward(ssnreward_list: List SsnRewardShare, verifier_reward: Uint128)
