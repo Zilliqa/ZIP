@@ -100,7 +100,7 @@ mechanism but a non-custodial way to delegate tokens.
 ## Uncapped Staking
 
 The second limitation with ZIP-3 was related to the total number of tokens that
-could ever be delegated. Given that only 5% of the block reward were available
+could ever be delegated. Given that only 5% of the block reward was available
 to reward the operators, the more tokens get staked, the thinner the
 distribution of the rewards becomes, thereby, potentially resulting in a
 situation where the reward and the commission becomes so low that it could not
