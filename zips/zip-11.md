@@ -59,7 +59,7 @@ system as more rewards become available.
 ## Non-custodial Staking
 
 ZIP-3 (aka Seed Node Staking Phase 0) had two key limitations. The first being
-that the delegation was custodial, i.e., token holders had to transfer their
+that the delegation was custodial, i.e., delegators had to transfer their
 holdings to a seed node operator (such as an exchange) which then deposited the
 pooled tokens in a contract. The operator also collected yields on token
 holders' behalf, thereby creating custody risks.
