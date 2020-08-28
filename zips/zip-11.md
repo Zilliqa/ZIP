@@ -42,11 +42,11 @@ its own may accept tokens delegated to it by other token holders. The reward
 earned by the operator is shared among its delegators. The seed node operator
 may take a commission to cover its operational expenses.
 
-With ZIP-3, delegation of tokens required token holders to transfer their
-tokens to a client-unique address provided by the operator which pooled all the
-tokens and then deposited them in a Scilla contract. The operator upon
-receiving rewards (which gets distributed daily) then distributes back the
-reward to the delegators in proportion to their stake.  
+With ZIP-3, delegation of tokens required transferring of tokens to a
+client-unique address provided by the operator which pooled all the tokens and
+then deposited them in a Scilla contract. The operator upon receiving rewards
+(which gets distributed daily) then distributes back the reward to the
+delegators in proportion to their stake.  
 
 ZIP-9 proposes several key changes in the tokenomic design of ZIL tokens. The
 most pertinent change for the proposal herein is the increase of allocation of
