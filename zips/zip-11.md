@@ -103,7 +103,7 @@ The second limitation with ZIP-3 was related to the total number of tokens that
 could ever be delegated. Given that only 5% of the block reward was available
 to reward the operators, the more tokens got staked, the thinner the
 distribution of the rewards became, thereby, potentially resulting in a
-situation where the reward and the commission became so low that it could not
+situation where the reward and the commission becomes so low that it could not
 cover the operational expense of running a seed node. In order to tackle this
 issue, ZIP-3 proposed a cap of 61 million tokens to be staked on each operator
 and a total of 610 million tokens across all operators. This was to ensure that
