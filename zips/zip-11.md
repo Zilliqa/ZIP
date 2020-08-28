@@ -130,7 +130,7 @@ More concretely, whenever, a delegator decides to withdraw her stake rewards,
 an equivalent number of gZILs will be minted and issued to the delegator.
 Since, the reward earned is proportional to the stake deposit and the staking
 duration, the number of gZILs earned will capture the long-term belief of a
-token holder. In other words, the longer a delegator stakes her tokens and the
+delegator. In other words, the longer a delegator stakes her tokens and the
 larger her stake is, the more gZILs she will earn.
 
 gZILs will later be used to govern a DAO-like structure that will invest in
