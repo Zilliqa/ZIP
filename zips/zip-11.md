@@ -5,11 +5,11 @@
 
 # Abstract
 
-ZIP-11 is the Phase I extension of the seed node staking proposal as presented
-in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md). This new
-proposal introduces a _non-custodial_ mechanism to stake tokens with a seed
-node operator via a Scilla contract. Non-custodial here meaning that any tokens
-that need to be staked can now be deposited directly in the contract and
+ZIP-11 presents the Phase I extension of the seed node staking proposal as
+presented in [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md).
+This new proposal introduces a _non-custodial_ mechanism to stake tokens with a
+seed node operator via a Scilla contract. Non-custodial here meaning that any
+tokens that need to be staked can now be deposited directly in the contract and
 therefore need not go through any intermediary entity acting as a custodian.
 ZIP-11 also introduces some key changes in the staking parameters such as
 lifting the cap on the total stake deposit (a consequence of the tokenomic
