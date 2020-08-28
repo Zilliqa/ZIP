@@ -3,6 +3,24 @@
 | 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-08-17|
 
 
+# Table of Content
+
+- [Abstract](#abstract)
+- [Background](#background)
+- [Design Consideration for Phase I](#design-considerations)
+  * [Non-custodial Staking](#non-custodial)
+  * [Uncapped Staking](#uncapped)
+  * [Governance Tokens aka gZIL](#governance-tokens)
+- [Non-custodial Seed Node Staking Overview](#overview)
+  * [Staking Parameters](#parameters)
+  * [Verifier](#verifier)
+  * [Seed Node Operator](#operator)
+  * [Delegator](#delegator)
+-[Contract Specification and Implementation](#spec-implementation)
+-[Limitations and Future Work](#limitations-future-work)
+-[Backward Compatibility](#backward-comptability)
+
+
 # Abstract
 
 ZIP-11 presents the Phase I extension of the seed node staking proposal as
@@ -15,6 +33,8 @@ ZIP-11 also introduces some key changes in the staking parameters such as
 lifting the cap on the total stake deposit (a consequence of the tokenomic
 changes as proposed in
 [ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md)).
+
+
 
 # Background
 
@@ -311,7 +331,7 @@ For direct access:
 
 * The specification for the different contracts needed for Phase I can be found [here](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md). 
 
-* The implementation of the contracts cab be found [here](https://github.com/Zilliqa/staking-contract/tree/dev/contracts). 
+* The implementation of the contracts can be found [here](https://github.com/Zilliqa/staking-contract/tree/dev/contracts). 
 
 # Limitations and Future Work
 
