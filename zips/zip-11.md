@@ -242,7 +242,7 @@ each reward cycle.
 ```
 
 The first parameter of the transition is a list of `SsnRewardShare` data type
-which basically is a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The
+which is basically a pair of `(SSNAddress, SSNRewardForCurrentCyle)`. The
 second element of the pair is `floor(NumberOfDSEpochsInCurrentCycle x 110,000 *
 VerificationPassed)`. The transition iterates over all the SSNs and computes
 the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns
