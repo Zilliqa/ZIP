@@ -306,6 +306,12 @@ More details on the contract specification can be found in the [staking
 contract
 repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
 
+# Contract Specification and Implementation
+
+* The specification for the different contracts needed for Phase I can be found [here](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md). 
+
+* The implementation of the contracts cab be found [here](https://github.com/Zilliqa/staking-contract/tree/dev/contracts). 
+
 # Limitations and Future Work
 
 While, ZIP-11 makes improvements over ZIP-3 in terms of providing a
