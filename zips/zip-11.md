@@ -142,7 +142,7 @@ for making decisions on funding ecosystem projects. The community holding gZILs
 will be able to vote on proposals alongside Zilliqa Research on making
 decisions. More on this will be released as a separate ZIP.
 
-Since the purpose of gZIL will mainly be in voting in a DAO (and potentially
+Since the first utility of gZIL will be in voting in a DAO (and potentially
 earning benefits from the DAO), gZIL must capture token holders that are
 long-term ecosystem participants with a deep-rooted interest in making the
 Zilliqa ecosystem grow and succeed. Issuing gZIL alongside staking rewards aims
