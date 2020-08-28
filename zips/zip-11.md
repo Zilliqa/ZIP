@@ -210,7 +210,7 @@ In the case where, the total reward meant to be distributed to the seed nodes ca
 
 We intend to start with 10 seed node operators and revisit the number in the future. Each seed node operator will have to be registered by the smart contract admin. Once registered, it can invoke the following transitions in the proxy contract:
 
-1. `transition UpdateComm(new_rate: Uint128)` to update the commission. The contract puts some restrictions on the frequency of commission rate updates to dissuade unscrupulous operators from advertising a low commission to attract delegators and once the delegators have delegated their stake later increase the commission rate to a high value. An operator cannot change the commission twice in the same reward cycle (i.e, within a day). Finally, to avoid drastic spike or drip in the commission rate for SSN operator, the commission change rate per cycle is bounded by `maxcommchangerate`
+1. `transition UpdateComm(new_rate: Uint128)` to update the commission. The contract puts some restrictions on the frequency of commission rate updates to dissuade unscrupulous operators from advertising a low commission to attract delegators and once the delegators have delegated their stake later increase the commission rate to a high value. An operator cannot change the commission twice in the same reward cycle (i.e, within a day). Finally, to avoid drastic spike or drop in the commission rate for SSN operator, the commission change rate per cycle is bounded by `maxcommchangerate`
 2. `transition WithdrawComm(ssnaddr: ByStr20)` to withdraw the commission earned. 
 3. `transition UpdateReceivingAddr(new_addr: ByStr20)` to update the address to receive commission.
 
