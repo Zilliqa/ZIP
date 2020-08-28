@@ -32,7 +32,7 @@ provide services like explorer.
 The proposal put forth in ZIP-3 sets aside 5% of the mining rewards for seed
 node operators who in return are expected to archive all historical transaction
 data. The architecture assumes a set of verifiers (currently the cardinality of
-the set being 1), that periodically check data availability by periodically
+the set being 1), that check liveness and data availability by periodically
 querying for block data for randomly chosen block heights and by comparing the
 response with the one returned by a "trusted" oracle.
 
