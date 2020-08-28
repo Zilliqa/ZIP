@@ -18,6 +18,7 @@ However, with the changes above, the network will experience high inflation if t
 
 - `BASE_COINBASE_REWARD_PER_DS`: 275000
 - `LOOKUP_REWARD_IN_PERCENT` = 40
+- `BASE_REWARD_IN_PERCENT` = 20 (Overall share increase from 26.31% to 33.33% for the miner allocation)
 - `DS_MICROBLOCK_GAS_LIMIT` = 1000000
 - `SHARD_MICROBLOCK_GAS_LIMIT` = 500000
 - `GAS_PRICE_MIN_VALUE`: 0.002
