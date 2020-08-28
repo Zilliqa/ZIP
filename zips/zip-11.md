@@ -20,8 +20,8 @@ changes as proposed in
 
 We strongly recommend readers to go through
 [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md) and
-[ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md) as they pave
-the foundation for the current proposal.
+[ZIP-9](https://github.com/Zilliqa/ZIP/blob/zip-9/zips/zip-9.md) as they form
+the basis for the current proposal.
 
 To summarize, ZIP-3 presents the key idea of _seed node staking_ --- a staking
 mechanism to open up the _seed nodes_ for developers and the broader community.
