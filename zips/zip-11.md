@@ -66,12 +66,12 @@ yields on delegators' behalf. Clearly, the seed node operator had the custodial
 liability and therefore had to be trusted to keep the funds safe.
 
 ZIP-11 (aka Seed Node Staking Phase I) aims to address this issue by proposing
-a contract design that allows token holders to directly deposit their stake in
-a contract thereby eliminating the need to send their tokens to a custodian.
-The contract now takes over the accounting responsibility to keep track of
-tokens delegated by each user with each seed node operator. It also computes
-on-chain the reward that each delegator should get which is proportional to the
-number of tokens delegated.
+a contract design that allows delegators to directly deposit their stake in a
+contract thereby eliminating the need to send their tokens to a custodian.  The
+contract now takes over the accounting responsibility to keep track of tokens
+delegated by each user with each seed node operator. It also computes on-chain
+the reward that each delegator should get which is proportional to the number
+of tokens delegated.
 
 >**Self-custodial or Non-Custodial?** Even though there does not seem to be a
 well-defined distinction between self-custodial asset management and
