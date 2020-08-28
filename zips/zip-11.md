@@ -158,8 +158,9 @@ early birds to get involved in the staking program.
 
 gZIL will have no pre-defined exchange rate pegged to ZIL, i.e., gZILs cannot
 be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
-we believe that a secondary market for gZIL may open up that will help with the
-price discovery of gZIL.
+we believe that a secondary market for gZIL may open up on the upcoming
+[ZilSwap DEX](https://zilswap.io/swap) that will help with the price discovery
+of gZIL.
 
 # Non-custodial Seed Node Staking Overview
 
