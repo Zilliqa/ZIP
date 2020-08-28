@@ -54,7 +54,7 @@ herein is the increase of allocation of block reward for seed node operators
 from 5% to 40%. With this increase, more delegators can be accommodated in the
 system as more rewards become available.
 
-# Design Considerations
+# Design Considerations for Phase I 
 
 ## Non-custodial Staking
 
