@@ -150,7 +150,7 @@ to capture those token holders.
 
 The issuance curve of gZIL is hard to predict due to its dependence on the
 number of ZILs staked in the contract and the frequency of reward withdrawal by
-the token holders. Since rewards earned are not automatically staked in a
+the delegators. Since rewards earned are not automatically staked in a
 cumulative manner, delegators will be required to manually withdraw their
 rewards, and in doing so will receive gZILs. Note that, **gZILs will be issued
 only for 1 year**, with the objective to create scarcity and incentivize the
