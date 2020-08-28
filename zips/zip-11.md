@@ -229,8 +229,8 @@ SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 * Ver
 The first part of the computation `floor(NumberOfDSEpochsInCurrentCycle x
 110,000 * VerificationPassed)` is computed off-chain by the verifier, while the
 factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` is computed on-chain
-within the smart contract by using the most updated data stored as a part of
-the contract state.
+within the smart contract by using the most updated data which is stored as a
+part of the contract state.
 
 The verifier computes the off-chain part as an integer value for every cycle
 and calls the following transition in the proxy contract to compute stake
