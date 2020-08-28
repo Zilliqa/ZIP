@@ -88,13 +88,13 @@ tokens into the contract by providing the address of the operator with which
 they wish to stake. ZIP-11 removes the need of any intermediate addresses.
 ZIP-11 therefore provides a non-custodial mechanism to delegate tokens. The
 non-custodial property comes from the fact that there is no single entity that
-holds the asset on behalf of holders at any point of time. Assets are either in
-the hands of the holder or held in a contract on-chain the mechanics of which
-is transparent. This is in line with all the DeFi applications. <br> <br>
-Compare this with a mechanism where assets do not leave the holder's wallet.
-The holder always holds the custody of the asset. We refer to this as
-_self-custody_. <br><br> ZIP-11 does not provide a self-custodial staking
-mechanism but a non-custodial way to delegate tokens.
+holds the asset on behalf of delegators at any point of time. Assets are either
+in the hands of the delegator or held in a contract on-chain the mechanics of
+which is transparent to the public. <br> <br> Compare this with a mechanism
+where assets do not leave the delegator's wallet, for instance they get locked
+at the protocol-layer.  The holder always holds the custody of the asset. We
+refer to this as _self-custody_. <br><br> ZIP-11 does not provide a
+self-custodial staking mechanism but a non-custodial way to delegate tokens.
 
 ## Uncapped Staking
 
