@@ -16,9 +16,9 @@
   * [Verifier](#verifier)
   * [Seed Node Operator](#operator)
   * [Delegator](#delegator)
--[Contract Specification and Implementation](#spec-implementation)
--[Limitations and Future Work](#limitations-future-work)
--[Backward Compatibility](#backward-comptability)
+- [Contract Specification and Implementation](#spec-implementation)
+- [Limitations and Future Work](#limitations-future-work)
+- [Backward Compatibility](#backward-comptability)
 
 
 # Abstract
