@@ -269,10 +269,11 @@ proxy contract:
    contract puts some restrictions on the frequency of commission rate updates
 to dissuade unscrupulous operators from advertising a low commission to attract
 delegators and once the delegators have delegated their stake later increase
-the commission rate to a high value. An operator cannot change the commission
-twice in the same reward cycle (i.e, within a day). Finally, to avoid drastic
-spike or drip in the commission rate for SSN operator, the commission change
-rate per cycle is bounded by `maxcommchangerate`
+the commission rate to a high value. The contract restricts operators from
+changing the commission more than once during the same reward cycle (i.e,
+within a day). Additionally, to avoid drastic spike or drip in the commission
+rate for SSN operator, the commission change rate per cycle is bounded by
+`maxcommchangerate`
 2. `transition WithdrawComm(ssnaddr: ByStr20)` to withdraw the commission
    earned.
 3. `transition UpdateReceivingAddr(new_addr: ByStr20)` to update the address to
