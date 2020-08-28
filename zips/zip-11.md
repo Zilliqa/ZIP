@@ -38,9 +38,9 @@ response with the one returned by a "trusted" oracle.
 
 In order to become a seed node operator, one has to stake a minimum of 10 mil
 ZIL tokens. However, an operator who cannot meet the minimum requirement on its
-own may accept tokens delegated by other token holders. The reward earned by
-the operator is shared among its delegators. The seed node operator may take a
-commission to cover its operational expenses.
+own may accept tokens delegated to it by other token holders. The reward earned
+by the operator is shared among its delegators. The seed node operator may take
+a commission to cover its operational expenses.
 
 Delegation of tokens required token holders to transfer their tokens to a
 client-unique address provided by the seed node operator which pooled all the
