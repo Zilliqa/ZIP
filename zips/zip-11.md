@@ -177,7 +177,7 @@ further breakdown pre-ZIP-9 and post-ZIP-9. Note that block rewards get
 distributed at the end of each DS epoch.
 
 | Mainnet parameter                                           | Pre-ZIP-9 Value            | Post ZIP-9 Value             |
-| ----------------------------- ------------------------------| ---------------------------| ---------------              |
+| -----------------------------------------------------------| ----------------------------| ---------------              |
 | Total mining reward distributed per DS epoch  (in ZIL)      | 197,244                    | 275,000                      |
 | Average duration of a DS epoch (in mins)                    | 83                         | 83                           |
 | Number of DS epochs per day                                 | 17                         | 17                           |
