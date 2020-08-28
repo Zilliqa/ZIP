@@ -92,9 +92,10 @@ holds the asset on behalf of delegators at any point of time. Assets are either
 in the hands of the delegator or held in a contract on-chain the mechanics of
 which is transparent to the public. <br> <br> Compare this with a mechanism
 where assets do not leave the delegator's wallet, for instance they get locked
-at the protocol-layer.  The holder always holds the custody of the asset. We
-refer to this as _self-custody_. <br><br> ZIP-11 does not provide a
-self-custodial staking mechanism but a non-custodial way to delegate tokens.
+at the protocol-layer and therefore cannot be moved and hence are considered
+staked.  The holder always holds the custody of the asset. We refer to this as
+_self-custody_. <br><br> ZIP-11 does not provide a self-custodial staking
+mechanism but a non-custodial way to delegate tokens.
 
 ## Uncapped Staking
 
