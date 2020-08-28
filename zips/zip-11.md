@@ -302,11 +302,12 @@ stake. Wallet providers can make this user experience seamless.
 3. `transition WithdrawStakeAmt(ssn: ByStr20, amt: Uint128)` to withdraw a
    specific amount from the stake.
 
-More details on the contract specification can be found in the [staking
-contract
-repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
-
 # Contract Specification and Implementation
+
+More details on the contracts can be found in the [staking contract
+repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
+For direct access:
+
 
 * The specification for the different contracts needed for Phase I can be found [here](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md). 
 
