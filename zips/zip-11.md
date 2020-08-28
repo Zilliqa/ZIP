@@ -241,16 +241,16 @@ each reward cycle.
 
 ```
 
-The first parameter of the transition is a list of `SsnRewardShare` data type
-which is basically a pair: `(SSNAddress, SSNRewardForCurrentCyle)`. The first
-element of the pair is the address of the SSN, while the second element is the
-off-chain value computed by the verifier for this SSN:
-`floor(NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)`. The
-transition iterates over all the SSNs and computes the factor
-`floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns reward to each
-SSN. A small percentage of these rewards goes to the SSN operators in the form
-of commission to cover operational expenses while the remaining bulk is to
-reward the delegators.
+The first parameter of the transition is a list of a data type named
+`SsnRewardShare` which is basically a pair: `(SSNAddress,
+SSNRewardForCurrentCyle)`. The first element of the pair is the address of the
+SSN, while the second element is the off-chain value computed by the verifier
+for this SSN: `floor(NumberOfDSEpochsInCurrentCycle x 110,000 *
+VerificationPassed)`. The transition iterates over all the SSNs and computes
+the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and assigns
+reward to each SSN. A small percentage of these rewards goes to the SSN
+operators in the form of commission to cover operational expenses while the
+remaining bulk is to reward the delegators.
 
 In the case where, the total reward meant to be distributed to the seed nodes
 cannot be assigned to seed nodes (owing to poor performance of any of the seed
