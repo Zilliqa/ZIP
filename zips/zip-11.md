@@ -242,12 +242,12 @@ then distributed in proportion to the stake deposited, hence the factor
 `(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)`.
 
 ```ocaml
-SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 * VerificationPassed)) x floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)
+SSNRewardForCurrentCycle = floor((NumberOfDSEpochsInCurrentCycle x 110,000 x VerificationPassed)) x floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)
 
 ```
 
 The first part of the computation `floor(NumberOfDSEpochsInCurrentCycle x
-110,000 * VerificationPassed)` is computed off-chain by the verifier, while the
+110,000 x VerificationPassed)` is computed off-chain by the verifier, while the
 factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` is computed on-chain
 within the smart contract by using the most updated data which is stored as a
 part of the contract state.
@@ -266,7 +266,7 @@ The first parameter of the transition is a list of a data type named
 represents `(SSNAddress, SSNRewardForCurrentCyle)`. The first element of the
 pair is the address of the SSN, while the second element is the off-chain value
 computed by the verifier for this SSN: `floor(NumberOfDSEpochsInCurrentCycle x
-110,000 * VerificationPassed)`. The transition iterates over all the SSNs and
+110,000 x VerificationPassed)`. The transition iterates over all the SSNs and
 computes the factor `floor(TotalStakeAtSSN / TotalStakeAcrossAllSSNs)` and
 assigns reward to each SSN. A small percentage of these rewards goes to the SSN
 operators in the form of commission to cover operational expenses while the
