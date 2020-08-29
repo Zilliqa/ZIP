@@ -229,9 +229,11 @@ ensure that the staked reward is not less than the gas paid to withdraw it.
 
 ZIP-11 also introduces an _unbonding period_ for stake withdrawals. Once a 
 delegator has made a request for her stake withdrawal, she will have to wait
-for the unbonding period (proposed to be roughly 2 weeks) to expire. Post
-expiry of the unbonding period, the delegator may claim back the tokens which
-get moved from the contract to the delegator's address. 
+for the unbonding period (initially proposed to be roughly 2 weeks) to expire.
+Upon expiry of the unbonding period, the delegator may claim back the tokens 
+which get moved from the contract to the delegator's address. Note that the
+unbonding period will be a mutable value and hence it can be changed through
+community governance via gZILs. 
 
 There is no unbonding period for reward withdrawals though. Any reward earned
 through staking can be withdrawn as soon as they have been distributed.   
