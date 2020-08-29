@@ -217,10 +217,10 @@ parameters for staking:
 | Maximum stake amount (in ZIL) per seed node  | 61,000,000            | Uncapped                  |       
 | Minimum stake amount (in ZIL) per seed node  | 10,000,000            | 10,000,000                |
 | Minimum stake amount (in ZIL) for delegators |        NA             | 1,000                     |
-| Maximum commission rate change per cycle     |        NA             | 1%                        |
 | Maximum number of seed nodes                 | 10                    | 10                        |
+| Reward cycle                                 | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
+| Maximum commission rate change per cycle     |        NA             | 1%                        |
 | Annual interest rate                         | 10.03%                | Variable                  |
-| Rewarding cycle                              | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
 | Stake unbonding period                       |  NA                   | 10,000 blocks (~14 days)  |
 | Reward unbonding period                      |  NA                   | NA                        |
 
