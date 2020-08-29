@@ -221,7 +221,7 @@ parameters for staking:
 | Reward cycle                                 | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
 | Maximum commission rate change per cycle     |        NA             | 1%                        |
 | Annual interest rate                         | 10.03%                | Variable                  |
-| Stake unbonding period                       |  NA                   | 10,000 blocks (~14 days)  |
+| Stake unbonding period                       |  NA                   | 24,000 blocks (~14 days)  |
 | Reward unbonding period                      |  NA                   | NA                        |
 
 The rationale behind introducing a minimum stake amount for delegators is to
