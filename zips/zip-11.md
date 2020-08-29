@@ -221,7 +221,7 @@ parameters for staking:
 | Maximum number of seed nodes                 | 10                    | 10                        |
 | Annual interest rate                         | 10.03%                | Variable                  |
 | Rewarding cycle                              | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
-| Lockup period                                |  NA                   | 10,000 blocks (~14 days)  |
+| Stake unbonding period                       |  NA                   | 10,000 blocks (~14 days)  |
 
 The rationale behind introducing a minimum stake amount for delegators is to
 ensure that the staked reward is not less than the gas paid to withdraw it.
