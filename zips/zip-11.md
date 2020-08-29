@@ -212,16 +212,16 @@ incentives. With this total reward available, we propose the following economic
 parameters for staking:
 
 | Staking parameter                            | ZIP-3 Value           | ZIP-11 Value |
-| -------------------------------------------  | --------------------- |-----------------     |
-| Maximum overall staked amount (in ZIL)       | 610,000,000           | Uncapped             |
-| Maximum stake amount (in ZIL) per seed node  | 61,000,000            | Uncapped             |       
-| Minimum stake amount (in ZIL) per seed node  | 10,000,000            | 10,000,000           |
-| Minimum stake amount (in ZIL) for delegators |        NA             | 1,000                |
-| Maximum commission rate change per cycle     |        NA             | 1%                   |
-| Maximum number of seed nodes                 | 10                    | 10                   |
-| Annual interest rate                         | 10.03%                | Variable             |
-| Rewarding cycle                              | 17 DS blocks (~1 day) | 17 DS block (~1 day) |
-| Lockup period                                |  NA                   | NA                   |
+| -------------------------------------------  | --------------------- |-----------------          |
+| Maximum overall staked amount (in ZIL)       | 610,000,000           | Uncapped                  |
+| Maximum stake amount (in ZIL) per seed node  | 61,000,000            | Uncapped                  |       
+| Minimum stake amount (in ZIL) per seed node  | 10,000,000            | 10,000,000                |
+| Minimum stake amount (in ZIL) for delegators |        NA             | 1,000                     |
+| Maximum commission rate change per cycle     |        NA             | 1%                        |
+| Maximum number of seed nodes                 | 10                    | 10                        |
+| Annual interest rate                         | 10.03%                | Variable                  |
+| Rewarding cycle                              | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
+| Lockup period                                |  NA                   | 10,000 blocks (~14 days)  |
 
 The rationale behind introducing a minimum stake amount for delegators is to
 ensure that the staked reward is not less than the gas paid to withdraw it.
