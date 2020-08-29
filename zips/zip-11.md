@@ -18,7 +18,7 @@
   * [Delegator](#delegator)
 - [Contract Specification and Implementation](#contract-specification-and-implementation)
 - [Limitations and Future Work](#limitations-and-future-work)
-- [Backward Compatibility](#backward-compatability)
+- [Backward Compatibility](#backward-compatibility)
 
 
 # Abstract
