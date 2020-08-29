@@ -222,6 +222,7 @@ parameters for staking:
 | Annual interest rate                         | 10.03%                | Variable                  |
 | Rewarding cycle                              | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
 | Stake unbonding period                       |  NA                   | 10,000 blocks (~14 days)  |
+| Reward unbonding period                      |  NA                   | NA                        |
 
 The rationale behind introducing a minimum stake amount for delegators is to
 ensure that the staked reward is not less than the gas paid to withdraw it.
