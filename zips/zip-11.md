@@ -228,12 +228,14 @@ The rationale behind introducing a minimum stake amount for delegators is to
 ensure that the staked reward is not less than the gas paid to withdraw it.
 
 **Unbonding Period:** ZIP-11 also introduces the notion of _unbonding period_
-for stake withdrawals. Once a delegator has made a request for her stake 
-withdrawal, she will have to wait for the unbonding period (initially 
-proposed to be roughly 2 weeks) to expire. Upon expiry of the unbonding 
-period, the delegator may claim back the tokens which get moved from the 
-contract to the delegator's address. Note that the unbonding period will be 
-a mutable value and hence it can be changed through community governance via gZILs. 
+for stake withdrawals. Once a delegator has made a request for her stake
+withdrawal, she will have to wait for the unbonding period (initially proposed
+to be roughly 2 weeks) to expire. Upon expiry of the unbonding period, the
+delegator may claim back the tokens which get moved from the contract to the
+delegator's address. Note that the unbonding period will be a mutable value and
+hence it can be changed through community governance via gZILs. The delegator
+does not earn rewards during the unbonding period.
+ 
 
 There is no unbonding period for reward withdrawals though. Any reward earned
 through staking can be withdrawn as soon as they have been distributed.   
@@ -326,13 +328,21 @@ stake pool in the next cycle. If the SSN is inactive, then the stake amount
 deposited can be directly included as a part of the SSN's stake pool.
 
 2. `transition WithdrawStakeRewards(ssn_operator: ByStr20)`to withdraw their
-   stake rewards from a specific SSN and mint gZIL tokens. Re-delegation of
+   stake rewards from a specific SSN and mint gZIL tokens.  Re-delegation of
 stake rewards is manual and a two-step process. First, the delegator has to
 withdraw the rewards and then it will have to delegate the withdrawn reward as
 stake. Wallet providers can make this user experience seamless.
 
 3. `transition WithdrawStakeAmt(ssn: ByStr20, amt: Uint128)` to withdraw a
-   specific amount from the stake.
+   specific amount from the stake. By calling this transition, the delegator
+enters into the unbonding period. During this period, the delegator does not
+earn any reward and her stake is held in the contract.  Upon expiry of the
+unbonding period, the delegator can call the next transition
+`CompleteWithdrawal` to move funds out of the contract.  
+
+4. `transition CompleteWithdrawal(input_bnum: BNum)` to withdraw unbonded stake
+   from the contract. The parameter passed is the blocknumber at which the
+`WithdrawStakeAmt` was called. 
 
 # Contract Specification and Implementation
 
