@@ -146,8 +146,23 @@ oversubscription.
 
 ## Governance Tokens aka gZIL
 
-This ZIP also introduces _gZILs_ (short for _governance ZILs_). gZILs will be
+This ZIP also introduces _gZILs_, short for _governance ZILs_. gZILs will be
 ZRC-2 compliant fungible tokens that will be earned alongside staking rewards.
+The rationale behind issuing gZILs is to capture long-term token holders and
+give them access to governance tokens that they can later use to make
+ecosystem-wide decisions.  
+
+Bootstrapping governance with the staking program will aid in identifying,
+engaging and equipping such token holders with the needed gZILs.  Achieving the
+same with ZILs after its launch more than 2 years ago is difficult if not
+impossible.  
+
+gZILs will have no pre-defined exchange rate pegged to ZIL, i.e., gZILs cannot
+be redeemed for ZILs. However, since gZILs will be needed for ecosystem
+governance, we believe that a secondary market for gZIL may open up on the
+upcoming [ZilSwap DEX](https://zilswap.io/swap) that will help with the price
+discovery of gZIL.
+
 
 ### Issuance Mechanics
 
@@ -201,12 +216,6 @@ rewards, and in doing so will receive gZILs.
 Note that, **gZILs will be issued only for 1 year**, with the objective to
 create scarcity and incentivize the early birds to get involved in the staking
 program.
-
-gZIL will have no pre-defined exchange rate pegged to ZIL, i.e., gZILs cannot
-be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
-we believe that a secondary market for gZIL may open up on the upcoming
-[ZilSwap DEX](https://zilswap.io/swap) that will help with the price discovery
-of gZIL.
 
 
 ### Usage 
