@@ -12,7 +12,6 @@
   * [Uncapped Staking](#uncapped-staking)
   * [Governance Tokens aka gZIL](#governance-tokens-aka-gzil)
     + [Issuance Mechanics](#issuance-mechanics)
-    + [Issuance Curve](#issuance-curve)
     + [Usage](#usage)
 - [Non-custodial Seed Node Staking Overview](#non-custodial-seed-node-staking-overview)
   * [Staking Parameters](#staking-parameters)
@@ -193,12 +192,6 @@ every ZIL earned, 0.5 gZIL will be issued.
 In order to incentivize the early birds, we propose the initial value of
 `issuance_factor` to be 1. This can be later changed via governance by putting
 in gZILs to use. 
-
-### Issuance Curve
-
-As mentioned in the previous section, initially, for each ZIL earned (and
-withdrawn), the delegator will get 1 gZIL. But, this may change over time based
-on governance.
 
 The actual issuance curve of gZIL is hard to predict due to its dependence on
 the number of ZILs staked in the contract and the frequency of reward
