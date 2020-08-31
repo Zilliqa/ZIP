@@ -245,7 +245,7 @@ through staking can be withdrawn as soon as they have been distributed.
 The role of the verifier in ZIP-11 is the same as the one in ZIP-3. The
 (trusted) verifier which sits off-chain periodically checks the health of
 each SSN node for example by querying for random transaction data via the
-public APIs. See [here](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md#c-staking-proofs) 
+public APIs. See [ZIP-3](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md#c-staking-proofs) 
 for more details on the checks. For each SSN, it computes `verification_passed` 
 which is the percentage of tests that the SSN has passed.
 
