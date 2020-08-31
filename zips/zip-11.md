@@ -181,9 +181,7 @@ To this end, we propose that the contract maintain a mutable parameter
 gZILs issued will then be:
  
 ```python 
-    
     NumberOfgZILsIssued = ZILsEarnedAsReward/issuanceFactor 
-
 ``` 
 
 Simply put, if the value of `issuanceFactor` is 1, then for every ZIL earned, 1
