@@ -162,7 +162,7 @@ characteristics of stake holders:
 4. _Early vs. later-stage stake holders_ measured by how early the stake
    holders get involved in the program. 
 
-Since, the staking reward earned (in ZILs) is proportional to the stake deposit
+Since the staking reward earned (in ZILs) is proportional to the stake deposit
 and the staking duration, it is easier to capture the first two characteristics
 by tying the number of gZILs earned with the reward earned in ZILs. In other
 words, the longer a delegator stakes her tokens and the larger her stake is,
