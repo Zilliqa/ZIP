@@ -180,7 +180,9 @@ To this end, we propose that the contract maintain a mutable parameter
 `issuanceFactor` (a positive integer greater than or equal to 1). Number of
 gZILs issued will then be:
  
-```python NumberOfgZILsIssued = ZILsEarnedAsReward/issuanceFactor 
+```python 
+    
+    NumberOfgZILsIssued = ZILsEarnedAsReward/issuanceFactor 
 
 ``` 
 
