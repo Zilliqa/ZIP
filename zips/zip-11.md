@@ -177,20 +177,20 @@ market.
 
 The last characteristic to capture is to identify and incentivize early birds.
 To this end, we propose that the contract maintain a mutable parameter
-`issuance_factor` (a positive integer less than or equal to 1). Number of gZILs
+`issuanceFactor` (a positive integer less than or equal to 1). Number of gZILs
 issued will then be:
  
 ```python
-    NumberOfgZILsIssued = issuance_factor * ZILsEarnedAsReward 
+    NumberOfgZILsIssued = issuanceFactor * ZILsEarnedAsReward 
 
 ``` 
 
-Simply put, if the value of `issuance_factor` is 1, then for every ZIL earned,
-1 gZIL will be issued. And if the value of `issuance_factor` is 0.5, then for
+Simply put, if the value of `issuanceFactor` is 1, then for every ZIL earned,
+1 gZIL will be issued. And if the value of `issuanceFactor` is 0.5, then for
 every ZIL earned, 0.5 gZIL will be issued.
  
 In order to incentivize the early birds, we propose the initial value of
-`issuance_factor` to be 1. This can be later changed via governance by putting
+`issuanceFactor` to be 1. This can be later changed via governance by putting
 in gZILs to use. 
 
 The actual issuance curve of gZIL is hard to predict due to its dependence on
