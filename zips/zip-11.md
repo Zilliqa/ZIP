@@ -11,6 +11,9 @@
   * [Non-custodial Staking](#non-custodial-staking)
   * [Uncapped Staking](#uncapped-staking)
   * [Governance Tokens aka gZIL](#governance-tokens-aka-gzil)
+    + [Issuance Mechanics](#issuance-mechanics)
+    + [Issuance Curve](#issuance-curve)
+    + [Usage](#usage)
 - [Non-custodial Seed Node Staking Overview](#non-custodial-seed-node-staking-overview)
   * [Staking Parameters](#staking-parameters)
   * [Verifier](#verifier)
@@ -146,41 +149,91 @@ oversubscription.
 
 This ZIP also introduces _gZILs_ (short for _governance ZILs_). gZILs will be
 ZRC-2 compliant fungible tokens that will be earned alongside staking rewards.
-More concretely, whenever, a delegator decides to withdraw her stake rewards,
-an equivalent number of gZILs will be minted and issued to the delegator.
-Since, the reward earned is proportional to the stake deposit and the staking
-duration, the number of gZILs earned will capture the long-term belief of a
-delegator. In other words, the longer a delegator stakes her tokens and the
-larger her stake is, the more gZILs she will earn.
 
-gZILs will later be used to govern a DAO-like structure that will invest in
-community projects. A [Gitcoin](https://gitcoin.co/)-like DAO will be setup
-with funds from Zilliqa Research to fund ecosystem projects and initiatives.
-The end goal is to move move all ecosystem funding currently done by Zilliqa
-Research (as a part of ZILHive) to the DAO, making the community responsible
-for making decisions on funding ecosystem projects. The community holding gZILs
-will be able to vote on proposals alongside Zilliqa Research on making
-decisions. More on this will be released as a separate ZIP.
+### Issuance Mechanics
 
-Since the first utility of gZIL will be in voting in a DAO (and potentially
-earning benefits from the DAO), gZIL must capture token holders that are
-long-term ecosystem participants with a deep-rooted interest in making the
-Zilliqa ecosystem grow and succeed. Issuing gZIL alongside staking rewards aims
-to capture those token holders.
+Number of gZILs issued to delegators will aim to capture the following key
+characteristics of stake holders:
 
-The issuance curve of gZIL is hard to predict due to its dependence on the
-number of ZILs staked in the contract and the frequency of reward withdrawal by
-the delegators. Since rewards earned are not automatically staked in a
-cumulative manner, delegators will be required to manually withdraw their
-rewards, and in doing so will receive gZILs. Note that, **gZILs will be issued
-only for 1 year**, with the objective to create scarcity and incentivize the
-early birds to get involved in the staking program.
+1. _Stake holder strength_ measured by the quantum of stake in the system.
+2. _Stake holder commitment and long-term belief_ measured by the staking
+   duration. 
+3. _Stake holder contribution to network activity and growth_ measured by how
+   frequently they transact on the network.
+4. _Early vs. later-stage stake holders_ measured by how early the stake
+   holders get involved in the program. 
+
+Since, the staking reward earned (in ZILs) is proportional to the stake deposit
+and the staking duration, it is easier to capture the first two characteristics
+by tying the number of gZILs earned with the reward earned in ZILs. In other
+words, the longer a delegator stakes her tokens and the larger her stake is,
+the more gZILs she will earn.
+
+However, to capture the contribution to network activity, we propose that gZILs
+be issued only when a delegator manually withdraws her reward by sending a
+transaction to the network. A delegator would withdraw the staking reward for a
+wide variety of reasons such as to restake her reward to cumulatively earn more
+rewards, or to use it in a dapp, to pay for gas or for trading in the secondary
+market.  
+
+The last characteristic to capture is to identify and incentivize early birds.
+To this end, we propose that the contract maintain a mutable parameter
+`issuance_factor` (a positive integer less than or equal to 1). Number of gZILs
+issued will then be:
+ 
+```python
+    NumberOfgZILsIssued = issuance_factor * ZILsEarnedAsReward 
+
+``` 
+
+Simply put, if the value of `issuance_factor` is 1, then for every ZIL earned,
+1 gZIL will be issued. And if the value of `issuance_factor` is 0.5, then for
+every ZIL earned, 0.5 gZIL will be issued.
+ 
+In order to incentivize the early birds, we propose the initial value of
+`issuance_factor` to be 1. This can be later changed via governance by putting
+in gZILs to use. 
+
+### Issuance Curve
+
+As mentioned in the previous section, initially, for each ZIL earned (and
+withdrawn), the delegator will get 1 gZIL. But, this may change over time based
+on governance.
+
+The actual issuance curve of gZIL is hard to predict due to its dependence on
+the number of ZILs staked in the contract and the frequency of reward
+withdrawal by the delegators. Since rewards earned are not automatically staked
+in a cumulative manner, delegators will be required to manually withdraw their
+rewards, and in doing so will receive gZILs. 
+
+Note that, **gZILs will be issued only for 1 year**, with the objective to
+create scarcity and incentivize the early birds to get involved in the staking
+program.
 
 gZIL will have no pre-defined exchange rate pegged to ZIL, i.e., gZILs cannot
 be redeemed for ZILs. However, since gZILs will be needed to vote in the DAO,
 we believe that a secondary market for gZIL may open up on the upcoming
 [ZilSwap DEX](https://zilswap.io/swap) that will help with the price discovery
 of gZIL.
+
+
+### Usage 
+
+gZIL will play an important role in the governance of the staking program, say,
+to decide on the value of certain staking parameters. We also plan to put gZILs
+to use for broader ecoysystem governance for example with a DAO-like structure
+that will invest in community projects. A [Gitcoin](https://gitcoin.co/)-like
+DAO will be setup with funds from Zilliqa Research to fund ecosystem projects
+and initiatives.  The end goal is to move move all ecosystem funding currently
+done by Zilliqa Research (as a part of ZILHive) to the DAO, making the
+community responsible for making decisions on funding ecosystem projects. The
+community holding gZILs will be able to vote on proposals alongside Zilliqa
+Research on making decisions. More on this will be released as a separate ZIP.
+
+Since the first non-staking related utility of gZIL will be in voting in a DAO,
+gZIL must capture token holders that are long-term ecosystem participants with
+a deep-rooted interest in making the Zilliqa ecosystem grow and succeed.
+Issuing gZIL alongside staking rewards aims to capture those token holders.
 
 # Non-custodial Seed Node Staking Overview
 
