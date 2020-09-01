@@ -396,9 +396,12 @@ earn any reward and her stake is held in the contract.  Upon expiry of the
 unbonding period, the delegator can call the next transition
 `CompleteWithdrawal` to move funds out of the contract.  
 
-4. `transition CompleteWithdrawal(input_bnum: BNum)` to withdraw unbonded stake
-   from the contract. The parameter passed is the blocknumber at which the
-`WithdrawStakeAmt` was called. 
+4. `transition CompleteWithdrawal()` to withdraw unbonded stake from the
+   contract. 
+
+5. `transition ReDelegateStake(ssnaddr : ByStr20, to_ssn : ByStr20, amount :
+   Uint128)` to move `amount` stake from the current SSN (`ssnaddr`) to a
+different SSN (`to_ssn`). 
 
 # Contract Specification and Implementation
 
