@@ -150,18 +150,21 @@ This ZIP also introduces _gZILs_, short for _governance ZILs_. gZILs will be
 ZRC-2 compliant fungible tokens that will be earned alongside staking rewards.
 The rationale behind issuing gZILs is to capture long-term token holders and
 give them access to governance tokens that they can later use to make
-ecosystem-wide decisions.  
+ecosystem-wide decisions.
 
-Bootstrapping governance with the staking program will aid in identifying,
-engaging and equipping such token holders with the needed gZILs.  Achieving the
-same with ZILs after its launch more than 2 years ago is difficult if not
+In order for any governance mechanism to succeed, the system must be able to
+identify, engage and equip (with the right tools) long-term token holders that
+contribute actively to network activity and ecosystem growth and have enough
+skin-in-the-game to make impactful governance decisions. However, achieving
+this with ZILs after its launch more than 2 years ago is difficult if not
 impossible.  
 
-gZILs will have no pre-defined exchange rate pegged to ZIL, i.e., gZILs cannot
-be redeemed for ZILs. However, since gZILs will be needed for ecosystem
-governance, we believe that a secondary market for gZIL may open up on the
-upcoming [ZilSwap DEX](https://zilswap.io/swap) that will help with the price
-discovery of gZIL.
+However, by bootstrapping the issuance of governance tokens gZILs with the
+staking program, we believe that this can be materialised. For instance, since
+staking program rewards more to long-term holders with larger stake, tying
+gZILs issuance with staking can help identify such token holders. We explain
+this more in the following section. 
+
 
 
 ### Issuance Mechanics
@@ -191,31 +194,22 @@ rewards, to use it in a dapp, to pay for gas or for trading in the secondary
 market.  
 
 The last characteristic to capture is to identify and incentivize early birds.
-To this end, we propose that the contract maintain a mutable parameter
-`issuanceFactor` (a positive integer greater than or equal to 1). Number of
-gZILs issued will then be:
- 
-```python 
-    NumberOfgZILsIssued = ZILsEarnedAsReward/issuanceFactor 
-``` 
+To this end, we propose that **gZILs be issued only for 1 year**, with the
+objective to create scarcity and incentivize the early birds to get involved in
+the staking program. Furthermore, **we limit the maximum number of gZILs to be
+ever issued to be 680,000**. This is 1/1000 of the total ZIL reward available
+for staking. In other words, for every ZIL eared as a staking reward, 0.001
+gZIL will be issued.
 
-Simply put, if the value of `issuanceFactor` is 1, then for every ZIL earned, 1
-gZIL will be issued. And if the value of `issuanceFactor` is 2, then for every
-ZIL earned, 0.5 gZIL will be issued.
- 
-In order to incentivize the early birds, we propose the initial value of
-`issuanceFactor` to be 1. This can be later changed via governance by putting
-in gZILs to use. 
+Do note that it is very possible that all the 680,000 gZIL may not get minted
+as the number of gZILs that get minted depends on the number stake reward
+withdrawals.  
 
 The actual issuance curve of gZIL is hard to predict due to its dependence on
 the number of ZILs staked in the contract and the frequency of reward
 withdrawal by the delegators. Since rewards earned are not automatically staked
 in a cumulative manner, delegators will be required to manually withdraw their
 rewards, and in doing so will receive gZILs. 
-
-Note that, **gZILs will be issued only for 1 year**, with the objective to
-create scarcity and incentivize the early birds to get involved in the staking
-program.
 
 
 ### Usage 
@@ -235,6 +229,14 @@ Since the first non-staking related utility of gZIL will be in voting in a DAO,
 gZIL must capture token holders that are long-term ecosystem participants with
 a deep-rooted interest in making the Zilliqa ecosystem grow and succeed.
 Issuing gZIL alongside staking rewards aims to capture those token holders.
+
+> _Market Value of gZILs_: gZILs will have no pre-defined exchange rate pegged
+to ZIL, i.e., gZILs cannot be redeemed for ZILs. However, since gZILs will be
+needed for ecosystem governance, we believe that a secondary market for gZIL
+may open up on the upcoming [ZilSwap DEX](https://zilswap.io/swap) that will
+help with the price discovery of gZIL.
+
+
 
 # Non-custodial Seed Node Staking Overview
 
