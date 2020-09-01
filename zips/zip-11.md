@@ -162,7 +162,7 @@ not impossible.
 However, by bootstrapping the issuance of governance tokens gZILs with the
 staking program, we believe that this can be materialised. For instance, since
 staking program rewards more to long-term holders with larger stake, tying
-gZILs issuance with staking can help identify such token holders. We explain
+gZIL issuance with staking can help identify such token holders. We explain
 this more in the following section. 
 
 
