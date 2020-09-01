@@ -155,15 +155,15 @@ ecosystem-wide decisions.
 In order for any governance mechanism to succeed, the system must be able to
 identify, engage and equip (with the right tools) long-term token holders that
 contribute actively to network activity and ecosystem growth and have enough
-skin-in-the-game to make impactful governance decisions. However, achieving
-this with ZILs, more than 2 years after their initial issuance is difficult if
-not impossible.  
+skin-in-the-game to make impactful governance decisions. Achieving this with
+ZILs, more than 2 years after their initial issuance is difficult if not
+impossible. Hence, the rationale behind issuing gZILs. 
 
-However, by bootstrapping the issuance of governance tokens gZILs with the
+Furthermore, by bootstrapping the issuance of governance tokens gZILs with the
 staking program, we believe that this can be materialised. For instance, since
-staking program rewards more to long-term holders with larger stake, tying
-gZIL issuance with staking can help identify such token holders. We explain
-this more in the following section. 
+staking program rewards more to long-term holders with larger stake, tying gZIL
+issuance with staking can help identify such token holders. We explain this
+more in the following section. 
 
 
 
