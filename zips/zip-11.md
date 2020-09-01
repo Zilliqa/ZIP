@@ -156,8 +156,8 @@ In order for any governance mechanism to succeed, the system must be able to
 identify, engage and equip (with the right tools) long-term token holders that
 contribute actively to network activity and ecosystem growth and have enough
 skin-in-the-game to make impactful governance decisions. However, achieving
-this with ZILs after its launch more than 2 years ago is difficult if not
-impossible.  
+this with ZILs more than 2 years after their initial issuance is difficult if
+not impossible.  
 
 However, by bootstrapping the issuance of governance tokens gZILs with the
 staking program, we believe that this can be materialised. For instance, since
