@@ -203,14 +203,13 @@ for staking on an annual basis (Cf. table in the next
 staking reward, 1 gZIL will be issued.
 
 Do note that it is very possible that all the 682,550 gZIL may not get minted
-as the number of gZILs that get minted depends on the number stake reward
-withdrawals.  
-
-The actual issuance curve of gZIL is hard to predict due to its dependence on
-the number of ZILs staked in the contract and the frequency of reward
-withdrawal by the delegators. Since rewards earned are not automatically staked
-in a cumulative manner, delegators will be required to manually withdraw their
-rewards, and in doing so will receive gZILs. 
+as the number of gZILs that get minted depends on the frequency of stake reward
+withdrawals.   In a more general sense, the actual issuance curve of gZIL is
+hard to predict due to its dependence on the number of ZILs staked in the
+contract and the frequency of reward withdrawal by the delegators. Since
+rewards earned are not automatically staked in a cumulative manner, delegators
+will be required to manually withdraw their rewards, and in doing so will
+receive gZILs. 
 
 
 ### Usage 
