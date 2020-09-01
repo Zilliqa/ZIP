@@ -157,7 +157,7 @@ identify, engage and equip (with the right tools) long-term token holders that
 contribute actively to network activity and ecosystem growth and have enough
 skin-in-the-game to make impactful governance decisions. Achieving this with
 ZILs, more than 2 years after their initial issuance is difficult if not
-impossible. Hence, the rationale behind issuing gZILs. 
+impossible. Hence, the _raison d'etre_ of gZILs. 
 
 Furthermore, by bootstrapping the issuance of governance tokens gZILs with the
 staking program, we believe that this can be materialised. For instance, since
