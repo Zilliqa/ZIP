@@ -189,7 +189,8 @@ be issued only when a delegator manually withdraws her reward by sending a
 transaction to the network. A delegator would withdraw the staking reward for a
 wide variety of reasons such as to restake her reward to cumulatively earn more
 rewards, to use it in a dapp, to pay for gas or for trading in the secondary
-market.  
+market. By issuing gZILs alongside stake rewards will capture the network
+activity contributed by the delegator.
 
 The last characteristic to capture is to identify and incentivize early birds.
 To this end, we propose that **gZILs be issued only for 1 year**, with the
