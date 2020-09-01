@@ -202,7 +202,7 @@ for staking on an annual basis (Cf. table in the next
 [section](#staking-parameters)). In other words, for every 1000 ZIL earned as
 staking reward, 1 gZIL will be issued.
 
-Do note that it is very possible that all the 680,000 gZIL may not get minted
+Do note that it is very possible that all the 682,550 gZIL may not get minted
 as the number of gZILs that get minted depends on the number stake reward
 withdrawals.  
 
