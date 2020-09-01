@@ -160,8 +160,8 @@ ZILs, more than 2 years after their initial issuance is difficult if not
 impossible. Whence, the _raison d'être_ of gZILs. 
 
 Furthermore, by bootstrapping the issuance of governance tokens gZILs with the
-staking program, we argue that it will become easier to organically capture
-long-term token holders. We elucidate this further in the following section. 
+staking program, it will become easier to organically capture long-term token
+holders. We elucidate this further in the following section. 
 
 
 
