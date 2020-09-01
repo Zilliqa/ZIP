@@ -198,7 +198,8 @@ To this end, we propose that **gZILs be issued only for 1 year**, with the
 objective to create scarcity and incentivize the early birds to get involved in
 the staking program. Furthermore, **we limit the maximum number of gZILs to be
 ever issued to be 682,550**. This is 1/1000 of the total ZIL reward available
-for staking on an annual basis. In other words, for every 1000 ZIL earned as
+for staking on an annual basis (Cf. table in the next
+[section](#staking-parameters)). In other words, for every 1000 ZIL earned as
 staking reward, 1 gZIL will be issued.
 
 Do note that it is very possible that all the 680,000 gZIL may not get minted
