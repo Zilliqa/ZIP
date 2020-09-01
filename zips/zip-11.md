@@ -161,9 +161,7 @@ impossible. Whence, the _raison d'être_ of gZILs.
 
 Furthermore, by bootstrapping the issuance of governance tokens gZILs with the
 staking program, we believe that it will become easier to organically capture
-long-term token holders.  For instance, since staking program rewards more to
-long-term holders with larger stake, tying gZIL issuance with staking can help
-identify such token holders. We explain this more in the following section. 
+long-term token holders. We elucidate this further in the following section. 
 
 
 
