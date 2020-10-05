@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-09-1|
+| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-05|
 
 
 # Table of Content
@@ -271,7 +271,7 @@ parameters for staking:
 | Maximum overall staked amount (in ZIL)       | 610,000,000           | Uncapped                  |
 | Maximum stake amount (in ZIL) per seed node  | 61,000,000            | Uncapped                  |       
 | Minimum stake amount (in ZIL) per seed node  | 10,000,000            | 10,000,000                |
-| Minimum stake amount (in ZIL) for delegators |        NA             | 1,000                     |
+| Minimum stake amount (in ZIL) for delegators |        NA             | 10                        |
 | Maximum number of seed nodes                 | 10                    | 30                        |
 | Reward cycle                                 | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
 | Maximum commission rate change per cycle     |        NA             | 1%                        |
