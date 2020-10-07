@@ -1,6 +1,6 @@
 | ZIP | Title                       | Status | Type            | Author                            | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) |
 | --- | --------------------------- | ------ | --------------- | --------------------------------- | -------------------- | -------------------- |
-| 9   | Tokenomic changes for \$ZIL | Draft  | Standards Track | Han Wen Chua <hanwen@zilliqa.com> | 2020-06-27           | 2020-08-02           |
+| 9   | Tokenomic changes for \$ZIL | Approved  | Standards Track | Han Wen Chua <hanwen@zilliqa.com> | 2020-06-27           | 2020-10-07           |
 
 ## Abstract
 
