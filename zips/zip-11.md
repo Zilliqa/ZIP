@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-09-1|
+| 11   | Seed Node Staking Mechanism: Phase I | Approved  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-07|
 
 
 # Table of Content
