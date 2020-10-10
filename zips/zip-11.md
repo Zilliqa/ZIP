@@ -1,7 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 11   | Seed Node Staking Mechanism: Phase I | Draft  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-05|
-
+| 11   | Seed Node Staking Mechanism: Phase I | Approved  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-07|
 
 # Table of Content
 
@@ -199,7 +198,9 @@ the staking program. Furthermore, **we limit the maximum number of gZILs to be
 ever issued to be 682,550**. This is 1/1000 of the total ZIL reward available
 for staking on an annual basis (Cf. table in the next
 [section](#staking-parameters)). In other words, for every 1000 ZIL earned as
-staking reward, 1 gZIL will be issued.
+staking reward, 1 gZIL will be issued. **gZILs will not be rewarded to SSN operators 
+unless they themselves delegate their stake.** Earning commission does not entitle 
+operators to gZILs.
 
 Do note that it is very possible that all the 682,550 gZIL may not get minted
 as the number of gZILs that get minted depends on the frequency of stake reward
