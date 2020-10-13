@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 11   | Seed Node Staking Mechanism: Phase I | Approved  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-07|
+| 11   | Seed Node Staking Mechanism: Phase I | Implemented  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-13|
 
 # Table of Content
 
@@ -195,14 +195,14 @@ The last characteristic to capture is to identify and incentivize early birds.
 To this end, we propose that **gZILs be issued only for 1 year**, with the
 objective to create scarcity and incentivize the early birds to get involved in
 the staking program. Furthermore, **we limit the maximum number of gZILs to be
-ever issued to be 682,550**. This is 1/1000 of the total ZIL reward available
+ever issued to be 722,700**. This is 1/1000 of the total ZIL reward available
 for staking on an annual basis (Cf. table in the next
 [section](#staking-parameters)). In other words, for every 1000 ZIL earned as
 staking reward, 1 gZIL will be issued. **gZILs will not be rewarded to SSN operators 
 unless they themselves delegate their stake.** Earning commission does not entitle 
 operators to gZILs.
 
-Do note that it is very possible that all the 682,550 gZIL may not get minted
+Do note that it is very possible that all the 722,700 gZIL may not get minted
 as the number of gZILs that get minted depends on the frequency of stake reward
 withdrawals.   In a more general sense, the actual issuance curve of gZIL is
 hard to predict due to its dependence on the number of ZILs staked in the
@@ -256,14 +256,14 @@ distributed at the end of each DS epoch.
 | -----------------------------------------------------------| ----------------------------| ---------------              |
 | Total mining reward distributed per DS epoch  (in ZIL)      | 197,244                    | 275,000                      |
 | Average duration of a DS epoch (in mins)                    | 83                         | 83                           |
-| Number of DS epochs per day                                 | 17                         | 17                           |
-| Number of DS epochs per year                                | 6,205                      | 6,205                        |
+| Number of DS epochs per day                                 | 17                         | 18                           |
+| Number of DS epochs per year                                | 6,205                      | 6,570                        |
 | Percentage of reward proposed for seed nodes                | 5%                         | 40%                          |
 | Total reward available for seed nodes per DS epoch (in ZIL) | 197,244 x 0.05 = 9,862     | 275,000 x 0.4 = 110,000      |
-| Total reward available for seed nodes per year (in ZIL)     | 6,205 x 9,862 = 61,193,710 | 6,205 x 110,000 = 682,550,000|
+| Total reward available for seed nodes per year (in ZIL)     | 6,205 x 9,862 = 61,193,710 | 6,570 x 110,000 = 722,700,000|
 
 As shown in the table above, if 40% of block reward goes to the seed nodes,
-then a total of ~682 million ZILs per year can be used to provide the necessary
+then a total of ~722 million ZILs per year can be used to provide the necessary
 incentives. With this total reward available, we propose the following economic
 parameters for staking:
 
@@ -274,8 +274,8 @@ parameters for staking:
 | Minimum stake amount (in ZIL) per seed node  | 10,000,000            | 10,000,000                |
 | Minimum stake amount (in ZIL) for delegators |        NA             | 10                        |
 | Maximum number of seed nodes                 | 10                    | 30                        |
-| Reward cycle                                 | 17 DS blocks (~1 day) | 17 DS block (~1 day)      |
-| Maximum commission rate change per cycle     |        NA             | 1%                        |
+| Reward cycle                                 | 17 DS blocks (~1 day) | 18 DS block (~1 day)      |
+| Maximum commission rate change per cycle     |        NA             | < 2%                      |
 | Annual interest rate                         | 10.03%                | Variable                  |
 | Stake unbonding period                       |  NA                   | 24,000 blocks (~14 days)  |
 | Reward unbonding period                      |  NA                   | NA                        |
