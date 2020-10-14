@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 11   | Seed Node Staking Mechanism: Phase I | Implemented  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-13|
+| 11   | Seed Node Staking Mechanism: Phase I | Implemented  | Standards Track |  Lulu Ren <lulu@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Te Ye Yeo <teye@zilliqa.com>, <br> Han Wen Chua <hanwen@zilliqa.com>, <br> Mervin Ho <mervin@zilliqa.com>,  <br> Antonio Nunez <antonio@zilliqa.com>,  and <br> Amrit Kummer <amrit@zilliqa.com> | 2020-08-17|2020-10-14|
 
 # Table of Content
 
@@ -376,7 +376,7 @@ Delegators can stake their ZILs by directly calling the contract. They can call
 the following transitions:
 
 1. `transition DelegateStake(ssnaddr: ByStr20)` to delegate their funds to a
-   specific SSN. As mentioned earlier, a delegator must stake a minimum of 1000
+   specific SSN. As mentioned earlier, a delegator must stake a minimum of 10
 ZILs. This to ensure that the gas needed to withdraw the reward does not
 outweigh the reward itself. If the SSN is active (i.e., 10 mil ZILs have been
 already staked with this SSN and that it is already operational), then the
