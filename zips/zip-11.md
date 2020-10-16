@@ -216,7 +216,7 @@ receive gZILs.
 
 gZIL will play an important role in the governance of the staking program, say,
 to decide on the value of certain staking parameters. We also plan to put gZILs
-to use for broader ecoysystem governance for example with a DAO-like structure
+to use for broader ecosystem governance for example with a DAO-like structure
 that will invest in community projects. A [Gitcoin](https://gitcoin.co/)-like
 DAO will be setup with funds from Zilliqa Research to fund ecosystem projects
 and initiatives.  The end goal is to move move all ecosystem funding currently
