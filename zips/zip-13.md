@@ -49,6 +49,7 @@ In terms of changes, following nodes will be affected.
 1) Server node will open another port on 33135.All messages will startByteType  `START_BYTE_SEED_TO_SEED_REQUEST` will be handled and rest all are dropped.
 2) Server node will store the bufferevent for the request in `bufferEventMap`.The key of the map would be key = `IP:PORT`, value = `bufferevent*`
 3) For sending the response server node will use `START_BYTE_SEED_TO_SEED_RESPONSE` start byte in `SendMessage` function call.
+4) In case server does not send any response for incoming request, server node will just remove the bufferevent from bufferEventMap.Termination of socket connection will only be done by client node.
 
 Following sequence diagrams depicts the interaction between client and server in different messaging scenarios.
 
