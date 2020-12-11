@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 12  | Revised pBFT consensus | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com>| 2020-12-10 | 2020-12-10
+| 14  | Revised pBFT consensus | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com>| 2020-12-10 | 2020-12-10
 
 ## Abstract
 
@@ -16,13 +16,13 @@ With new pBFT, we handle above issue and thereby adding sustainability enforcing
 ### Old pBFT
 Please refer below for more details on old behaviour of pBFT for shard microblock.
 
-![existing_flow](../assets/zip-12/existing_flow.png)
+![existing_flow](../assets/zip-14/existing_flow.png)
 
 ### Revised PBFT
 Please refer below for more details on new behaviour of pBFT for shard microblock.
 Same applies for finalblock consensus.
 
-![new_flow](../assets/zip-12/new_flow.png)
+![new_flow](../assets/zip-14/new_flow.png)
 
 These are important points to consider:
 
