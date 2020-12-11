@@ -40,6 +40,7 @@ These are important points to consider:
 - However, if there is commit failure, it will move to ERROR state and proceed as earlier design.
  
 Note: This revised pBFT is applicable only for shard microblock consensus and final block consensus which basically involves transactions.
+
 ## Implementation
 
 This ZIP is implemented in the following pull requests in the Zilliqa core repository:
