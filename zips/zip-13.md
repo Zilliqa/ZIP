@@ -21,7 +21,7 @@ The zip proposes reusing the existing transport mechanism and leveraging on top 
 
 ### Current Transport Architecture
 
-![image01](../assets/zip-13/Existing_Transport_Architecture.png)
+![image01](../assets/zip-13/P2PSeedComm_Existing_Transport_Architecture.png)
 
 
 ### Proposed Transport Architecture(Applicable only for seed to seed communication)
@@ -59,7 +59,7 @@ Following sequence diagrams depicts the interaction between client and server in
 
 #### 1) Successful Bidirectional Message
 
-![image02](../assets/zip-13/P2PSeedCommunication_Scenario-1_Successful.png)
+![image02](../assets/zip-13/P2PSeedComm_Successful_Scenario.png)
 
 
 
@@ -68,7 +68,7 @@ Following sequence diagrams depicts the interaction between client and server in
 
 
 
-![image02](../assets/zip-13/P2PSeedCommunication_Error-Scenario.png)
+![image02](../assets/zip-13/P2PSeedComm_Error-Scenario.png)
 
 
 
@@ -77,7 +77,7 @@ Following sequence diagrams depicts the interaction between client and server in
 
 
 
-![image02](../assets/zip-13/P2PSeedCommunication_No_Response_From_Server_Scenario.png)
+![image02](../assets/zip-13/P2PSeedComm_No_Response_From_Server_Scenario.png)
 
 
 ## Implementation
