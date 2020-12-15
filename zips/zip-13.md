@@ -68,7 +68,6 @@ Following sequence diagrams depicts the interaction between client and server in
 
 
 
-
 #### 3) No response from server
 
 
