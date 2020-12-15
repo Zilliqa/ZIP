@@ -66,7 +66,6 @@ Following sequence diagrams depicts the interaction between client and server in
 
 #### 2) Errored Socket Events
 
-
 ![image02](../assets/zip-13/P2PSeedComm_Error_Scenario.png)
 
 
@@ -91,5 +90,4 @@ Address the security concerns raised by exchanges to open incoming port on 33133
 ## Copyright Waiver 
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
 
