@@ -19,7 +19,6 @@ From here onward,In terms of communication perspective, exchange seed is referre
 The zip proposes reusing the existing transport mechanism and leveraging on top of it.Currently we use `libevent` on server side for handling network events for eg read/write/error.On client side, we use unix system calls(connect(), write()) for connecting and writing data on socket.Libevent has good support for buffer events where application no longer deals with underlying kernel read and write buffers.Libevent mangages the reading and writing on kernel buffers.
 
 ### Current Transport Architecture
-
 ![image01](../assets/zip-13/P2PSeedComm_Existing_Transport_Architecture.png)
 
 
