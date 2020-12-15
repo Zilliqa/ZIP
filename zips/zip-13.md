@@ -26,8 +26,11 @@ The ZIP proposes reusing the existing transport mechanism and leveraging on top 
 
 Existing P2P communication will be the same for all other types of nodes except for seed to seed messaging. With that in mind, the server seed node will open another listening port `33135` on their end to cater to seed specific messages. Any data received on port `33135` will be handled in another callbacks(AccepCb/ReadCb/Event)
 
-Inorder to also distinguish message from seeds at application level, new startbyte is introduced.
-START_BYTE_SEED_TO_SEED_RESPONSE
+Inorder to distinguish the message from seeds at application level, below two start bytes are introduced for request and response message.
+
+`START_BYTE_SEED_TO_SEED_REQUEST`
+
+`START_BYTE_SEED_TO_SEED_RESPONSE`
 
 #### Note
 All socket communications will be initiated and terminated by client only. Server node will act on events received from the client.
