@@ -77,7 +77,6 @@ Following sequence diagrams depicts the interaction between client and server in
 
 
 ## Implementation
-
 This ZIP is implemented in the experimental branch.
 - [branch](https://github.com/Zilliqa/Zilliqa/compare/debug-seed-test-c)
 
