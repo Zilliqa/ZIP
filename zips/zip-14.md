@@ -22,7 +22,7 @@ Please refer below for more details on old behaviour of pBFT for shard microbloc
 Please refer below for more details on new behaviour of pBFT for shard microblock.
 Same applies for finalblock consensus.
 
-![new_flow](../assets/zip-14/new_flow.png)
+![new_flow](../assets/zip-14/revised_new_flow.png )
 
 These are important points to consider:
 
