@@ -67,7 +67,6 @@ Following sequence diagrams depicts the interaction between client and server in
 ![image02](../assets/zip-13/P2PSeedComm_Error_Scenario.png)
 
 
-
 #### 3) No response from server
 
 
