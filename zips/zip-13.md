@@ -70,7 +70,7 @@ Following sequence diagrams depicts the interaction between client and server in
 
 ## Implementation
 This ZIP is implemented in the experimental branch.
-- [branch](https://github.com/Zilliqa/Zilliqa/compare/debug-seed-test-c)
+- [branch](https://github.com/Zilliqa/Zilliqa/tree/feature/p2pseed-network-layer-enhancement)
 
 ## Rationale
 This is to address the infrastructure restriction of some node operators where they are unable to listen on incoming port 33133 and improve our core network layer architecture by reducing the number of TCP connections per message.
