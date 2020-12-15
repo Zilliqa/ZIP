@@ -44,7 +44,6 @@ In terms of changes, following nodes will be affected.
 4) In order to keep the event loop running during creation, it is required to add a timer event and the call `event_base_dispatch()`.If it's not done, the event loop terminates immediately and kills the main thread after creation.
 5)Main thread is running the event loop and responsible for handling network events.
 
-
 #### Source Seed Node(server)
 1) Server node will open another port on `33135` and the events for it will be dispatched to the same event loop handling listening events on `33133`.
 2) All messages with startByteType  `START_BYTE_SEED_TO_SEED_REQUEST` will be handled on new accept/read/event callbacks and rest all are dropped.
@@ -56,21 +55,14 @@ In terms of changes, following nodes will be affected.
 Following sequence diagrams depicts the interaction between client and server in different messaging scenarios.
 
 #### 1) Successful Bidirectional Message
-
 ![image02](../assets/zip-13/P2PSeedComm_Successful_Scenario.png)
-
-
 
 
 #### 2) Errored Socket Events
 
 ![image02](../assets/zip-13/P2PSeedComm_Error_Scenario.png)
 
-
 #### 3) No response from server
-
-
-
 ![image02](../assets/zip-13/P2PSeedComm_No_Response_From_Server_Scenario.png)
 
 
