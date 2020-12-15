@@ -14,7 +14,6 @@ In perspective of exchange seed nodes ,it's a security concern as they have to o
 ### Note
 From here onward,In terms of communication perspective, exchange seed is referred as `seed` which acts as client and Zilliqa public seed is referred as `source seed` which acts as server
 
-
 ## Specification
 
 The zip proposes reusing the existing transport mechanism and leveraging on top of it.Currently we use `libevent` on server side for handling network events for eg read/write/error.On client side, we use unix system calls(connect(), write()) for connecting and writing data on socket.Libevent has good support for buffer events where application no longer deals with underlying kernel read and write buffers.Libevent mangages the reading and writing on kernel buffers.
@@ -90,4 +89,3 @@ Address the security concerns raised by exchanges to open incoming port on 33133
 ## Copyright Waiver 
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
