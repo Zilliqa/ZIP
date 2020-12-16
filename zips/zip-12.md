@@ -1,11 +1,17 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 12  | Standardisation of ZIP processes | Draft | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>| 2020-12-10 | 2020-12-10
+| 12  | Standardisation of ZIP processes | Draft | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>| 2020-12-10 | 2020-12-16
 
 # Summary
 
 The purpose of this proposal is to standardise the Zilliqa Improvement Proposal (ZIP) introduction, voting, and implementation process that governs the Zilliqa protocol.
+
+# TL;DR
+
+1. All proposals must be discussed for at least 3 days with a forum poll before they will be assigned a ZIP number by a ZIP editor and moved to Snapshot voting.
+2. The Snapshot vote will be binding, and must be open for at least 5 days. At least 20% quorum (> 20% of token total supply participating in the voting process) must be reached, and at least 50% must vote “For” the proposal for it to pass.
+3. Most open-source core protocol updates by the Zilliqa core team are not required to go through this voting process; this process only governs those changes or proposals that should be ratified as ZIPs which will be discussed, voted on and officially enacted.
 
 # Abstract
 
@@ -41,7 +47,7 @@ If a proposal was introduced on the governance forum and achieved at least a 25%
 
 Snapshot is used for formal, binding votes. The user who authored the ZIP will also create the proposal on Snapshot[3]. Snapshot requires > 0.1% of the total supply of gZIL[[4](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)] in a user’s wallet to create a proposal. If the author does not meet this requirement then contact a moderator who will submit the proposal on your behalf. Before creating the Snapshot vote, please wait for a moderator to assign your ZIP a number and begin your Snapshot title with it.
 
-A minimum of 96 hours (5 days) for voting, and a 20% quorum requirement is required for ZIPs voting processes. This wide time period for voting, coupled with an active communication of ZIPs via the governance forum and on social media channels should help ensure that no ZIPs will slip through and no malicious ones are approved.
+A minimum of 120 hours (5 days) for voting, and a 20% quorum requirement is required for ZIPs voting processes. This wide time period for voting, coupled with an active communication of ZIPs via the governance forum and on social media channels should help ensure that no ZIPs will slip through and no malicious ones are approved.
 
 The block selected for the Snapshot vote will be block number at the Snapshot submission. In order for a vote to pass it needs to have a majority approval (>50%) by eligible voters. The eligible vote is defined as gZIL held in the wallets to the token holders at the snapshot block. If the Snapshot vote does not meet a 50% majority approval, then the vote is rejected and no changes will be enacted. Authors of proposals that are rejected may resubmit their proposal, but should include significant changes that address issues that may have prevented the ZIP from passing during the initial vote.
 
@@ -49,17 +55,11 @@ The block selected for the Snapshot vote will be block number at the Snapshot su
 
 This specification aims to clarify which proposals should move to the ZIP stage, how long they should be discussed for, and how long the vote should be open for. By only allowing proposals to move to ZIP/voting after several days of discussion, we ensure that everyone’s voice is heard, and proposals should more accurately reflect community consensus.
 
-Additionally, while some may think that 3 days is too short to adequately discuss a proposal, this is simply the minimum requirement. We expect most discussions to last for significantly longer than this, with only a select few well-planned and researched proposals with near unanimous approval moving through so quickly. This proposal also will not stifle the open source protocol improvements that are made daily by dozens of Zilliqa’s contributors. It only aims to govern those proposals that seek community feedback and ratification as ZIPs.
+Additionally, while some may think that 3 days is too short to adequately discuss a proposal, this is simply the minimum requirement. We expect most discussions to last for significantly longer than this, with only a select few well-planned and researched proposals with near unanimous approval moving through so quickly. This proposal also will not stifle the open source protocol improvements that are made daily by dozens of Zilliqa’s core team members and community contributors. It only aims to govern those proposals that seek community feedback and ratification as ZIPs.
 
 ### Other Uses for Snapshot
 
 Snapshot may still be used for informal signal voting, community contests and grantsDAO disbursement, but its primary purpose will be to conduct formal, binding votes for ZIPs.
-
-# TL;DR
-
-1. All proposals must be discussed for at least 3 days with a forum poll before they will be assigned a ZIP number by a ZIP editor and moved to Snapshot voting.
-2. The Snapshot vote will be binding, and must be open for at least 5 days. At least 20% quorum (> 20% of token total supply participating in the voting process) must be reached, and at least 50% must vote “For” the proposal for it to pass.
-3. Most open-source protocol updates do not require ZIPs; this process only governs those changes or proposals that wish to be discussed and enacted as ZIPs.
 
 # References
 
