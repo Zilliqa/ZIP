@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 14  | Revised pBFT consensus | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com>| 2020-12-10 | 2020-12-10
+| 14  | Revised pBFT consensus | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> George Pîrlea george@zilliqa.com | 2020-12-10 | 2020-12-24
 
 ## Abstract
 
@@ -27,14 +27,14 @@ Same applies for finalblock consensus.
 These are important points to consider:
 
 **Round 1:**
-- Round 1 of consensus also called preprep phase will run consensus on microblock/finalblock with txnhashes only.
-- Leader starts actual transaction processing after sending out preprep announcement ( mb/fb with txnhashes only).
-- Backups starts actual transaction processing after sending out commit for preprep phase.
-- However, if there is commit failure ( ex. due to missing txns), it will fetch the missing ones from leader and rerun preprep phase (round-1) of consensus.
+- Round 1 of consensus also known as the `pre-prepare` phase will run consensus on microblock/finalblock with a set of transaction hashes. This phase is for the committee to agree on the set of transactions to process.
+- Leader starts transaction execution after sending out `pre-prepare` announcement ( mb/fb with transaction hashes only).
+- Backups start transaction execution after sending out commit to the leader for `pre-prepare` phase.
+- However, if there is commit failure ( ex. due to missing transaction), the backup will fetch the missing transactions from leader and rerun the `pre-prepare` phase (round-1) of consensus.
 - For any other commit failure, please refer the new flow.
 
 **Round 2:**
-- Leader after processing all transaction or after timeout is hit, sends collective sig  + mb/fb with processed transactions to all backups.
+- Leader after executing all transaction or after timeout is hit, sends collective sig  + mb/fb with processed transactions to all backups.
 - Backup is expected to complete processing of transaction locally that were proposed in preprep phase by now.
 - Backup validates and send final commit.
 - However, if there is commit failure, it will move to ERROR state and proceed as earlier design.
