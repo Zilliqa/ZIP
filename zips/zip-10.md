@@ -1,6 +1,6 @@
 | ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 10  | Governance | Draft | Standards Track  | Antonio Nunez <antonio@zilliqa.com> | 2020-07-24 | 2020-07-24
+| 10  | Governance | Implemented | Standards Track  | Antonio Nunez <antonio@zilliqa.com> <br> Chetan Phirke <chetan@zilliqa.com> | 2020-07-24 | 2020-12-29
 
 
 ## Abstract
@@ -67,6 +67,10 @@ Pre-existing DS nodes can potentially stay within the network for a long period 
 ## Rationale
 
 Although this proposal introduces many moving parts, the relatively small changes to the core protocol required for governance provide a new avenue of utility for the Zilliqa blockchain.
+
+## Implementation
+
+This ZIP is implemented in Zilliqa version [7.0.0](https://github.com/Zilliqa/Zilliqa/releases/tag/v7.0.0).
 
 ## Backward Compatibility
 
