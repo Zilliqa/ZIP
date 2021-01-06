@@ -24,7 +24,7 @@ Lookup continues to dispatch the transaction packets to ds-shard for next epoch 
 **Shard-Node:**
 
 Shard node starts gossip immediately upon receiving of transaction packet from lookup.
-- Previously, packets were buffered if either received from lookup or if node is in in-proper state. i.e. if `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS)` holds `false`
+- Previously, packets were buffered if either received from lookup or if node is in improper state. i.e. if `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS)` holds `false`
 - Now, the packet will be buffered **only** if node is in in-proper state i.e. if `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS || m_state == WAITING_ON_FINALBLOCK)` holds `false`. Otherwise, shard node will gossip the packet immediately irrespective of whether received from lookup or from peer.
 
 It holds the packet processing until finalblock for current epoch is received. After which it commits transactions from packet into transaction pool.
