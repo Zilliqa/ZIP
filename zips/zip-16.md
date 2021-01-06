@@ -29,16 +29,11 @@ Returns the account status or contract state values together with the Merkle Pro
 
 #### Returns
 
-1. `balance`: `QUANTITY` - the balance of the account.
-2. `nonce`: `QUANTITY` - the nonce of the account.
-3. `accountProof`: `ARRAY` - Array of rlp-serialized Merkle Tree nodes, starting with the state root hash as from the TxBlock header, following the path of the address as key.
+1. `accountProof`: `ARRAY` - Array of rlp-serialized Merkle Tree nodes, starting with the state root hash as from the TxBlock header, following the path of the address as key.
 
 And the following provided only if address belongs to a contract
 
-4. `codeHash`: `DATA`, 32 Bytes - hash of the code of the account.
-5. `rootHash`: `DATA`, 32 Bytes - hash of the storage root of merkle tree. All storage will deliver a Merkle Proof with this root hash.
-6. `stateProof`: `ARRAY` - Array of rlp-serialized Merkle Tree nodes, starting with the state root hash of the account, following the path of all the keys as user requested.
-7. `state`: `OBJECT` - Object of state entries as requested attached with their values.
+2. `stateProof`: `ARRAY` - Array of rlp-serialized Merkle Tree nodes, starting with the state root hash of the account, following the path of all the keys as user requested.
 
 #### Example
 
