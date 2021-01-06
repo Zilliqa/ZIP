@@ -24,7 +24,7 @@ Returns the account status or contract state values together with the Merkle Pro
 #### Parameters
 
 1. `DATA`, 20 Bytes - address of the account.
-2. `ARRAY` - an array of keys which should be proofed and included.
+2. `ARRAY` - an array of objects which indicates the key of entries to be proofed and included.
 3. `QUANTITY|TAG` - Integer block number, or the string `"latest"`.
 
 #### Returns
