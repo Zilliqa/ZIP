@@ -140,7 +140,7 @@ From the proof above the user can get the following data by proper deserializati
 }
 ```
 
-As above, only interested state entries are provided in result after parsing. If the user want to dump the proof for all the state entries of a contractr, an empty array should be provided in the request.
+As above, only interested state entries are provided in result after parsing. If the user want to dump the proof for all the state entries of a contract, an empty array should be provided in the request.
 
 ## Implementation
 
