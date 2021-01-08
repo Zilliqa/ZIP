@@ -10,7 +10,7 @@ The purpose of this proposal is to standardise the Zilliqa Improvement Proposal 
 # TL;DR
 
 1. All proposals must be discussed for at least 3 days with a forum poll before they will be assigned a ZIP number by a ZIP editor and moved to Snapshot voting.
-2. The Snapshot vote will be binding, and must be open for at least 5 days. At least 20% quorum (> 20% of token total supply participating in the voting process) must be reached, and at least 50% must vote “For” the proposal for it to pass.
+2. The Snapshot vote requires > 30 $gZIL to initiate. It will be binding, and must be open for at least 5 days. At least 20% quorum must be reached, and at least 50% must vote “For” the proposal for it to pass.
 3. Most open-source core protocol updates by the Zilliqa core team are not required to go through this voting process; this process only governs those changes or proposals that should be ratified as ZIPs which will be discussed, voted on and officially enacted.
 
 # Abstract
@@ -45,7 +45,7 @@ If a proposal was introduced on the governance forum and achieved at least a 25%
 
 #### Formal Voting Phase
 
-Snapshot is used for formal, binding votes. The user who authored the ZIP will also create the proposal on Snapshot[3]. Snapshot requires > 0.1% of the total supply of gZIL[[4](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)] in a user’s wallet to create a proposal. If the author does not meet this requirement then contact a moderator who will submit the proposal on your behalf. Before creating the Snapshot vote, please wait for a moderator to assign your ZIP a number and begin your Snapshot title with it.
+Snapshot is used for formal, binding votes. The user who authored the ZIP will also create the proposal on Snapshot[3]. Snapshot requires > 30 $gZIL[[4](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)] in a user’s wallet to create a proposal. If the author does not meet this requirement then contact a moderator who will submit the proposal on your behalf. Before creating the Snapshot vote, please wait for a moderator to assign your ZIP a number and begin your Snapshot title with it.
 
 A minimum of 120 hours (5 days) for voting, and a 20% quorum requirement is required for ZIPs voting processes. This wide time period for voting, coupled with an active communication of ZIPs via the governance forum and on social media channels should help ensure that no ZIPs will slip through and no malicious ones are approved.
 
