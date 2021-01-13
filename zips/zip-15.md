@@ -1,43 +1,41 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 15  | Early Packet Dispatching for shards | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> Haichuan Liu <haichuan@zilliqa.com> | 2020-12-11 | 2020-12-24
+| 15  | Early Packet Dispatching for Shards | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> Haichuan Liu <haichuan@zilliqa.com> | 2020-12-11 | 2020-12-24
 
 ## Abstract
 
-This ZIP briefs on time when the transaction packets will be dispatched to shard and ds by lookups.
-It also briefs on time when transaction packets will be gossiped and processed within the shard.
+This ZIP proposes changes to the timing around the dispatch of transaction packets by lookup nodes to shard and directory service nodes. It also proposes changes to the time when transaction packets will be gossiped and processed within the shards.
 
 ## Motivation
 
-In the past, shard nodes after finishing microblock consensus were idle waiting for final block from ds committee. This idle time could be used to receive a transaction packets from lookup and gossiped within shard.
-This will enable us to shorten the `TX_DISTRIBUTE_TIME_IN_MS` and thereby shorten the block time.
+Transaction [soft confirmation](https://github.com/Zilliqa/Zilliqa/pull/2154) was introduced in Zilliqa version [7.0.0](https://github.com/Zilliqa/Zilliqa/releases/tag/v7.0.0). Soft confirmation means microblocks are now sent out by each shard to the lookup nodes as soon as microblock consensus is completed, instead of after the final block is generated.
+
+Currently, when a shard has completed both microblock consensus and sending of microblocks to lookup nodes, its shard nodes stay idle waiting for the final block from the DS committee. This idle time could be used to receive transaction packets from lookups, and to gossip those packets within the shard. This change would enable us to shorten the `TX_DISTRIBUTE_TIME_IN_MS` and thereby shorten the block time.
 
 ## Specification
 
-Two major changes involved are as follows:
+The major changes involved are as follows:
 
-**Lookup:**
+| Node   | Current Behavior | Proposed Behavior |
+|--------|------------------|-------------------|
+| Lookup | Dispatch packets for next epoch to shards after receiving final block | Dispatch packets for next epoch to a shard after receiving its microblock |
+|        | Dispatch packets for next epoch to DS after receiving final block | No change |
+| Shard  | Buffer packets if node is in improper state* | No change |
+|        | Buffer packets if received from lookup (regardless of state) | Gossip packets received from lookup immediately (as long as not in improper state) |
+|        | Gossip previously buffered packets at the start of new epoch | No change |
+|        | Process packets at start of new epoch** | No change |
+| DS     | 
 
-Lookup now dispatches transaction packets for next epoch to shard upon receiving of soft confirmation with microblock from corresponding shard for current epoch.
-Lookup continues to dispatch the transaction packets to ds-shard for next epoch on receiving final block of current epoch as before.
+> (*) Improper state means `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS)` is false.
 
-**Shard-Node:**
+> (**) Processing packets means reading out its contents and adding its transactions into the node's transaction pool.
 
-Shard node starts gossip immediately upon receiving of transaction packet from lookup.
-- Previously, packets were buffered if either received from lookup or if node is in improper state. i.e. if `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS)` holds `false`
-- Now, the packet will be buffered **only** if node is in in-proper state i.e. if `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS || m_state == WAITING_ON_FINALBLOCK)` holds `false`. Otherwise, shard node will gossip the packet immediately irrespective of whether received from lookup or from peer.
-
-It holds the packet processing until finalblock for current epoch is received. After which it commits transactions from packet into transaction pool.
-
-**DS-Node:**
-
-Nothing changes for DS node with regards to transaction packet gossiping and processing timings.
+Nothing changes for DS nodes with regards to transaction packet gossiping and processing timings.
 
 ## Implementation
 
 This ZIP is implemented in the following pull requests in the Zilliqa core repository:
 - [PR 22216](https://github.com/Zilliqa/Zilliqa/pull/2216)
-
 
 ## Copyright Waiver
 
