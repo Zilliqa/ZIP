@@ -24,7 +24,6 @@ The major changes involved are as follows:
 |        | Buffer packets if received from lookup (regardless of state) | Gossip packets received from lookup immediately (as long as not in improper state) |
 |        | Gossip previously buffered packets at the start of new epoch | No change |
 |        | Process packets at start of new epoch** | No change |
-| DS     | 
 
 > (*) Improper state means `m_txn_distribute_window_open && (m_state == MICROBLOCK_CONSENSUS_PREP || m_state == MICROBLOCK_CONSENSUS)` is false.
 
