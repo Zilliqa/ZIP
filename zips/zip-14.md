@@ -44,7 +44,7 @@ These are important points to consider for the pBFT revision:
 ## Implementation
 
 This ZIP is implemented in the following pull requests in the Zilliqa core repository:
-- [PR 22216](https://github.com/Zilliqa/Zilliqa/pull/2216)
+- [PR 2216](https://github.com/Zilliqa/Zilliqa/pull/2216)
 
 
 ## Copyright Waiver
