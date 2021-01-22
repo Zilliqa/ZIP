@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 12  | Standardisation of ZIP processes | Draft | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>| 2020-12-10 | 2020-12-16
+| 12  | Standardisation of ZIP processes | Implemented | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>, Jun Hao Tan <junhao@zilliqa.com>, Amrit Kummer <amrit@zilliqa.com> | 2020-12-10 | 2020-01-22
 
 # Summary
 
