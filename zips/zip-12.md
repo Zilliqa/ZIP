@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 12  | Standardisation of ZIP processes | Draft | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>| 2020-12-10 | 2020-12-16
+| 12  | Standardisation of ZIP processes | Implemented | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>, Jun Hao Tan <junhao@zilliqa.com>, Amrit Kummer <amrit@zilliqa.com> | 2020-12-10 | 2020-01-22
 
 # Summary
 
@@ -67,6 +67,7 @@ Snapshot may still be used for informal signal voting, community contests and gr
 2. [https://github.com/Zilliqa/ZIP/blob/master/zips/zip-0.md](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-0.md)
 3. [https://governance.zilliqa.com/](https://governance.zilliqa.com/)
 4. [https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)
+5. [https://governance.zilliqa.com/#/gzil/proposal/QmVRudHVZEk95odgKot8nHW42NRWnEPCdExt21fxtxxMCB](https://governance.zilliqa.com/#/gzil/proposal/QmVRudHVZEk95odgKot8nHW42NRWnEPCdExt21fxtxxMCB)
 
 ## Copyright Waiver
 
