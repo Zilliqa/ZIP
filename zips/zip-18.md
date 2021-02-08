@@ -1,73 +1,92 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 12  | Standardisation of ZIP processes | Implemented | Standards Track  | Han Wen Chua <hanwen@zilliqa.com>, Jun Hao Tan <junhao@zilliqa.com>, Amrit Kummer <amrit@zilliqa.com> | 2020-12-10 | 2020-01-22
+| 18  | Simple TX Spamming Protection | Ready | Standards Track  | Julian Sarcher <julian@sarcher.de> | 2021-02-08 | 2021-02-08
 
 # Summary
 
-The purpose of this proposal is to standardise the Zilliqa Improvement Proposal (ZIP) introduction, voting, and implementation process that governs the Zilliqa protocol.
-
-# TL;DR
-
-1. All proposals must be discussed for at least 3 days with a forum poll before they will be assigned a ZIP number by a ZIP editor and moved to Snapshot voting.
-2. The Snapshot vote requires > 30 $gZIL to initiate. It will be binding, and must be open for at least 7 days. At least 20% quorum must be reached, and more than 50% of those votes must vote “For” the proposal for it to pass.
-3. Most open-source core protocol updates by the Zilliqa core team are not required to go through this voting process; this process only governs those changes or proposals that should be ratified as ZIPs which will be discussed, voted on and officially enacted.
+The proposal solves TX spamming at the Zilliqa blockchain by increasing the fees of normal transactions, i.e. sending ZIL from address A to address B. Smart contract transactions, e.g. claiming staking rewards or ZilSwap swapping, are **NOT** effected by this proposal. Additionally, this proposal effects the circular token-economic model of Zilliqa by potentially increasing the amount of ZILs burned. 
 
 # Abstract
 
-This proposal formalises the process for introducing, voting, and implementing ZIPs. Valid proposals are to be discussed for at least 3 days on Zilliqa’s governance forum[1] and include a forum poll to gauge sentiment. If after at least three days there is a 25% “For” vote in the forum poll it may then move to formal voting via Snapshot. In order for a vote to pass it must have a quorum of > 20% of the token total supply and a majority support of > 50% of the minimum quorum, after at least five days of voting. Following a successful vote, necessary changes will be implemented by Zilliqa’s protocol team and the network’s upgrade timeline will be announced after the implementation is completed. Changes to this policy, including quorum requirements or what constitutes a majority vote, can only be enacted by a valid ZIP that overwrites this policy.
+The proposal has the following main effects:
+
+
+- Normal TX cost will be increased from **0.002 ZIL** to **0.1 ZIL** if this proposal gets implemented
+- Smart-contract execution fees in ZIL **remain as is** if this proposal gets implemented
+- Due to increased fees for normal transactions, the inflation rate of ZIL could decrease
+
+Considering the number of TX/s executed on the Zilliqa blockchain remains at the same level, more ZILs will be burned which will be beneficial for the circular token-econmic model of Zilliqa by decreasing the inflation rate.
 
 # Motivation
 
-Although there are several informal standards governing the ZIP introduction, voting, and implementation process there is no single, clear policy. ZIP 0[[2](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-0.md)] outlined this process, but it focused largely on the proposal only after it has transitioned to the voting/ZIP stage, and was enacted when all voting was on-chain. So far, no ZIP or formal policy has been implemented that specifies votes conducted via Snapshot are formal and binding. This ZIP would define and formalise the process in order for proposals to be valid and binding, and reduce any confusion in the ZIP introduction and voting process.
+On Feb 4, 2021 on the Zilliqa Blockchain 1,000,000 TX got executed for only 2000 ZILs of fees [1]. Preventing the blockchain being spammed without touching crucial blockchain attributes like permissionless or trustless, fees for normal ZIL transactions need to be adjusted.
+
+A comparision of ZRC-2 token transfers and ZIL transfers shows the inequalitity of TXs:
+
+- A ZRC-2 token transfer is usually about 1 ZIL in fees.
+- A normal ZIL TX costs 0.002 ZILs.
+
+In order to prevent spamming the blockchain with millions of useless transactions, the proposal suggests to increase the fees for normal TXs to 0.1 ZIL. The gap in fees between ZRC-2 token TXs and ZIL TXs is just not comprehensible.
 
 # Specification
 
-#### Introducing the ZIP
+The increase of normal TX fees can be done without effecting the fees associated with smart contract execution by increasing the gas unit consumption of normal transactions:
 
-In order to submit a potential ZIP for voting a user must first create a thread for the proposal on the Zilliqa governance forum[1]. Complete the auto-populated fields that appear when creating a proposal on the forum. A screenshot of these fields are below:
+- Changing the constant value of **NORMAL_TRAN_GAS** from **1** to **50**
 
-![Forum post example](https://lh5.googleusercontent.com/UzCYmY1TS2Ixx0QKP825BM_uwvYLxGHCq4jecEcmkbMDDSiprcB6Z_DN0aIp8pVa8iT-Q8mMASQKB4kXpd6ItX3UhY2GsG5qe464wuccEcyvmQoVCDYtsXjAd8yG7p-nZnH0Btlu)
+Furthermore, the currently extremely low TX fees make little sense with respect to the token-economic model of Zilliqa [2], as it requires burning fees in order to get ZIL inflation rate at meaningful levels, let’s say < 5%.
 
-Here are some pointers on how to create a proper proposal:
+- DS Block reward = 275,000 ZIL [3]
+- Circulating Supply = 14.2e9 ZIL [4]
 
-- Stick to the auto-generated template.
-- Write concise title with  **no number**. The number will be added by mods once on-chain voting starts.
-- Add understandable aka non-tech aka ELI-5 summary.
-- Add an abstract: what  **will**  be done if the ZIP is implemented (keep it below 200 words).
-- Write a longer motivation with links and references if necessary.
-- Add specifications if necessary.
-- Formulate clear  **For**  and  **Against**  positions.
+Assuming 1 TX block is about 45 seconds and 100 TX Blocks per DS Block:
 
-Additionally, the thread should include a poll from the governance forum to gauge interest from the wider governance community. This poll must be conducted using Discourse’s native poll. After the thread has been on the governance forum for at least 3 days and has received > 25% “For” votes, it can proceed to formal voting via Snapshot. This allows the community to suggest potential changes to the proposal before it moves to the formal voting phase on Snapshot. Please do not assign your proposal a ZIP number; numbers will be assigned by moderators prior to a vote taking place.
+- Reward per second = 275,000 ZIL / (45s*100) = ~61.1 ZIL/s
+- Base inflation rate = 61.1 ZIL/s x (365 x 24 x 3600) / 14.2e9 = ~13.57%
 
-If a proposal was introduced on the governance forum and achieved at least a 25% “For” from the poll, but is not submitted to Snapshot within 30 days, the author of the proposal must re-submit the proposal to the governance forum and restart the process. This ensures that proposals that previously received support from governance still retain support from the community.
+According to the circular economic model Zilliqans are obliged to spend those minted ZILs by paying fees to the network. Assuming the zero inflation state, when fees payed equals the block rewards, with the current network configuration this relates to one of:
 
-#### Formal Voting Phase
+**A)** ~61 ZRC-2 token transfers per second (assuming 1 ZIL per TX)
 
-Snapshot is used for formal, binding votes. The user who authored the ZIP will also create the proposal on Snapshot[3]. Snapshot requires > 30 $gZIL[[4](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)] in a user’s wallet to create a proposal. If the author does not meet this requirement then contact a moderator who will submit the proposal on your behalf. Before creating the Snapshot vote, please wait for a moderator to assign your ZIP a number and begin your Snapshot title with it.
+**B)** ~30,550 TX per second (assuming 0.002 ZIL per TX)
 
-A minimum of 168 hours (7 days) for voting, and a 20% quorum requirement is required for ZIPs voting processes. This wide time period for voting, coupled with an active communication of ZIPs via the governance forum and on social media channels should help ensure that no ZIPs will slip through and no malicious ones are approved.
+**C)** ~15 ZilSwap swaps per second (assuming 4 ZIL per swap)
 
-The block selected for the Snapshot vote will be block number at the Snapshot submission. In order for a vote to pass it needs to have a majority approval (>50%) by the minimum quorum required. The eligible vote is defined as $gZIL held in the wallets to the token holders at the snapshot block. If the Snapshot vote does not meet > 50% majority approval, then the vote is rejected and no changes will be enacted. Authors of proposals that are rejected may resubmit their proposal, but should include significant changes that address issues that may have prevented the ZIP from passing during the initial vote.
+If the proposal gets implemented only **B)** will change so that ~611 TX per second are required for reaching the zero inflation state of Zilliqa’s token-economic model:
 
-### Scope
+**A)** ~61 ZRC-2 token transfers per second (assuming 1 ZIL per TX)
 
-This specification aims to clarify which proposals should move to the ZIP stage, how long they should be discussed for, and how long the vote should be open for. By only allowing proposals to move to ZIP/voting after several days of discussion, we ensure that everyone’s voice is heard, and proposals should more accurately reflect community consensus.
+**B)** ~611 TX per second (assuming 0.1 ZIL per TX)
 
-Additionally, while some may think that 3 days is too short to adequately discuss a proposal, this is simply the minimum requirement. We expect most discussions to last for significantly longer than this, with only a select few well-planned and researched proposals with near unanimous approval moving through so quickly. This proposal also will not stifle the open source protocol improvements that are made daily by dozens of Zilliqa’s contributors. It only aims to govern those proposals that seek community feedback and ratification as ZIPs.
+**C)** ~15 ZilSwap swaps per second (assuming 4 ZIL per swap)
 
-### Other Uses for Snapshot
+Assuming a TX block time of 45 seconds, then, 611 TX per second relate to 27,495 TX per block. Maximum number of TX per block ever recorded on mainnet was slightly above 10,000 TX per block. Maximum block capacity when filled only with normal transactions would be 50,000 TX, which relates to ~1,111 TX per second. Currently, on the mainnet we have ~0.46 TX per second on a normal day (40,000 TX per day).
 
-Snapshot may still be used for informal signal voting, community contests and grantsDAO disbursement, but its primary purpose will be to conduct formal and binding votes for ZIPs.
+**With maturing of the network and increased adoption only the gas price needs to be lowered for higher maximum TPS in the network.**
+
+The rationale for the value 0.1 ZIL is based on the ratio of fees for normal TXs to other blockchain functions like sending a ZRC-2 token (1 ZIL) or swapping on ZilSwap (4 ZIL).
+
+Current ratios:
+- ZRC-2 token transfer: 1:500
+- Zilswap swap: 1:2000
+
+Proposal’s ratios:
+- ZRC-2 token transfer: 1:10
+- Zilswap swap: 1:40
+
+It has to be noted that the implemenation of the proposal requires a mandatory network upgrade for all nodes, rather than a optional one. Furthermore, the roll-out would need to be carefully planned by the Zilliqa team, e.g. informing and coordinating exchanges and wallets and updating various SDKs to ensure support.
+
 
 # References
 
-1. [https://forum.zilliqa.com/](https://forum.zilliqa.com/)
-2. [https://github.com/Zilliqa/ZIP/blob/master/zips/zip-0.md](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-0.md)
-3. [https://governance.zilliqa.com/](https://governance.zilliqa.com/)
-4. [https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)
-5. [https://governance.zilliqa.com/#/gzil/proposal/QmVRudHVZEk95odgKot8nHW42NRWnEPCdExt21fxtxxMCB](https://governance.zilliqa.com/#/gzil/proposal/QmVRudHVZEk95odgKot8nHW42NRWnEPCdExt21fxtxxMCB)
+1. https://viewblock.io/zilliqa/stat/txCountHistory
+
+2. https://github.com/Zilliqa/ZIP/blob/master/zips/zip-9.md
+
+3. https://viewblock.io/zilliqa/block/1004899
+
+4. https://viewblock.io/zilliqa/stat/topHolders
 
 ## Copyright Waiver
 
