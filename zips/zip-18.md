@@ -45,7 +45,7 @@ Assuming 1 TX block is about 45 seconds and 100 TX Blocks per DS Block:
 - Reward per second = 275,000 ZIL / (45s*100) = ~61.1 ZIL/s
 - Base inflation rate = 61.1 ZIL/s x (365 x 24 x 3600) / 14.2e9 = ~13.57%
 
-According to the circular economic model Zilliqans are obliged to spend those minted ZILs by paying fees to the network. Assuming the zero inflation state, when fees payed equals the block rewards, with the current network configuration this relates to one of:
+According to the circular economic model Zilliqans are obliged to spend those minted ZILs by paying fees to the network. Assuming the zero inflation state, fees payed equals the block rewards, with the current network configuration this relates to one of:
 
 **A)** ~61 ZRC-2 token transfers per second (assuming 1 ZIL per TX)
 
