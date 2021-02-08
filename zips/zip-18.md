@@ -77,6 +77,21 @@ Proposal’s ratios:
 
 It has to be noted that the implemenation of the proposal requires a mandatory network upgrade for all nodes, rather than a optional one. Furthermore, the roll-out would need to be carefully planned by the Zilliqa team, e.g. informing and coordinating exchanges and wallets and updating various SDKs to ensure support.
 
+# For:
+
+1. Higher transaction fees will make spamming very costly, e.g. issuing 1,000,000 TX would cost 100,000 ZIL.
+2. Higher transaction fees could decrease inflation rate of ZIL.
+3. The network is still in its early days, it needs to be protected from useless overload.
+4. The ratio of ZRC-2 token TX to Normal TX gets more reasonable.
+5. The fee of 0.1 ZIL is still low and can be lowered with maturing of the network in the future.
+
+# Against:
+
+1. The transaction fee for a simple TX increases from 0.002 ZIL to 0.1 ZIL
+2. Due to higher fees the number of transactions per day executed on the Zilliqa blockchain could decrease.
+3. Centralized exchanges’ withdrawal fees increase from 0.002 ZIL to 0.1 ZIL as well as for exchanges’ internal transactions, e.g. to and from their cold wallet.
+4. Risk of failed (rejected) transactions during roll-out of the change.
+5. Requires a mandatory network upgrade for all nodes.
 
 # References
 
