@@ -14,3 +14,6 @@
 | 9  | Tokenomic changes for $ZIL                 |
 | 10 | Governance                                 |
 | 11 | Seed Node Staking Mechanism: Phase I       |
+| 12 | Standardisation of ZIP processes           |
+| 15 | Early Packet Dispatching for Shards        |
+| 18 | Simple TX Spamming Protection              |
