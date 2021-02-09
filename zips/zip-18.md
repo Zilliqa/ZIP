@@ -40,7 +40,7 @@ Furthermore, the currently extremely low transaction fees make little sense with
 - DS Block reward = 275,000 ZIL [3]
 - Circulating Supply = 14.2e9 ZIL [4]
 
-Assuming 1 TX block is about 45 seconds and 100 TX Blocks per DS Block:
+Assuming 1 TX block is produced roughly 45 seconds and there are 100 TX Blocks per DS epoch:
 
 - Reward per second = 275,000 ZIL / (45s*100) = ~61.1 ZIL/s
 - Base inflation rate = 61.1 ZIL/s x (365 x 24 x 3600) / 14.2e9 = ~13.57%
