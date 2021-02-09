@@ -31,7 +31,7 @@ In order to prevent spamming the blockchain with millions of useless transaction
 
 # Specification
 
-The increase of normal TX fees can be done without effecting the fees associated with smart contract execution by increasing the gas unit consumption of normal transactions:
+The increase of payment transaction fees can be done without effecting the fees associated with smart contract execution by increasing the gas unit consumption of payment transactions:
 
 - Changing the constant value of **NORMAL_TRAN_GAS** from **1** to **50**
 
