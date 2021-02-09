@@ -20,7 +20,7 @@ Considering the number of transactions executed on the Zilliqa blockchain remain
 
 # Motivation
 
-On Feb 4, 2021 on the Zilliqa Blockchain 1,000,000 TX got executed for only 2000 ZILs of fees [1]. Preventing the blockchain being spammed without touching crucial blockchain attributes like permissionless or trustless, fees for normal ZIL transactions need to be adjusted.
+On Feb 4, 2021 on the Zilliqa Blockchain 1,000,000 transactions got executed at the cost of 2000 ZILs of fees [1]. Preventing the blockchain being spammed without touching crucial blockchain attributes like permissionless or trustless, fees for normal ZIL transactions need to be adjusted.
 
 A comparision of ZRC-2 token transfers and ZIL transfers shows the inequalitity of TXs:
 
