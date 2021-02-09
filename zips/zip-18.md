@@ -16,7 +16,7 @@ The proposal has the following main effects:
 - Smart-contract execution fees in ZIL **remain as is** if this proposal gets implemented
 - Due to increased fees for normal transactions, the inflation rate of ZIL could decrease as more fees will be burned 
 
-Considering the number of TX/s executed on the Zilliqa blockchain remains at the same level, more ZILs will be burned which will be beneficial for the circular token-econmic model of Zilliqa by decreasing the inflation rate.
+Considering the number of transactions executed on the Zilliqa blockchain remains at the same level, more ZILs will be burned which will be beneficial for the circular token-econmic model of Zilliqa by decreasing the inflation rate.
 
 # Motivation
 
