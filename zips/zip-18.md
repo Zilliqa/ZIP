@@ -65,7 +65,7 @@ Assuming a TX block time of 45 seconds, then, 611 TX per second relate to 27,495
 
 **With maturing of the network and increased adoption only the gas price needs to be lowered for higher maximum TPS in the network.**
 
-The rationale for the value 0.1 ZIL is based on the ratio of fees for normal TXs to other blockchain functions like sending a ZRC-2 token (1 ZIL) or swapping on ZilSwap (4 ZIL).
+The rationale for the value 0.1 ZIL is based on the ratio of fees for payment transactions to other blockchain functions like sending a ZRC-2 token (1 ZIL) or swapping on ZilSwap (4 ZIL).
 
 Current ratios:
 - ZRC-2 token transfer: 1:500
