@@ -87,7 +87,7 @@ It has to be noted that the implemenation of the proposal requires a mandatory n
 
 # Against
 
-1. The transaction fee for a simple TX increases from 0.002 ZIL to 0.1 ZIL
+1. The transaction fee for a payment transaction increases from 0.002 ZIL to 0.1 ZIL
 2. Due to higher fees the number of transactions per day executed on the Zilliqa blockchain could decrease.
 3. Centralized exchanges’ withdrawal fees increase from 0.002 ZIL to 0.1 ZIL as well as for exchanges’ internal transactions, e.g. to and from their cold wallet.
 4. Risk of failed (rejected) transactions during roll-out of the change.
