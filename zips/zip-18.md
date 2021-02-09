@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 18  | Simple TX Spamming Protection | Ready | Standards Track  | Julian Sarcher <julian@sarcher.de> | 2021-02-08 | 2021-02-08
+| 18  | Simple transaction Spamming mitigation | Ready | Standards Track  | Julian Sarcher <julian@sarcher.de> | 2021-02-08 | 2021-02-08
 
 # Summary
 
