@@ -35,7 +35,7 @@ The increase of normal TX fees can be done without effecting the fees associated
 
 - Changing the constant value of **NORMAL_TRAN_GAS** from **1** to **50**
 
-Furthermore, the currently extremely low TX fees make little sense with respect to the token-economic model of Zilliqa [2], as it requires burning fees in order to get ZIL inflation rate at meaningful levels, let’s say < 5%.
+Furthermore, the currently extremely low transaction fees make little sense with respect to the token-economic model of Zilliqa [2], as it requires burning fees in order to get ZIL inflation rate at meaningful levels, let’s say < 5%.
 
 - DS Block reward = 275,000 ZIL [3]
 - Circulating Supply = 14.2e9 ZIL [4]
