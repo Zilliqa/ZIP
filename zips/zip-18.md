@@ -5,7 +5,7 @@
 
 # Summary
 
-The proposal solves TX spamming at the Zilliqa blockchain by increasing the fees of normal transactions, i.e. sending ZIL from address A to address B. Smart contract transactions, e.g. claiming staking rewards or ZilSwap swapping, are **NOT** effected by this proposal. Additionally, this proposal effects the circular token-economic model of Zilliqa by potentially increasing the amount of ZILs burned. 
+The proposal addresses transactions spamming at the Zilliqa blockchain by increasing the fees of payment transactions, making it more costly for anyone to spam the network. Smart contract transactions, e.g. claiming staking rewards or ZilSwap swapping, are **NOT** effected by this proposal. Additionally, this proposal effects the circular token-economic model of Zilliqa by potentially increasing the amount of ZILs burned. 
 
 # Abstract
 
