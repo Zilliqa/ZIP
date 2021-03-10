@@ -1,6 +1,6 @@
 | ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 13  | Transport Re-architecture for Pull Messages Between Seed Nodes | Draft | Standards Track  | Chetan Phirke <chetan@zilliqa.com> | 2020-12-10 | 2020-12-10
+| 13  | Transport Re-architecture for Pull Messages Between Seed Nodes | Implemented | Standards Track  | Chetan Phirke <chetan@zilliqa.com> | 2020-12-10 | 2021-03-10
 
 ## Abstract
 
@@ -46,7 +46,7 @@ In terms of changes, the following nodes will be affected.
 #### Seed Node (Client)
 
 1. Seed node will always connect to `33135` for pull (bidirectional) messages. Port `33133` will continue to handle unidirectional messages (like forwarding transactions).
-2. Seed node key should be whitelisted in our lookups and seedpubs.Request from non whitelisted seed nodes will cause connection termination from source seed server.
+2. Seed node key should be whitelisted in lookups and upper seed nodes. Requests from non-whitelisted seed nodes will cause connection termination from source seed server.
 3. For sending a message to source seed for pull messages, seed node will use start byte `START_BYTE_SEED_TO_SEED_REQUEST` during `SendMessage()` function call.
 4. In addition, there will be a timeout for accepting response message, which will be initialized to `SEED_SYNC_LARGE_PULL_INTERVAL` during `bufferevent` creation through API `bufferevent_set_timeouts`. This timeout is required as it is expected that for some messages there may be no response. In order to clean up the `bufferevent` at the sender side, we have to also set a timeout for messages or wait for timer expiration at the application level, and then do the cleanup.
 5. In order to keep the event loop running during creation, it is required to add a timer event and the call `event_base_dispatch()`. If this is not done, the event loop terminates immediately and kills the main thread after creation.
@@ -56,7 +56,7 @@ In terms of changes, the following nodes will be affected.
 
 1. Server node will open another port on `33135` and the events for it will be dispatched to the same event loop handling listening events on port `33133`.
 2. If the client key is not whitelisted in the server, the connection will be immediately closed by the server for the request.
-3. Besides, `MAX_PEER_CONNECTION` is populated with 100 connections.At maximum of 100 simultaneous connections can be there from a particular IP.
+3. A maximum of `MAX_PEER_CONNECTION` simultaneous connections can be established with a particular IP.
 4. All messages with start byte `START_BYTE_SEED_TO_SEED_REQUEST` will be handled on new accept/read/event callbacks, and the rest are all dropped.
 5. Server node will store the `bufferevent` for the request in `bufferEventMap`, which stores `key=IP:PORT` and `value=bufferevent*`.
 6. For sending the response, server node will use `START_BYTE_SEED_TO_SEED_RESPONSE` start byte in `SendMessage()` function call.
