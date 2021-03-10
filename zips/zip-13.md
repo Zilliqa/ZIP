@@ -81,6 +81,14 @@ The following sequence diagrams depict the interaction between client and server
 
 The rearchitecture proposed in this ZIP addresses the infrastructure restriction for some seed node operators where they are unable to listen on incoming port `33133`. It also improves the Zilliqa core network layer architecture by reducing the number of TCP connections per message.
 
+## Implementation
+
+This ZIP is implemented in the following pull requests in the Zilliqa core repository.
+
+- [PR 2387](https://github.com/Zilliqa/Zilliqa/pull/2387)
+- [PR 2437](https://github.com/Zilliqa/Zilliqa/pull/2437)
+- [PR 2441](https://github.com/Zilliqa/Zilliqa/pull/2441)
+
 ## Copyright Waiver
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
