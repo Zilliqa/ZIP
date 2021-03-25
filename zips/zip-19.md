@@ -77,6 +77,7 @@ The maps affected are
 - `last_buf_deposit_cycle_deleg`
 - `last_withdraw_cycle_deleg`
 - `withdrawal_pending`
+- `ssn_deleg_amt`
 
 ## Compatibility issue with upcoming Scilla version upgrade
 
