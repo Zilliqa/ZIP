@@ -77,6 +77,12 @@ Proposal’s ratios:
 
 It has to be noted that the implemenation of the proposal requires a mandatory network upgrade for all nodes, rather than a optional one. Furthermore, the roll-out would need to be carefully planned by the Zilliqa team, e.g. informing and coordinating exchanges and wallets and updating various SDKs to ensure support.
 
+# Comparisons of scenarios
+
+As we can see, the required number of payment transactions required to reach net zero inflation has decreased by 98%. This will create a better circular tokenomics for $ZIL as a whole for all token holders.
+
+However, if the $ZIL price increased drastically in future and results in expensive gas fees, we can revisit the **NORMAL_TRAN_GAS** or **GAS_PRICE_MIN_VALUE** parameter and decrease it with another governance vote.
+
 # For
 
 1. Higher transaction fees will make spamming very costly, e.g. issuing 1,000,000 TX would cost 100,000 ZIL.
