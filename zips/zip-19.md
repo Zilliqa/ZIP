@@ -9,7 +9,7 @@
   * [Limitation around smart contract wallets](#limitation-around-smart-contract-wallets)
   * [Incomplete removal of empty maps in contract states](#incomplete-removal-of-empty-maps-in-contract-states)
   * [Compatibility issue with upcoming Scilla version upgrade](#compatibility-issue-with-upcoming-scilla-version-upgrade)
-- [Design changes for Phase 1.1](#design-changes-for-phase-1.1)
+- [Design changes for Phase 1.1](#design-changes-for-phase-11)
   * [Transfer of stake deposit between accounts](#transfer-of-stake-deposit-between-accounts)
   * [Proper deletion of empty map entries](#proper-deletion-of-empty-map-entries)
   * [Incomplete removal of empty maps in contract states](#incomplete-removal-of-empty-maps-in-contract-states)
