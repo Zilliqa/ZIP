@@ -18,3 +18,4 @@
 | 13 | Transport Re-architecture for Pull Messages Between Seed Nodes |
 | 14 | Revised pBFT Consensus                     |
 | 15 | Early Packet Dispatching for Shards        |
+| 18 | Simple TX Spamming Protection              |
