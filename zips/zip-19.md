@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 19   | Seed Node Staking Mechanism: Phase I.1 | Draft  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-03-25 |
+| 19   | Seed Node Staking Mechanism: Phase 1.1 | Draft  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-03-25 |
 
 # Table of Content
 
@@ -9,7 +9,7 @@
   * [Limitation around smart contract wallets](#limitation-around-smart-contract-wallets)
   * [Incomplete removal of empty maps in contract states](#incomplete-removal-of-empty-maps-in-contract-states)
   * [Compatibility issue with upcoming Scilla version upgrade](#compatibility-issue-with-upcoming-scilla-version-upgrade)
-- [Design changes for Phase I.1](#design-changes-for-phase-i.1)
+- [Design changes for Phase 1.1](#design-changes-for-phase-11)
   * [Transfer of stake deposit between accounts](#transfer-of-stake-deposit-between-accounts)
   * [Proper deletion of empty map entries](#proper-deletion-of-empty-map-entries)
   * [Incomplete removal of empty maps in contract states](#incomplete-removal-of-empty-maps-in-contract-states)
@@ -19,7 +19,7 @@
 
 # Abstract
 
-ZIP-19 presents the Phase I.1 extension of the seed node staking proposal as
+ZIP-19 presents the Phase 1.1 extension of the seed node staking proposal as
 presented in [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md).
 
 This new proposal introduces a new mechanism to transfer stake from one account to another account. 
@@ -84,7 +84,7 @@ The maps affected are
 The upcoming Scilla version `0.10.0` contains a bug fix for an issue known as `disambiguation bug`. This bug fix is neccessary to support future Scilla 
 features such as remote state read and Scilla external library. After the fix, calling a contract via our JSON RPC APIs and passing a custom user-defined ADT as transition parameter will requires contract addres to be included. Hence, the staking `proxy` contract is no longer compatibile with the `ssnlist` contract starting from Scilla version `0.10.0`.
 
-# Design changes for Phase I.1
+# Design changes for Phase 1.1
 
 ## Transfer of stake deposit between accounts
 
@@ -129,7 +129,7 @@ repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/READM
 
 For direct access:
 
-* The specification for the different contracts needed for Phase I.1 can be 
+* The specification for the different contracts needed for Phase 1.1 can be 
 found [here (TBA)](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md). 
 
 * The implementation of the contracts can be found 
