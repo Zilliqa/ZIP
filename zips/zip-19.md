@@ -94,7 +94,7 @@ A new feature will be added to allow transferring of entire stake deposit (acros
 
 All stake deposit and rewards will be transfer ot the new address
 
-### Scenario 2: Transferring to an address which currently have 1 or more stake delegation 
+### Scenario 2: Transferring to an address which currently have 1 or more stake delegation or pending stake withdrawal
 
 All stake deposit and rewards will be transfer ot the new address. If there is any overlap with the existing stake delegation, rewartds or pending withdrawal, the
 transferred value will be added to the exisiting stake on the new address.
