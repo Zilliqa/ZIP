@@ -104,7 +104,7 @@ transferred value will be added to the exisiting stake on the new address.
 The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The receiptant will then need to 
 confirm the transfer. Upon confirmation, the transfer will be executed. 
 
-3 new transitions will be added to support this new feature
+3 new transitions in both `proxy` and `ssnlist` will be added to support this new feature
 
 | transition | Comments |
 | ---------- | -------- | 
