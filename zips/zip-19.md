@@ -84,11 +84,12 @@ The maps affected are
 The upcoming Scilla version `0.10.0` contains a bug fix for an issue known as `disambiguation bug`. This bug fix is neccessary to support future Scilla 
 features such as remote state read and Scilla external library. After the fix, calling a contract via our JSON RPC APIs and passing a custom user-defined ADT as transition parameter will requires contract addres to be included. Hence, the staking `proxy` contract is no longer compatibile with the `ssnlist` contract starting from Scilla version `0.10.0`.
 
-# Design changes for Phase 1.1
+# Design changes for phase 1.1
 
 ## Transfer of stake deposit between accounts
 
-A new feature will be added to allow transferring of entire stake deposit, rewards and pending withdrawal across all SSNs to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediate upon confirmation of the transfer. 
+A new feature will be added to allow transferring of entire stake deposit, rewards and pending withdrawal across all SSNs to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediately executed upon confirmation of the transfer. There is no penalty incurred for this transfer and 
+there is no restriction on the number of transfers.
 
 ### Scenario 1: Transferring to an address which does not have any active staking activity
 
