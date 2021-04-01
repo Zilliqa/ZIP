@@ -112,6 +112,10 @@ confirm the transfer. Upon confirmation, the transfer will be executed.
 | `ConfirmDelegatorSwap` | To execute the transfer |
 | `CancelDelegatorSwap` | to cancel the transfer request |
 
+### Caveat
+
+This mechanism does not support partial transfer.
+
 ## Proper deletion of empty map entries
 
 In order to remove the empty map entries properly, Scilla builtin `remove` should be used instead of `delete`. Upon removal, the updated sub-map should be 
