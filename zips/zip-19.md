@@ -90,7 +90,7 @@ features such as remote state read and Scilla external library. After the fix, c
 
 A new feature will be added to allow transferring of entire stake deposit (across all SSNs) to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediate upon confirmation of the transfer. 
 
-### Scenario 1: Transferring to an address which does not have any active stake
+### Scenario 1: Transferring to an address which does not have any active staking activity
 
 All stake deposit and rewards will be transfer ot the new address
 
