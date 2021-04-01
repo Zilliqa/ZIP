@@ -88,11 +88,29 @@ features such as remote state read and Scilla external library. After the fix, c
 
 ## Transfer of stake deposit between accounts
 
-A new transition `SwapDeleg(initiator: ByStr20, new_deleg_addr: ByStr20)` will be added. This transition will allow changing of
-stake ownership from a Zilliqa account to another Zilliqa account.
+A new feature will be added to allow transferring of entire stake deposit (across all SSNs) to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediate upon confirmation of the transfer. 
 
-`A note for discussion: To avoid user mistake, we should implement the same mechanism for changing admin. 
-i.e requiring the destination account to accept the ownership transfer`
+### Scenario 1: Transferring to an address which does not have any active stake
+
+All stake deposit and rewards will be transfer ot the new address
+
+### Scenario 2: Transferring to an address which currently have 1 or more stake delegation 
+
+All stake deposit and rewards will be transfer ot the new address. If there is any overlap with the existing stake delegation, rewartds or pending withdrawal, the
+transferred value will be added to the exisiting stake on the new address.
+
+### Mechanism 
+
+The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The receiptant will then need to 
+confirm the transfer. Upon confirmation, the transfer will be executed. 
+
+3 new transitions will be added to support this new feature
+
+| transition | Comments |
+| ---------- | -------- | 
+| `RequestDelegatorSwap` | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
+| `ConfirmDelegatorSwap` | To execute the transfer |
+| `CancelDelegatorSwap` | to cancel the transfer request |
 
 ## Proper deletion of empty map entries
 
