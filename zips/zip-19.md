@@ -102,20 +102,20 @@ transferred value will be added to the exisiting stake on the new address.
 
 ### Scenario 3: Cyclic transfer of stake
 
-In this scenario, there are two addresses. Both addresses are transfering stake to each other.
+In this scenario, there are two addresses, address A and address B. Both addresses are transfering stake to each other.
 
 ```
 A --> B
 B --> A
 ```
-Case 1: B accepts A request first:
+**Case 1:** B accepts A request first:
 ```
 A --> (B) --> A
 ```
 B accepts A request; B inherit all of A's stake
 Next, A accepts B request; A is final inheritor
 
-Case 2: A accepts B request first:
+**Case 2:** A accepts B request first:
 ```
 B --> (A) --> B
 ```
