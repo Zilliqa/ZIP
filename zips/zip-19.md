@@ -102,7 +102,7 @@ transferred value will be added to the exisiting stake on the new address.
 
 ### Scenario 3: Cyclic transfer of stake
 
-In this scenario, there is two address. Both addresses are transfering stake to each other.
+In this scenario, there are two addresses. Both addresses are transfering stake to each other.
 
 ```
 A --> B
