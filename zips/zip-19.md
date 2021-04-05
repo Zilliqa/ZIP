@@ -122,9 +122,6 @@ B --> (A) --> B
 A accepts B request; A inherit all of B's stake
 Next, B accepts A request; B is the final inheritor
 
-This means that the first transaction that execute the transfer will get the stake due to transaction
-atomicity.
-
 However, there is no identified use case for cyclic transfer of a stake. Additionally, it may impact overall user experience. As such, such cyclic transfer will be disabled i.e If the recipient is already a requestor in the `deleg_swap_request` map. transfer of stake request will not be possible till acceptance or cancellation of request. However, non-cyclic transfer will still be possible even if there is pending stake transfer. 
 
 ### Mechanism 
