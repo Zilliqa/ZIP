@@ -100,6 +100,33 @@ All stake deposit and rewards will be transfer ot the new address
 All stake deposit and rewards will be transfer ot the new address. If there is any overlap with the existing stake delegation, rewartds or pending withdrawal, the
 transferred value will be added to the exisiting stake on the new address.
 
+### Scenario 3: Cyclic transfer of stake
+
+In this scenario, there is two address. Both addresses are transfering stake to each other.
+
+```
+A --> B
+B --> A
+```
+Case 1: B accepts A request first:
+```
+A --> (B) --> A
+```
+B accepts A request; B inherit all of A's stake
+Next, A accepts B request; A is final inheritor
+
+Case 2: A accepts B request first:
+```
+B --> (A) --> B
+```
+A accepts B request; A inherit all of B's stake
+Next, B accepts A request; B is the final inheritor
+
+This means that the first transaction that execute the transfer will get the stake due to transaction
+atomicity.
+
+However, there is no identified use case for cyclic transfer of a stake. Additionally, it may impact overall user experience. As such, such cyclic transfer will be disabled i.e If the recipient is already a requestor in the `deleg_swap_request` map. transfer of stake request will not be possible till acceptance or cancellation of request. However, non-cyclic transfer will still be possible even if there is pending stake transfer. 
+
 ### Mechanism 
 
 The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The receiptant will then need to 
@@ -111,7 +138,7 @@ confirm the transfer. Upon confirmation, the transfer will be executed.
 | ---------- | -------- | 
 | `RequestDelegatorSwap` | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
 | `ConfirmDelegatorSwap` | To execute the transfer |
-| `CancelDelegatorSwap` | to cancel the transfer request |
+| `CancelDelegatorSwap` | to cancel the transfer request by either transferer or transferee |
 
 ### Caveat
 
