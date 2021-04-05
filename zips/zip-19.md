@@ -135,7 +135,7 @@ confirm the transfer. Upon confirmation, the transfer will be executed.
 | ---------- | -------- | 
 | `RequestDelegatorSwap` | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
 | `ConfirmDelegatorSwap` | To execute the transfer |
-| `CancelDelegatorSwap` | to cancel the transfer request by either transferer or transferee |
+| `CancelDelegatorSwap` | To cancel the transfer request by either transferer or transferee |
 
 ### Caveat
 
