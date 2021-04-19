@@ -71,13 +71,13 @@ Expected:
 
 The maps affected are 
 - `buff_deposit_deleg`
+- `direct_deposit_deleg`
 - `deleg_stake_per_cycle`
 - `deposit_amt_deleg`
-- `direct_deposit_deleg`
+- `ssn_deleg_amt`
 - `last_buf_deposit_cycle_deleg`
 - `last_withdraw_cycle_deleg`
 - `withdrawal_pending`
-- `ssn_deleg_amt`
 
 ## Compatibility issue with upcoming Scilla version upgrade
 
@@ -122,24 +122,37 @@ B --> (A) --> B
 A accepts B request; A inherit all of B's stake
 Next, B accepts A request; B is the final inheritor
 
-However, there is no identified use case for cyclic transfer of a stake. Additionally, it may impact overall user experience. As such, such cyclic transfer will be disabled i.e If the recipient is already a requestor in the `deleg_swap_request` map. transfer of stake request will not be possible till acceptance or cancellation of request. However, non-cyclic transfer will still be possible even if there is pending stake transfer. 
+However, there is no identified use case for cyclic transfer of a stake. Additionally, it may impact overall user experience. As such, such cyclic transfer will be disabled i.e If the recipient is already a requestor in the `deleg_swap_request` map, transfer of stake request will not be possible till acceptance or cancellation of request. However, non-cyclic transfer will still be possible even if there is pending stake transfer. 
 
 ### Mechanism 
 
 The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The receiptant will then need to 
 confirm the transfer. Upon confirmation, the transfer will be executed. 
 
-3 new transitions in both `proxy` and `ssnlist` will be added to support this new feature
+Both parties must have zero buffered deposit and zero unwithdrawn rewards at the time of requesting and confirming the swap. 
+
+4 new transitions in both `proxy` and `ssnlist` will be added to support this new feature.
 
 | transition | Comments |
 | ---------- | -------- | 
 | `RequestDelegatorSwap` | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
 | `ConfirmDelegatorSwap` | To execute the transfer |
-| `CancelDelegatorSwap` | To cancel the transfer request by either transferer or transferee |
+| `RevokeDelegatorSwap` | To cancel the transfer by the requestor |
+| `RejectDelegatorSwap` | To cancel the transfer request from a specific requestor |
+
 
 ### Caveat
 
 This mechanism does not support partial transfer.
+
+### Other considerations 
+
+Other than the intended purpose of transfer from address to address, the feature may open up a secondary market for stake transfer. For instance, an exchange
+may choose to offer to accept stake deposit transfer to its exchange wallet where the exchange can offer "unbonding" service by making use of their 
+existing assets in their balance sheet. 
+
+In such a case, the secondary market undertaking this transfer will need to take additional risk as the bonding period may be adjusted from time to time by the 
+Zilliqa community via a governance vote. Also, the stake deposit holder will need to take on counter-party risk by transfering his stake to a third party. 
 
 ## Proper deletion of empty map entries
 
