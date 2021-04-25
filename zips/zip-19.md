@@ -167,10 +167,11 @@ will be modify to `List (Pair ByStr20 Uint128))` in both `proxy` and `ssnlist` c
 
 ## Migration of contract state
 
-# Change to staking parameter
+# Change to staking parameters
 
-In Zilliqa v8.0.0, the block time has been reduced due to improvement in the core protocol. The block reward in v8.0.0 is adjusted to bring it back to parity. 
-As a result of this change, the following parameters will be adjust to bring it back to parity
+In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a result of various improvement in the core protocol. 
+The block reward in v8.0.0 will be adjusted to bring it back to parity. As a result of this change, the following parameters within in the Zilliqa Seed Node
+Staking program will be adjust to bring it back to parity
 
 ...parameters changes here...
 
