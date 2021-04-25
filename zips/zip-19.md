@@ -175,8 +175,8 @@ Staking program will be adjust to bring it back to parity
 
 ...parameters changes here...
 
-Please note that the above parameters depends heavily on Zilliqa v8.0.0, which will require more observation in mainnet context. These above parameters are considered
-interim. If the parameters are off from intial estimate, an follow-up ZIP will be propose to bring it back to parity. 
+Please note that the above parameters depends heavily on Zilliqa v8.0.0, which willrequire more observation in mainnet context. As such, these above parameters are considered
+interim. If the parameters are off from the estimate, a follow-up ZIP will be propose to bring it back to parity. 
 
 # Contract Specification and Implementation
 
