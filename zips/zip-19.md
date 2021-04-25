@@ -25,6 +25,8 @@ presented in [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md).
 This new proposal introduces a new mechanism to transfer stake from one account to another account. 
 In addition, it also fixes an empty map deletion bug in Phase 1 and resolve an compatibility with upcoming Scilla version `0.10.0` upgrade.  
 
+The Zilliqa team will faciliate the migration of contract states from phase 1 to phase 1.1 via remote state read, which will be part of Zilliqa v8.0.0 release.
+
 # Background
 
 We strongly recommend readers to go through
@@ -140,7 +142,6 @@ Both parties must have zero buffered deposit and zero unwithdrawn rewards at the
 | `RevokeDelegatorSwap` | To cancel the transfer by the requestor |
 | `RejectDelegatorSwap` | To cancel the transfer request from a specific requestor |
 
-
 ### Caveat
 
 This mechanism does not support partial transfer.
@@ -163,6 +164,18 @@ re-assigned to the mutable variable again.
 
 To resolves the `disambiguation bug`, the custom ADT `SsnRewardShare` in `AssignStakeReward` transition parameter 
 will be modify to `List (Pair ByStr20 Uint128))` in both `proxy` and `ssnlist` contracts.
+
+## Migration of contract state
+
+# Change to staking parameter
+
+In Zilliqa v8.0.0, the block time has been reduced due to improvement in the core protocol. The block reward in v8.0.0 is adjusted to bring it back to parity. 
+As a result of this change, the following parameters will be adjust to bring it back to parity
+
+...parameters changes here...
+
+Please note that the above parameters depends heavily on Zilliqa v8.0.0, which will require more observation in mainnet context. These above parameters are considered
+interim. If the parameters are off from intial estimate, an follow-up ZIP will be propose to bring it back to parity. 
 
 # Contract Specification and Implementation
 
