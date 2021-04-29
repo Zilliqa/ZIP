@@ -196,8 +196,15 @@ For direct access:
 * The specification for the different contracts needed for Phase 1.1 can be 
 found [here (TBA)](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md). 
 
-* The implementation of the contracts can be found 
-[here (TBA)](https://github.com/Zilliqa/staking-contract/tree/dev/contracts). 
+* The full implementation of the contracts can be found [here](https://github.com/Zilliqa/staking-contract/tree/main/contracts).
+
+* [Removal of custom ADT for AssignStakeRewards](https://github.com/Zilliqa/staking-contract/pull/218).
+
+* [Swapping of address for delegator](https://github.com/Zilliqa/staking-contract/pull/219).
+
+* [Proper deletion of empty maps](https://github.com/Zilliqa/staking-contract/pull/222).
+
+* [State migration](https://github.com/Zilliqa/staking-contract/pull/224).
 
 # Limitations and Future Work
 
