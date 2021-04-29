@@ -76,7 +76,6 @@ The maps affected are
 - `direct_deposit_deleg`
 - `deleg_stake_per_cycle`
 - `deposit_amt_deleg`
-- `ssn_deleg_amt`
 - `last_buf_deposit_cycle_deleg`
 - `last_withdraw_cycle_deleg`
 - `withdrawal_pending`
@@ -157,8 +156,17 @@ Zilliqa community via a governance vote. Also, the stake deposit holder will nee
 
 ## Proper deletion of empty map entries
 
-In order to remove the empty map entries properly, Scilla builtin `remove` should be used instead of `delete`. Upon removal, the updated sub-map should be 
-re-assigned to the mutable variable again.
+Additional checks are implemented to check for empty maps after a map deletion operation. This is done by calling various clean up procedures. This will incur 
+additional gas costs to the delegator. Based on our experiments, the expected gas consumption is expected to increase by around 5%. 
+
+We have also implemented the following transition. tt will be used by the contract admin to clean up any empty map post state migration. 
+- `CleanBuffDeposit`
+- `CleanDirectDeposit`
+- `CleanDelegStakePerCycle`
+- `CleanDepositAmt`
+- `CleanPendingWithdrawal`
+- `CleanLastWithdrawCycle`
+- `CleanLastBuffDepositCycle`
 
 ## Removal of custom ADT at `AssignStakeRewards` transition
 
