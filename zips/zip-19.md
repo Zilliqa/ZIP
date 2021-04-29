@@ -187,7 +187,10 @@ In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a re
 The block reward in v8.0.0 will be adjusted to bring it back to parity. As a result of this change, the following parameters within in the Zilliqa Seed Node
 Staking program will be adjust to bring it back to parity
 
-...parameters changes here...
+|Parameter name | Current value | new value |
+|-------------- | ------------- | --------- |
+| Block per cycle | 1800 | 2400 | 
+| Reward per cycle | | |
 
 Please note that the above parameters depends heavily on Zilliqa v8.0.0, which willrequire more observation in mainnet context. As such, these above parameters are considered
 interim. If the parameters are off from the estimate, a follow-up ZIP will be propose to bring it back to parity. 
