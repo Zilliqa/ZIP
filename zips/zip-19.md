@@ -188,15 +188,12 @@ interim. If the parameters are off from the estimate, a follow-up ZIP will be pr
 
 # Contract Specification and Implementation
 
-More details on the contracts can be found in the [staking contract
-repository](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md).
+More details on the contracts can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/tree/main/contracts).
 
 For direct access:
 
 * The specification for the different contracts needed for Phase 1.1 can be 
 found [here (TBA)](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md)
-
-* The full implementation of the contracts can be found [here](https://github.com/Zilliqa/staking-contract/tree/main/contracts)
 
 * [Removal of custom ADT for AssignStakeRewards](https://github.com/Zilliqa/staking-contract/pull/218)
 
