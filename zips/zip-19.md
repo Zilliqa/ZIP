@@ -170,10 +170,16 @@ We have also implemented the following transition. tt will be used by the contra
 
 ## Removal of custom ADT at `AssignStakeRewards` transition
 
-To resolves the `disambiguation bug`, the custom ADT `SsnRewardShare` in `AssignStakeReward` transition parameter 
-will be modify to `List (Pair ByStr20 Uint128))` in both `proxy` and `ssnlist` contracts.
+To resolves the `disambiguation bug`, the custom ADT `SsnRewardShare` in `AssignStakeReward` transition parameters will be modify to `List (Pair ByStr20 Uint128))` 
+in both `proxy` and `ssnlist` contracts.
 
 ## Migration of contract state
+
+A new set of smart contracts will be deployed and will be populated with the stakes from the current staking contracts. There will be 2 different mechanism for the migration.
+
+For maps that do not use user defined ADT, the new contract will use remote state read to read the state of the current contract. Admin will need to supply which key of the map
+to read me. For maps that use user defined ADT, remote state read will be possible due to ambiguation. As such, we will use the populate transition to population entry by entry.
+For all other fields, we will use the populate transition. 
 
 # Change to staking parameters
 
