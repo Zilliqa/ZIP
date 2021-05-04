@@ -178,13 +178,12 @@ in both `proxy` and `ssnlist` contracts.
 A new set of smart contracts will be deployed and will be populated with the stakes from the current staking contracts. There will be 2 different mechanism for the migration.
 
 For maps that do not use user defined ADT, the new contract will use remote state read to read the state of the current contract. Admin will need to supply which key of the map
-to read me. For maps that use user defined ADT, remote state read will be possible due to ambiguation. As such, we will use the populate transition to population entry by entry.
+to read me. For maps that use user defined ADT, remote state read will not be possible due to ambiguation. As such, we will use the populate transition to population entry by entry.
 For all other fields, we will use the populate transition. 
 
 # Change to staking parameters
 
-In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a result of various improvement in the core protocol. The block reward in v8.0.0 will be adjusted accoordingly 
-to bring the cycle duration back to 24 hours. The following parameters will be adjusted as follow:
+In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvement within the core protocol. The block reward in `v8.0.0` will be adjusted accoordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
 
 | Parameter | Phase 1 | Phase 1.1 |
 |-------------- | ------------- | --------- |
@@ -193,19 +192,19 @@ to bring the cycle duration back to 24 hours. The following parameters will be a
 | Reward per cycle | 1,980,000 $ZIL | 1,760,000 $ZIL |
 | Unbonding period | 24,000 final blocks | 35,000 final blocks (~2 weeks) |
 
-Please note that the above parameters depends heavily on Zilliqa v8.0.0, which will require more observation in mainnet context. As such, these above parameters are considered
-interim. If the parameters are off from the estimate, a follow-up ZIP can be propose to adjust the parameters.
+Please note that the above parameters depends heavily on Zilliqa `v8.0.0`, which will require more observation of Zilliqa mainnet. The above parameters change are considered
+interim. If the parameters are deviate from the estimate, a follow-up ZIP can be propose to adjust the parameters.
 # Contract Specification and Implementation
 
 More details on the contracts can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/tree/main/contracts).
 
 For direct access:
 
-* The specification for the different contracts needed for Phase 1.1 can be found [here](https://github.com/Zilliqa/staking-contract/blob/main/README.md)
+* The specification for the different contracts needed for Phase 1.1 can be found in the [readme](https://github.com/Zilliqa/staking-contract/blob/main/README.md)
 
-* [Removal of custom ADT for AssignStakeRewards](https://github.com/Zilliqa/staking-contract/pull/218)
+* Removal of custom ADT for AssignStakeRewards [1](https://github.com/Zilliqa/staking-contract/pull/218)[2](https://github.com/Zilliqa/staking-contract/pull/225)
 
-* [Swapping of address for delegator](https://github.com/Zilliqa/staking-contract/pull/219)q
+* [Swapping of address for delegator](https://github.com/Zilliqa/staking-contract/pull/219)
 
 * [Proper deletion of empty maps](https://github.com/Zilliqa/staking-contract/pull/222)
 
