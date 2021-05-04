@@ -20,12 +20,12 @@
 # Abstract
 
 ZIP-19 presents the Phase 1.1 extension of the seed node staking proposal as
-presented in [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md).
+presented in [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-11.md).
 
-This new proposal introduces a new mechanism to transfer stake from one account to another account. 
-In addition, it also fixes an empty map deletion bug in Phase 1 and resolves compatibility issue with upcoming Scilla version `0.10.0` upgrade.
+This new proposal introduces a mechanism to transfer stake from one account to another. 
+Additionally, it also fixes a bug related to incomplete deletion of empty maps and resolves compatibility issues with the upcoming Scilla version `0.10.0` upgrade.
 
-The Zilliqa team will facilitate the migration of contract states from phase 1 to phase 1.1 via remote state read, which will be part of Zilliqa v8.0.0 release.
+The Zilliqa team will facilitate the migration of contract states from Phase 1 to Phase 1.1 via remote state read, which will be part of Zilliqa v8.0.0 release.
 
 # Background
 
@@ -34,22 +34,22 @@ We strongly recommend readers to go through
 [ZIP-9](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-9.md) and [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-11.md)
 for background on Zilliqa Seed Node Staking Program.
 
-The Staking phase 1 has been a success and many Zilliqa wallet providers such as [Atomic](https://atomicwallet.io/staking), 
+Seed Node Staking (Phase 1) has been a success and many Zilliqa wallet providers such as [Atomic](https://atomicwallet.io/staking), 
 [Frontier](https://frontierwallet.com/), [Moonlet](https://moonlet.io/#staking), [Zillet](https://zillet.io/) 
 and [Zillion](https://stake.zilliqa.com/) have successfully integrated Zilliqa Seed Node staking.
 
-However, the team has received feedback on how to further improve the Zilliqa non-custodial seed node staking program.
+However, the team has received some feedback on how to further improve the user experience. This proposal aims to cater to one such feedback.
 ## Limitation around smart contract wallets
 
-The current staking contracts for phase 1 is not versatile enough to support smart contract wallets. For smart contract wallets, 
-if the wallet provider needs to "upgrade" or add new features to the smart contract, a new deployment of the smart contract and followed 
-by a transfer of assets to the new smart contract is required. Under Staking phase 1, this means that the delegator has to withdraw all his stakes, 
+The current staking contracts for Phase 1 are not versatile enough to support smart contract wallets. For smart contract wallets, 
+if the wallet provider needs to "upgrade" or add new features to the smart contract, a new deployment of the smart contract, followed 
+by a transfer of assets to the new smart contract is required. With Staking Phase 1, this means that the delegator has to withdraw all his stakes, 
 wait for at least 24,000 blocks for stake deposit to be unbonded before $ZIL can be transferred to the new smart contract wallet. 
 
 ## Incomplete removal of empty maps in contract states
 
-Maps entries that are not required are deleted from the contract state. However, due to an improper deletion in phase 1, rather than map entries being deleted, 
-the map entries are cleared instead. This causes the contract data size to be bloated unnecessary.
+Maps entries that are not required are deleted from the contract state. However, due to an incomplete deletion in Phase 1, rather than map entries being deleted, 
+the map entries are cleared instead. This causes the contract data size to be get unnecessarily bloated.
 
 ### Example:
 Expected map content after withdrawal of stake deposit is completed
@@ -81,23 +81,23 @@ The maps affected are
 
 ## Compatibility issue with upcoming Scilla version upgrade
 
-The upcoming Scilla version `0.10.0` contains a bug fix for an issue known as `disambiguation bug`. This bug fix is necessary to support future Scilla 
-features such as remote state read and Scilla external library. After the fix, calling a contract via our JSON RPC APIs and passing a custom user-defined ADT as transition parameter will require the contract address to be included. Hence, the staking `proxy` contract is no longer compatible with the `ssnlist` contract starting from Scilla version `0.10.0`.
+The upcoming Scilla version `0.10.0` contains a bug-fix for an issue known as `disambiguation bug`. This bug fix is necessary to support future Scilla 
+features such as remote state read and Scilla external library. Starting from Scilla version `0.10.0`, calling a contract via our JSON RPC APIs and passing a custom user-defined ADT as transition parameter will require the contract address to be included. Due to this change, the staking `proxy` contract will no longer compatible with the `ssnlist` contract starting from Scilla version `0.10.0`.
 
 # Design changes for phase 1.1
 
 ## Transfer of stake deposit between accounts
 
-A new feature will be added to allow transferring of the entire stake deposit, rewards and pending withdrawal across all SSNs to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediately executed upon confirmation of the transfer. There is no penalty incurred for this transfer and 
-there is no restriction on the number of transfers.
+A new feature will be added to allow transferring of the entire stake deposit, rewards and pending withdrawals across all SSNs to a new address. Such a transfer will not require the user to go through an unbonding period and instead the transfer of stake and other relevant state will be immediately executed upon confirmation of the transfer. No penalty will be incurred for this transfer and 
+there will be no restriction on the number of transfers.
 
 ### Scenario 1: Transferring to an address which does not have any active staking activity
 
 All stake deposit and rewards will be transfer to the new address
 
-### Scenario 2: Transferring to an address which currently have 1 or more stake delegation or pending stake withdrawal
+### Scenario 2: Transferring to an address which currently has 1 or more stake delegation or pending stake withdrawal
 
-All stake deposits and rewards will be transferred ot the new address. If there is any overlap with the existing stake delegation, rewartds or pending withdrawal, the
+All stake deposits and rewards will be transferred to the new address. If there is any overlap with the existing stake delegation, rewards or pending withdrawal, the
 transferred value will be added to the existing stake on the new address.
 
 ### Scenario 3: Cyclic transfer of stake
@@ -108,25 +108,25 @@ In this scenario, there are two addresses, address A and address B. Both address
 A --> B
 B --> A
 ```
-**Case 1:** B accepts A request first:
+**Case 1:** B accepts A's request first:
 ```
 A --> (B) --> A
 ```
-B accepts A request; B inherit all of A's stake
+B accepts A's request; B inherits all of A's stake
 Next, A accepts B request; A is final inheritor
 
-**Case 2:** A accepts B request first:
+**Case 2:** A accepts B's request first:
 ```
 B --> (A) --> B
 ```
-A accepts B request; A inherit all of B's stake
-Next, B accepts A request; B is the final inheritor
+A accepts B's request; A inherits all of B's stake
+Next, B accepts A's request; B is the final inheritor
 
-However, there is no identified use case for cyclic transfer of a stake. Additionally, it may impact overall user experience. As such, such cyclic transfer will be disabled i.e If the recipient is already a requestor in the `deleg_swap_request` map, transfer of stake request will not be possible till acceptance or cancellation of request. However, non-cyclic transfer will still be possible even if there is pending stake transfer. 
+However, there is no identified use case for cyclic transfer of a stake. Additionally, it may impact overall user experience. As such, such cyclic transfer will be disabled i.e., if the recipient is already a requestor in the `deleg_swap_request` map, transfer of stake request will not be possible till acceptance or cancellation of request. However, non-cyclic transfer will still be possible even if there is a pending stake transfer. 
 
 ### Mechanism 
 
-The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The recipient will then need to 
+The transfer will adopt a two-step process. First the transferer will need to initiate a request to transfer to another address. The recipient will then need to 
 confirm the transfer. Upon confirmation, the transfer will be executed. 
 
 Both parties must have zero buffered deposit and zero unwithdrawn rewards at the time of requesting and confirming the swap. 
@@ -135,10 +135,10 @@ Both parties must have zero buffered deposit and zero unwithdrawn rewards at the
 
 | Transition | Comments |
 | ---------- | -------- | 
-| RequestDelegatorSwap | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
-| ConfirmDelegatorSwap | To execute the transfer |
-| RevokeDelegatorSwap | To cancel the transfer by the requestor |
-| RejectDelegatorSwap | To cancel the transfer request from a specific requestor |
+| `RequestDelegatorSwap` | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
+| `ConfirmDelegatorSwap` | To execute the transfer |
+| `RevokeDelegatorSwap` | To cancel the transfer by the requestor |
+| `RejectDelegatorSwap` | To cancel the transfer request from a specific requestor |
 
 ### Caveat
 
@@ -158,14 +158,14 @@ Zilliqa community via a governance vote. Also, the stake deposit holder will nee
 Additional checks are implemented to check for empty maps after a map deletion operation. This is done by calling various clean up procedures. This will incur 
 additional gas costs to the delegator. Based on our experiments, the expected gas consumption is expected to increase by around 5%. 
 
-We have also implemented the following transition. tt will be used by the contract admin to clean up any empty map post state migration. 
-- CleanBuffDeposit
-- CleanDirectDeposit
-- CleanDelegStakePerCycle
-- CleanDepositAmt
-- CleanPendingWithdrawal
-- CleanLastWithdrawCycle
-- CleanLastBuffDepositCycle
+We have also implemented the following transitions. They  will be used by the contract admin to clean up any empty map post state migration. 
+- `CleanBuffDeposit`
+- `CleanDirectDeposit`
+- `CleanDelegStakePerCycle`
+- `CleanDepositAmt`
+- `CleanPendingWithdrawal`
+- `CleanLastWithdrawCycle`
+- `CleanLastBuffDepositCycle`
 
 ## Removal of custom ADT at `AssignStakeRewards` transition
 
@@ -174,26 +174,26 @@ in both `proxy` and `ssnlist` contracts.
 
 ## Migration of contract state
 
-A new set of smart contracts will be deployed and populated with the states from the phase 1 staking contracts. Both remote state read and populate transition will be used to populate the phase 1.1 staking contracts. 
+A new set of smart contracts will be deployed and populated with the states from the Phase 1 staking contracts. Both remote state read and populate transitions will be used to populate the Phase 1.1 staking contracts. 
 
 ### 1. Migration using remote state read
-For maps with no user defined ADTs, remote state read will be used to read the states from the phase 1 contract and populate it into the phase 1.1 contract. The following map will
+For maps with no user defined ADTs, remote state read will be used to read the states from the Phase 1 contract and populate it into the Phase 1.1 contract. The following maps will
 be populated using this mechanism. 
-- comm_for_ssn
-- deposit_amt_deleg
-- ssn_deleg_amt
-- buff_deposit_deleg
-- direct_deposit_deleg
-- last_withdraw_cycle_deleg
-- last_buf_deposit_cycle_deleg
-- deleg_stake_per_cycle
-- withdrawal_pending
+- `comm_for_ssn`
+- `deposit_amt_deleg`
+- `ssn_deleg_amt`
+- `buff_deposit_deleg`
+- `direct_deposit_deleg`
+- `last_withdraw_cycle_deleg`
+- `last_buf_deposit_cycle_deleg`
+- `deleg_stake_per_cycle`
+- `withdrawal_pending`
 
 ### 2. Migration using populate transition  
-For the remaining of the maps,p the `populate*` transitions will be use to manually populate each map. 
+For the remaining of the maps, the `populate*` transitions will be use to manually populate each map. 
 
 ### 3. Cleaning up of map with empty entries  
-As phase 1 contract states contain nested maps with empty entries, `clean*` transition will be used after the population to clean up any empty maps. 
+As Phase 1 contract states contain nested maps with empty entries, `clean*` transitions will be used after the population to clean up any empty maps. 
 
 ### Duration needed
 The whole migration and verification of migration is expected to take up to 7 days to complete. Upon completion of the verification by the team, we will unpause the staking contract
@@ -217,7 +217,7 @@ More details on the contracts can be found in the [staking contract repository](
 
 For direct access:
 
-* The specification for the different contracts needed for Phase 1.1 can be found in the [readme](https://github.com/Zilliqa/staking-contract/blob/main/README.md)
+* The specification for the different contracts needed for Phase 1.1 can be found in the [Readme](https://github.com/Zilliqa/staking-contract/blob/main/README.md)
 
 * Removal of custom ADT for AssignStakeRewards [[1](https://github.com/Zilliqa/staking-contract/pull/218)] [[2](https://github.com/Zilliqa/staking-contract/pull/225)]
 
@@ -229,7 +229,7 @@ For direct access:
 
 # Limitations and Future Work
 
-ZIP-19 aims to make minor functional improvements and fixes to the non custodial staking contract. 
+ZIP-19 aims to make minor functional improvements and fixes to the non-custodial staking contract. 
 Other major contracts enhancements will be left as a future work for future phases of staking. 
 
 # Backward Compatibility

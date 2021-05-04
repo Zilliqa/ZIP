@@ -19,4 +19,4 @@
 | 14 | Revised pBFT Consensus                     |
 | 15 | Early Packet Dispatching for Shards        |
 | 18 | Simple TX Spamming Protection              |
-| 19 | Seed Node Staking Mechanism: Phase I.1     |
+| 19 | Seed Node Staking Mechanism: Phase 1.1     |
