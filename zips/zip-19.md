@@ -23,9 +23,9 @@ ZIP-19 presents the Phase 1.1 extension of the seed node staking proposal as
 presented in [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-3.md).
 
 This new proposal introduces a new mechanism to transfer stake from one account to another account. 
-In addition, it also fixes an empty map deletion bug in Phase 1 and resolve an compatibility with upcoming Scilla version `0.10.0` upgrade.  
+In addition, it also fixes an empty map deletion bug in Phase 1 and resolves compatibility issue with upcoming Scilla version `0.10.0` upgrade.
 
-The Zilliqa team will faciliate the migration of contract states from phase 1 to phase 1.1 via remote state read, which will be part of Zilliqa v8.0.0 release.
+The Zilliqa team will facilitate the migration of contract states from phase 1 to phase 1.1 via remote state read, which will be part of Zilliqa v8.0.0 release.
 
 # Background
 
@@ -34,30 +34,29 @@ We strongly recommend readers to go through
 [ZIP-9](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-9.md) and [ZIP-11](https://github.com/Zilliqa/ZIP/blob/master/zips/zip-11.md)
 for background on Zilliqa Seed Node Staking Program.
 
-The Staking phase 1 have been a success and many Zilliqa wallets provider such as [Atomic](https://atomicwallet.io/staking), 
+The Staking phase 1 has been a success and many Zilliqa wallet providers such as [Atomic](https://atomicwallet.io/staking), 
 [Frontier](https://frontierwallet.com/), [Moonlet](https://moonlet.io/#staking), [Zillet](https://zillet.io/) 
 and [Zillion](https://stake.zilliqa.com/) have successfully integrated Zilliqa Seed Node staking.
 
-However, the team have receive feedbacks on how to further improve the Zilliqa non-custodial seed node staking program.
-
+However, the team has received feedback on how to further improve the Zilliqa non-custodial seed node staking program.
 ## Limitation around smart contract wallets
 
 The current staking contracts for phase 1 is not versatile enough to support smart contract wallets. For smart contract wallets, 
-if the wallet provider need to "upgrade" or add new features to the smart contract, a new deployment of the smart contract and follow 
+if the wallet provider needs to "upgrade" or add new features to the smart contract, a new deployment of the smart contract and followed 
 by a transfer of assets to the new smart contract is required. Under Staking phase 1, this means that the delegator has to withdraw all his stakes, 
 wait for at least 24,000 blocks for stake deposit to be unbonded before $ZIL can be transferred to the new smart contract wallet. 
 
 ## Incomplete removal of empty maps in contract states
 
-Maps entries that are not required are deleted from the contract state. However, due to a improper deletion in phase 1, rather than map entries being deleted, 
-the map entries are cleared instead. This cause the contract data size to be bloated unneccessary.
+Maps entries that are not required are deleted from the contract state. However, due to an improper deletion in phase 1, rather than map entries being deleted, 
+the map entries are cleared instead. This causes the contract data size to be bloated unnecessary.
 
 ### Example:
 Expected map content after withdrawal of stake deposit is completed
 
 Current:
 ```
-  "0x....": {}, <-- unneccessary map entry
+  "0x....": {}, <-- unnecessary map entry
   "0x....": {
     "1067644": "45118000000000000"
   }
@@ -82,28 +81,28 @@ The maps affected are
 
 ## Compatibility issue with upcoming Scilla version upgrade
 
-The upcoming Scilla version `0.10.0` contains a bug fix for an issue known as `disambiguation bug`. This bug fix is neccessary to support future Scilla 
-features such as remote state read and Scilla external library. After the fix, calling a contract via our JSON RPC APIs and passing a custom user-defined ADT as transition parameter will requires contract addres to be included. Hence, the staking `proxy` contract is no longer compatibile with the `ssnlist` contract starting from Scilla version `0.10.0`.
+The upcoming Scilla version `0.10.0` contains a bug fix for an issue known as `disambiguation bug`. This bug fix is necessary to support future Scilla 
+features such as remote state read and Scilla external library. After the fix, calling a contract via our JSON RPC APIs and passing a custom user-defined ADT as transition parameter will require the contract address to be included. Hence, the staking `proxy` contract is no longer compatible with the `ssnlist` contract starting from Scilla version `0.10.0`.
 
 # Design changes for phase 1.1
 
 ## Transfer of stake deposit between accounts
 
-A new feature will be added to allow transferring of entire stake deposit, rewards and pending withdrawal across all SSNs to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediately executed upon confirmation of the transfer. There is no penalty incurred for this transfer and 
+A new feature will be added to allow transferring of the entire stake deposit, rewards and pending withdrawal across all SSNs to a new address. Such a transfer will not unstake the existing stake deposit and transfer will be immediately executed upon confirmation of the transfer. There is no penalty incurred for this transfer and 
 there is no restriction on the number of transfers.
 
 ### Scenario 1: Transferring to an address which does not have any active staking activity
 
-All stake deposit and rewards will be transfer ot the new address
+All stake deposit and rewards will be transfer to the new address
 
 ### Scenario 2: Transferring to an address which currently have 1 or more stake delegation or pending stake withdrawal
 
-All stake deposit and rewards will be transfer ot the new address. If there is any overlap with the existing stake delegation, rewartds or pending withdrawal, the
-transferred value will be added to the exisiting stake on the new address.
+All stake deposits and rewards will be transferred ot the new address. If there is any overlap with the existing stake delegation, rewartds or pending withdrawal, the
+transferred value will be added to the existing stake on the new address.
 
 ### Scenario 3: Cyclic transfer of stake
 
-In this scenario, there are two addresses, address A and address B. Both addresses are transfering stake to each other.
+In this scenario, there are two addresses, address A and address B. Both addresses are transferring stake to each other.
 
 ```
 A --> B
@@ -127,7 +126,7 @@ However, there is no identified use case for cyclic transfer of a stake. Additio
 
 ### Mechanism 
 
-The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The receiptant will then need to 
+The transfer will adopt a two step process. First the transferer will need to initiate a request to transfer to another address. The recipient will then need to 
 confirm the transfer. Upon confirmation, the transfer will be executed. 
 
 Both parties must have zero buffered deposit and zero unwithdrawn rewards at the time of requesting and confirming the swap. 
@@ -148,11 +147,11 @@ This mechanism does not support partial transfer.
 ### Other considerations 
 
 Other than the intended purpose of transfer from address to address, the feature may open up a secondary market for stake transfer. For instance, an exchange
-may choose to offer to accept stake deposit transfer to its exchange wallet where the exchange can offer "unbonding" service by making use of their 
+may choose to accept stake deposit transfer to its exchange wallet where the exchange can offer "unbonding" service by making use of their 
 existing assets in their balance sheet. 
 
 In such a case, the secondary market undertaking this transfer will need to take additional risk as the bonding period may be adjusted from time to time by the 
-Zilliqa community via a governance vote. Also, the stake deposit holder will need to take on counter-party risk by transfering his stake to a third party. 
+Zilliqa community via a governance vote. Also, the stake deposit holder will need to take on counterparty risk by transferring his stake to a third party. 
 
 ## Proper deletion of empty map entries
 
@@ -170,12 +169,12 @@ We have also implemented the following transition. tt will be used by the contra
 
 ## Removal of custom ADT at `AssignStakeRewards` transition
 
-To resolves the `disambiguation bug`, the custom ADT `SsnRewardShare` in `AssignStakeReward` transition parameters will be modify to `List (Pair ByStr20 Uint128))` 
+To resolve the `disambiguation bug`, the custom ADT `SsnRewardShare` in `AssignStakeReward` transition parameters will be modified to `List (Pair ByStr20 Uint128))` 
 in both `proxy` and `ssnlist` contracts.
 
 ## Migration of contract state
 
-A new set of smart contracts will be deployed and will be populated with the stakes from the current staking contracts. There will be 2 different mechanism for the migration.
+A new set of smart contracts will be deployed and will be populated with the stakes from the current staking contracts. There will be 2 different mechanisms for the migration.
 
 For maps that do not use user defined ADT, the new contract will use remote state read to read the state of the current contract. Admin will need to supply which key of the map
 to read me. For maps that use user defined ADT, remote state read will not be possible due to ambiguation. As such, we will use the populate transition to population entry by entry.
@@ -183,7 +182,7 @@ For all other fields, we will use the populate transition.
 
 # Change to staking parameters
 
-In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvement within the core protocol. The block reward in `v8.0.0` will be adjusted accoordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
+In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvements within the core protocol. The block reward in `v8.0.0` will be adjusted accordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
 
 | Parameter | Phase 1 | Phase 1.1 |
 |-------------- | ------------- | --------- |
@@ -192,8 +191,8 @@ In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a 
 | Reward per cycle | 1,980,000 $ZIL | 1,760,000 $ZIL |
 | Unbonding period | 24,000 final blocks | 35,000 final blocks (~2 weeks) |
 
-Please note that the above parameters depends heavily on Zilliqa `v8.0.0`, which will require more observation of Zilliqa mainnet. The above parameters change are considered
-interim. If the parameters are deviate from the estimate, a follow-up ZIP can be propose to adjust the parameters.
+Please note that the above parameters depend heavily on Zilliqa `v8.0.0`, which will require more observation of Zilliqa mainnet. The above parameters change are considered
+interim. If the parameters deviate from the estimate, a follow-up ZIP can be proposed to adjust the parameters.
 # Contract Specification and Implementation
 
 More details on the contracts can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/tree/main/contracts).
@@ -220,7 +219,7 @@ Other major contracts enhancements will be left as a future work for future phas
 The non-custodial staking will be implemented as a new contract and the older
 contract will be deprecated. Contract data will be migrated over to the new contract, 
 through a migration exercise that is likely to last at least a week. The old contract will
-be freeze permanently. 
+be frozen permanently. 
 
 ## Copyright Waiver
 
