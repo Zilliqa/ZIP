@@ -202,7 +202,7 @@ For direct access:
 
 * The specification for the different contracts needed for Phase 1.1 can be found in the [readme](https://github.com/Zilliqa/staking-contract/blob/main/README.md)
 
-* Removal of custom ADT for AssignStakeRewards [1](https://github.com/Zilliqa/staking-contract/pull/218)[2](https://github.com/Zilliqa/staking-contract/pull/225)
+* Removal of custom ADT for AssignStakeRewards [[1](https://github.com/Zilliqa/staking-contract/pull/218)][[2](https://github.com/Zilliqa/staking-contract/pull/225)]
 
 * [Swapping of address for delegator](https://github.com/Zilliqa/staking-contract/pull/219)
 
