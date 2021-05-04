@@ -134,12 +134,12 @@ Both parties must have zero buffered deposit and zero unwithdrawn rewards at the
 
 4 new transitions in both `proxy` and `ssnlist` will be added to support this new feature.
 
-| transition | Comments |
+| Transition | Comments |
 | ---------- | -------- | 
-| `RequestDelegatorSwap` | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
-| `ConfirmDelegatorSwap` | To execute the transfer |
-| `RevokeDelegatorSwap` | To cancel the transfer by the requestor |
-| `RejectDelegatorSwap` | To cancel the transfer request from a specific requestor |
+| RequestDelegatorSwap | To initiate the request to transfer all existing stake deposit, rewards and pending withdrawals |
+| ConfirmDelegatorSwap | To execute the transfer |
+| RevokeDelegatorSwap | To cancel the transfer by the requestor |
+| RejectDelegatorSwap | To cancel the transfer request from a specific requestor |
 
 ### Caveat
 
@@ -160,13 +160,13 @@ Additional checks are implemented to check for empty maps after a map deletion o
 additional gas costs to the delegator. Based on our experiments, the expected gas consumption is expected to increase by around 5%. 
 
 We have also implemented the following transition. tt will be used by the contract admin to clean up any empty map post state migration. 
-- `CleanBuffDeposit`
-- `CleanDirectDeposit`
-- `CleanDelegStakePerCycle`
-- `CleanDepositAmt`
-- `CleanPendingWithdrawal`
-- `CleanLastWithdrawCycle`
-- `CleanLastBuffDepositCycle`
+- CleanBuffDeposit
+- CleanDirectDeposit
+- CleanDelegStakePerCycle
+- CleanDepositAmt
+- CleanPendingWithdrawal
+- CleanLastWithdrawCycle
+- CleanLastBuffDepositCycle
 
 ## Removal of custom ADT at `AssignStakeRewards` transition
 
@@ -183,11 +183,10 @@ For all other fields, we will use the populate transition.
 
 # Change to staking parameters
 
-In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a result of various improvement in the core protocol. 
-The block reward in v8.0.0 will be adjusted to bring it back to parity. As a result of this change, the following parameters within in the Zilliqa Seed Node
-Staking program will be adjust to bring it back to parity
+In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a result of various improvement in the core protocol. The block reward in v8.0.0 will be adjusted accoordingly 
+to bring the cycle duration back to 24 hours. The following parameters will be adjusted as follow:
 
-|Parameter name | Current value | Mew value |
+| Parameter name | Current value | Mew value |
 |-------------- | ------------- | --------- |
 | 1 Cycle duration | ~27 hours | ~24 hours | 
 | Block per cycle | 1800 | 2500 | 
@@ -202,8 +201,7 @@ More details on the contracts can be found in the [staking contract repository](
 
 For direct access:
 
-* The specification for the different contracts needed for Phase 1.1 can be 
-found [here (TBA)](https://github.com/Zilliqa/staking-contract/blob/dev/contracts/README.md)
+* The specification for the different contracts needed for Phase 1.1 can be found [here](https://github.com/Zilliqa/staking-contract/blob/main/README.md)
 
 * [Removal of custom ADT for AssignStakeRewards](https://github.com/Zilliqa/staking-contract/pull/218)
 
