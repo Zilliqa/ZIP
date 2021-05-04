@@ -174,8 +174,7 @@ in both `proxy` and `ssnlist` contracts.
 
 ## Migration of contract state
 
-A new set of smart contracts will be deployed and will be populated with the states from the phase 1 staking contracts. For the migration, we will use both read state read and populate transition to populate the phase 1.1 staking contracts. 
-
+A new set of smart contracts will be deployed and populated with the states from the phase 1 staking contracts. Both remote state read and populate transition will be used to populate the phase 1.1 staking contracts. 
 
 1. Migration using remote state read 
 For maps with no user defined ADTs, remote state read will be used to read the states from the phase 1 contract and populate it into the phase 1.1 contract. The following map will
