@@ -176,7 +176,7 @@ in both `proxy` and `ssnlist` contracts.
 
 A new set of smart contracts will be deployed and populated with the states from the phase 1 staking contracts. Both remote state read and populate transition will be used to populate the phase 1.1 staking contracts. 
 
-1. Migration using remote state read 
+### 1. Migration using remote state read
 For maps with no user defined ADTs, remote state read will be used to read the states from the phase 1 contract and populate it into the phase 1.1 contract. The following map will
 be populated using this mechanism. 
 - comm_for_ssn
@@ -189,12 +189,13 @@ be populated using this mechanism.
 - deleg_stake_per_cycle
 - withdrawal_pending
 
-2. Migration using populate transition
+### 2. Migration using populate transition  
 For the remaining of the maps,p the `populate*` transitions will be use to manually populate each map. 
 
-3. Cleaning up of map with empty entries
+### 3. Cleaning up of map with empty entries  
 As phase 1 contract states contain nested maps with empty entries, `clean*` transition will be used after the population to clean up any empty maps. 
 
+### Duration needed
 The whole migration and verification of migration is expected to take up to 7 days to complete. Upon completion of the verification by the team, we will unpause the staking contract
 and staking activities can resume. 
 # Changes to staking parameters
