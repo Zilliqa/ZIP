@@ -180,7 +180,7 @@ For maps that do not use user defined ADT, the new contract will use remote stat
 to read me. For maps that use user defined ADT, remote state read will not be possible due to ambiguation. As such, we will use the populate transition to population entry by entry.
 For all other fields, we will use the populate transition. 
 
-# Change to staking parameters
+# Changes to staking parameters
 
 In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvements within the core protocol. The block reward in `v8.0.0` will be adjusted accordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
 
