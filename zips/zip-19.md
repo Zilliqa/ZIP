@@ -187,14 +187,14 @@ In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a re
 The block reward in v8.0.0 will be adjusted to bring it back to parity. As a result of this change, the following parameters within in the Zilliqa Seed Node
 Staking program will be adjust to bring it back to parity
 
-|Parameter name | Current value | new value |
+|Parameter name | Current value | Mew value |
 |-------------- | ------------- | --------- |
-| Block per cycle | 1800 | 2400 | 
-| Reward per cycle | | |
+| 1 Cycle duration | ~27 hours | ~24 hours | 
+| Block per cycle | 1800 | 2500 | 
+| Reward per cycle | 1,980,000 $ZIL | 1,760,000 $ZIL |
 
-Please note that the above parameters depends heavily on Zilliqa v8.0.0, which willrequire more observation in mainnet context. As such, these above parameters are considered
-interim. If the parameters are off from the estimate, a follow-up ZIP will be propose to bring it back to parity. 
-
+Please note that the above parameters depends heavily on Zilliqa v8.0.0, which will require more observation in mainnet context. As such, these above parameters are considered
+interim. If the parameters are off from the estimate, a follow-up ZIP can be propose to adjust the parameters.
 # Contract Specification and Implementation
 
 More details on the contracts can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/tree/main/contracts).
