@@ -186,7 +186,7 @@ For all other fields, we will use the populate transition.
 In the upcoming Zilliqa v8.0.0, the block time is expected to be reduced as a result of various improvement in the core protocol. The block reward in v8.0.0 will be adjusted accoordingly 
 to bring the cycle duration back to 24 hours. The following parameters will be adjusted as follow:
 
-| Parameter name | Current value | Mew value |
+| Parameter | Phase 1 | Phase 1.1 |
 |-------------- | ------------- | --------- |
 | 1 Cycle duration | ~27 hours | ~24 hours | 
 | Block per cycle | 1800 | 2500 | 
