@@ -174,12 +174,30 @@ in both `proxy` and `ssnlist` contracts.
 
 ## Migration of contract state
 
-A new set of smart contracts will be deployed and will be populated with the stakes from the current staking contracts. There will be 2 different mechanisms for the migration.
+A new set of smart contracts will be deployed and will be populated with the states from the phase 1 staking contracts. For the migration, we will use both read state read and populate transition to populate the phase 1.1 staking contracts. 
 
-For maps that do not use user defined ADT, the new contract will use remote state read to read the state of the current contract. Admin will need to supply which key of the map
-to read me. For maps that use user defined ADT, remote state read will not be possible due to ambiguation. As such, we will use the populate transition to population entry by entry.
-For all other fields, we will use the populate transition. 
 
+1. Migration using remote state read 
+For maps with no user defined ADTs, remote state read will be used to read the states from the phase 1 contract and populate it into the phase 1.1 contract. The following map will
+be populated using this mechanism. 
+- comm_for_ssn
+- deposit_amt_deleg
+- ssn_deleg_amt
+- buff_deposit_deleg
+- direct_deposit_deleg
+- last_withdraw_cycle_deleg
+- last_buf_deposit_cycle_deleg
+- deleg_stake_per_cycle
+- withdrawal_pending
+
+2. Migration using populate transition
+For the remaining of the maps,p the `populate*` transitions will be use to manually populate each map. 
+
+3. Cleaning up of map with empty entries
+As phase 1 contract states contain nested maps with empty entries, `clean*` transition will be used after the population to clean up any empty maps. 
+
+The whole migration and verification of migration is expected to take up to 7 days to complete. Upon completion of the verification by the team, we will unpause the staking contract
+and staking activities can resume. 
 # Changes to staking parameters
 
 In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvements within the core protocol. The block reward in `v8.0.0` will be adjusted accordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
