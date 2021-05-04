@@ -192,6 +192,7 @@ Staking program will be adjust to bring it back to parity
 | 1 Cycle duration | ~27 hours | ~24 hours | 
 | Block per cycle | 1800 | 2500 | 
 | Reward per cycle | 1,980,000 $ZIL | 1,760,000 $ZIL |
+| Unbonding period | 24,000 final blocks | 35,000 final blocks (~2 weeks) |
 
 Please note that the above parameters depends heavily on Zilliqa v8.0.0, which will require more observation in mainnet context. As such, these above parameters are considered
 interim. If the parameters are off from the estimate, a follow-up ZIP can be propose to adjust the parameters.
@@ -206,7 +207,7 @@ found [here (TBA)](https://github.com/Zilliqa/staking-contract/blob/dev/contract
 
 * [Removal of custom ADT for AssignStakeRewards](https://github.com/Zilliqa/staking-contract/pull/218)
 
-* [Swapping of address for delegator](https://github.com/Zilliqa/staking-contract/pull/219)
+* [Swapping of address for delegator](https://github.com/Zilliqa/staking-contract/pull/219)q
 
 * [Proper deletion of empty maps](https://github.com/Zilliqa/staking-contract/pull/222)
 
