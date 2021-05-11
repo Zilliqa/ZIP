@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 15  | Early Packet Dispatching for Shards | Ready | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> Haichuan Liu <haichuan@zilliqa.com> | 2020-12-11 | 2021-01-18 | 
+| 15  | Early Packet Dispatching for Shards | Implemented | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> Haichuan Liu <haichuan@zilliqa.com> | 2020-12-11 | 2021-05-11 | 
 
 ## Abstract
 
