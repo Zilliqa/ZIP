@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 18  | Simple Transaction Spamming Mitigation | Approved | Standards Track  | Julian Sarcher <julian@sarcher.de> | 2021-02-08 | 2021-02-08
+| 18  | Simple Transaction Spamming Mitigation | Implemented | Standards Track  | Julian Sarcher <julian@sarcher.de> | 2021-02-08 | 2021-05-11 |
 
 # Summary
 

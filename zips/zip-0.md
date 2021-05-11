@@ -1,7 +1,7 @@
 
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 0  | ZIP Purpose and Guidelines | Draft | Meta  | Antonio Nunez <antonio@zilliqa.com> | 2020-01-23 | 2020-04-08 
+| 0  | ZIP Purpose and Guidelines | Implemented | Meta  | Antonio Nunez <antonio@zilliqa.com> | 2020-01-23 | 2020-04-08 
 
 ## What is a ZIP?
 
