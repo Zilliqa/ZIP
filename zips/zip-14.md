@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 14  | Revised pBFT Consensus | Draft | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> George Pîrlea george@zilliqa.com | 2020-12-10 | 2020-12-24
+| 14  | Revised pBFT Consensus | Ready | Standards Track  | Sandip Bhoir <sandip@zilliqa.com> <br> George Pîrlea george@zilliqa.com | 2020-12-10 | 2020-12-24
 
 ## Abstract
 
