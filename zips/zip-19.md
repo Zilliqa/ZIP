@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 19   | Seed Node Staking Mechanism: Phase 1.1 | Implemented  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, Lulu Ren <lulu@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-05-11 |
+| 19   | Seed Node Staking Mechanism: Phase 1.1 | Implemented  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, Lulu Ren <lulu@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-05-14 |
 
 # Table of Content
 
