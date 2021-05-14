@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 19   | Seed Node Staking Mechanism: Phase 1.1 | Implemented  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, Lulu Ren <lulu@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-05-11 |
+| 19   | Seed Node Staking Mechanism: Phase 1.1 | Implemented  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, Lulu Ren <lulu@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-05-14 |
 
 # Table of Content
 
@@ -204,10 +204,10 @@ In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a 
 
 | Parameter | Phase 1 | Phase 1.1 |
 |-------------- | ------------- | --------- |
-| 1 Cycle duration | ~27 hours | ~24 hours | 
-| Block per cycle | 1800 | 2500 | 
-| Reward per cycle | 1,980,000 $ZIL | 1,760,000 $ZIL |
-| Unbonding period | 24,000 final blocks | 35,000 final blocks (~2 weeks) |
+| 1 Cycle duration | ~27 hours | ~24 hours |
+| Block per cycle | 1,800 | 2,200 |
+| Reward per cycle | 1,980,000 $ZIL | 1,548,800 $ZIL |
+| Unbonding period | 24,000 final blocks | 30,800 final blocks (~2 weeks) |
 
 Please note that the above parameters depend heavily on Zilliqa `v8.0.0`, which will require more observation of Zilliqa mainnet. The above parameters change are considered
 interim. If the parameters deviate from the estimate, a follow-up ZIP can be proposed to adjust the parameters.
