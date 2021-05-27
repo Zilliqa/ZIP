@@ -1,6 +1,6 @@
 | ZIP | Title | Status | Type  | Author| Created (yyyy-mm-dd) | Updated (yyyy-mm-dd) | 
 | --- | ---------------------------- | ------ | ----- |----------------- | -------------------- |-------------------- | 
-| 19   | Seed Node Staking Mechanism: Phase 1.1 | Implemented  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, Lulu Ren <lulu@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-05-14 |
+| 19   | Seed Node Staking Mechanism: Phase 1.1 | Implemented  | Standards Track | Te Ye Yeo <teye@zilliqa.com>, <br> Jun Hao Tan <junhao@zilliqa.com>, Lulu Ren <lulu@zilliqa.com>, <br> Amrit Kummer <amrit@zilliqa.com> | 2021-03-25 | 2021-05-27 |
 
 # Table of Content
 
@@ -200,17 +200,16 @@ The whole migration and verification of migration is expected to take up to 7 da
 and staking activities can resume. 
 # Changes to staking parameters
 
-In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvements within the core protocol. The block reward in `v8.0.0` will be adjusted accordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
+In the upcoming Zilliqa `v8.0.0`, the block time is expected to be reduced as a result of various improvements within the core protocol. The block reward in `v8.0.0` and `v8.0.4` will be adjusted accordingly to preserve the previous inflation rate. As such, the following parameters in the staking contract will be adjusted as follows:
 
-| Parameter | Phase 1 | Phase 1.1 |
-|-------------- | ------------- | --------- |
-| 1 Cycle duration | ~27 hours | ~24 hours |
-| Block per cycle | 1,800 | 2,200 |
-| Reward per cycle | 1,980,000 $ZIL | 1,548,800 $ZIL |
-| Unbonding period | 24,000 final blocks | 30,800 final blocks (~2 weeks) |
+| Parameter | Phase 1 | Phase 1.1 (mainnet `v8.0.0` - `v8.0.3`) | Phase 1.1 (mainnet `v8.0.4`) |
+|-------------- | ------------- | --------- | --------- |
+| 1 Cycle duration | ~26.45 hours | ~23.83 hours | ~23.91 hours |
+| Block per cycle | 1,800 | 2,200 | 2,200 |
+| Reward per cycle | 1,980,000 $ZIL | 1,548,800 $ZIL | 1,795,200 $ZIL |
+| Unbonding period | 24,000 final blocks | 30,800 final blocks (~2 weeks) | 30,800 final blocks (~2 weeks) |
 
-Please note that the above parameters depend heavily on Zilliqa `v8.0.0`, which will require more observation of Zilliqa mainnet. The above parameters change are considered
-interim. If the parameters deviate from the estimate, a follow-up ZIP can be proposed to adjust the parameters.
+Please note that the above parameters depend heavily on existing on-chain statistics. More observation of Zilliqa mainnet performance may be required. If the parameters deviate from the estimate, a follow-up ZIP can be proposed to adjust the parameters.
 # Contract Specification and Implementation
 
 More details on the contracts can be found in the [staking contract repository](https://github.com/Zilliqa/staking-contract/tree/main/contracts).
