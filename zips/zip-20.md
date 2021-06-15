@@ -47,7 +47,7 @@ To estimate the weekly block production rate, we will get the average of weekly 
 ## Bonding period comparsion
 
 | Status | Bonding period | Estimated duration |
-| ---- | ------------------------- |
+| ------ | -------------- | ------------------ |
 | Current | 30800 blocks | ~2.124 weeks | 
 | Proposed | 14500 blocks |  ~1.012 weeks |
 
