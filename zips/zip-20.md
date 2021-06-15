@@ -7,7 +7,7 @@
 - [Summary](#summary)
 - [Abstract](#abstract)
 - [Motivation](#motivation)
-- [Specifications](#specifications)
+- [Specification](#specification)
   * [Estimation of weekly blocks production rate](#estimation-of-weekly-blocks-production-rate)
   * [Bonding period comparsion](#bonding-period-comparsion)
   * [Parameter proposed to adjust](#parameter-proposed-to-adjust)
