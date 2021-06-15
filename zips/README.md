@@ -20,3 +20,4 @@
 | 15 | Early Packet Dispatching for Shards        |
 | 18 | Simple TX Spamming Protection              |
 | 19 | Seed Node Staking Mechanism: Phase 1.1     |
+| 20 | Adjustment of bonding period for Staking phase 1.1 |
