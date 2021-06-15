@@ -9,7 +9,7 @@
 - [Motivation](#motivation)
 - [Specification](#specification)
   * [Estimation of weekly blocks production rate](#estimation-of-weekly-blocks-production-rate)
-  * [Bonding period comparsion](#bonding-period-comparsion)
+  * [Bonding period comparison](#bonding-period-comparison)
   * [Parameter proposed to adjust](#parameter-proposed-to-adjust)
 - [For](#for)
 - [Against](#against)
@@ -28,8 +28,8 @@ This proposal adjusts the bonding period of Zilliqa staking phase 1.1 from 30,80
 
 # Motivation
 
-Since Staking phase 1.0 launched, the bonding period has set to ~2 weeks. Since then, there have been discussions on adjusting the bonding period
-of Zilliqa staking phase 1.0/1.1. A recent straw poll with 98 voters (as of the writing of this ZIP) on [Zilliqa governance forum](https://gov.zilliqa.com/t/reduce-the-unstaking-period/568/13?u=junhaotan) indicated that many will like to reduce the bonding period to a period of ~1 week.
+Since Staking phase 1.0 launched, the bonding period has been set to ~2 weeks. Since then, there have been discussions on adjusting the bonding period
+of Zilliqa staking phase 1.0/1.1. A recent straw poll with 98 voters (as of writing of this ZIP) on [Zilliqa governance forum](https://gov.zilliqa.com/t/reduce-the-unstaking-period/568/13?u=junhaotan) indicated that many will like to reduce the bonding period to a period of ~1 week.
 
 # Specification
 
@@ -44,7 +44,7 @@ To estimate the weekly block production rate, we will get the average of weekly 
 | Week 23 2021 | 14642 |
 | Average weekly block production rate | 14668 |
 
-## Bonding period comparsion
+## Bonding period comparison
 
 | Status | Bonding period | Estimated duration |
 | ------ | -------------- | ------------------ |
