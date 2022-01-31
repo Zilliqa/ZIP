@@ -6,7 +6,7 @@
 
 With Merkle Tree we are allowed to verify all the account state data in Zilliqa. But in order to verify accounts offline, we need a feature to provide proof which is important for the security of Layer 2 services and cross-chain bridges.
 
-This ZIP introduces Merkle Proof which allows us to verify each data entry stored in Merkle Tree, including account status, contract states and so on. But currently, the standard RPC api does not provide an access to these proofs. This ZIP suggest an additional RPC method to provide Merkle Proof for account and contract states.
+This ZIP introduces Merkle Proof which allows us to verify each data entry stored in Merkle Tree, including account status, contract states and so on. But currently, the standard RPC api does not provide an access to these proofs. This ZIP suggest an additional RPC method at the seed node to provide Merkle Proof for account and contract states.
 
 ## Motivation
 
