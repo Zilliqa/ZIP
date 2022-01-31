@@ -144,7 +144,7 @@ As above, only interested state entries are provided in result after parsing. If
 
 ## Implementation
 
-This ZIP is implemented on the Zilliqa mainnet as of [v8.1.0](https://github.com/Zilliqa/Zilliqa/releases/tag/v8.1.0)
+This ZIP is implemented and deployed on the Zilliqa mainnet as of [v8.1.0](https://github.com/Zilliqa/Zilliqa/releases/tag/v8.1.0).
 
 ## Backward Compatibility
 
