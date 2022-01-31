@@ -1,6 +1,6 @@
 | ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 16  | Merkle Proof | Draft | Standards Track  | Liu Haichuan <haichuan@zilliqa.com> <br> Ren Lulu <lulu@zilliqa.com> | 2021-01-06 | 2020-01-06
+| 16  | Merkle Proof | Implemented | Standards Track  | Liu Haichuan <haichuan@zilliqa.com> <br> Ren Lulu <lulu@zilliqa.com> | 2021-01-06 | 2022-01-31
 
 ## Abstract
 
@@ -144,11 +144,15 @@ As above, only interested state entries are provided in result after parsing. If
 
 ## Implementation
 
-TBD
+This ZIP is implemented on the Zilliqa mainnet as of [v8.1.0](https://github.com/Zilliqa/Zilliqa/releases/tag/v8.1.0)
 
 ## Backward Compatibility
 
-TBD
+This is a new feature added on top of the existing account management code, and thus has no compatibility concerns.
+
+## References
+
+- [GetStateProof API Documentation](https://dev.zilliqa.com/docs/apis/api-contract-get-state-proof)
 
 ## Copyright Waiver
 
