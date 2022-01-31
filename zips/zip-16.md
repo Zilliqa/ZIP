@@ -10,7 +10,7 @@ This ZIP introduces Merkle Proof which allows us to verify each data entry store
 
 ## Motivation
 
-Verification is important for trustless decentralised protocol. While verifying upon full state is not always possible since the storage could be huge for some light weight usage. With Merkle Proof, a user 
+Verification is important for trustless decentralised protocol. Verifying the full state may not always possible since the storage cost could be huge for some light weight usage such as light client. With Merkle Proof, a user 
 can request with a state root (which can be easily fetched from a specific TxBlock header), and an account address, to get the data they are interested with to be verified offline.
 
 ## Specification
