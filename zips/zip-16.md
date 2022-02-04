@@ -37,7 +37,7 @@ And the following provided only if address belongs to a contract
 
 #### Example
 
-Assuming a contract at block 981000 has following status and states:
+Assuming a contract at block 981000 has following states:
 ```
 {
 	"balance": "12000",
