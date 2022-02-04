@@ -148,7 +148,7 @@ This ZIP is implemented and deployed on the Zilliqa mainnet as of [v8.1.0](https
 
 ## Backward Compatibility
 
-This is a new feature added on top of the existing account management code, and thus has no compatibility concerns.
+As this introduces a new data structure, contract state migration will be required.
 
 ## References
 
