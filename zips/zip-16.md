@@ -17,7 +17,7 @@ can request with a state root (which can be easily fetched from a specific TxBlo
 
 As part of the Zilliqa protocol module, an additional RPC method called `GetProof` should be defined as follows:
 
-### GetProof
+### GetStateProof
 
 Returns the account status or contract state values together with the Merkle Proof.
 
