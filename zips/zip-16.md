@@ -15,7 +15,7 @@ can request with a state root (which can be easily fetched from a specific TxBlo
 
 ## Specification
 
-As part of the Zilliqa protocol module, an additional RPC method called `GetProof` should be defined as follows:
+As part of the Zilliqa protocol module, an additional RPC method called `GetStateProof` should be defined as follows:
 
 ### GetStateProof
 
