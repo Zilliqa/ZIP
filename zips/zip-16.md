@@ -35,6 +35,9 @@ And the following provided only if address belongs to a contract
 
 2. `stateProof`: `ARRAY` - Array of rlp-serialized Merkle Tree nodes, starting with the state root hash of the account, following the path of all the keys as user requested.
 
+### Other information
+
+Storing proofs of every TxBlock can take up a significant amount of storage space. As such, the node will only store the latest 50 TxBlock proof. This value can be adjusted in future upgrades. 
 #### Example
 
 Assuming a contract at block 981000 has following states:
