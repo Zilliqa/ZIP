@@ -10,7 +10,7 @@ The purpose of this proposal is to standardise the Zilliqa Improvement Proposal 
 # TL;DR
 
 1. All proposals must be discussed for at least 3 days with a forum poll before they will be assigned a ZIP number by a ZIP editor and moved to Snapshot voting.
-2. The Snapshot vote requires > 30 $gZIL to initiate. It will be binding, and must be open for at least 7 days. At least 20% quorum must be reached, and more than 50% of those votes must vote “For” the proposal for it to pass.
+2. The Snapshot vote requires > 30 $gZIL to initiate. It will be binding, and must be open for at least 7 days. At least 8% quorum must be reached, and more than 50% of those votes must vote “For” the proposal for it to pass.
 3. Most open-source core protocol updates by the Zilliqa core team are not required to go through this voting process; this process only governs those changes or proposals that should be ratified as ZIPs which will be discussed, voted on and officially enacted.
 
 # Abstract
@@ -47,9 +47,9 @@ If a proposal was introduced on the governance forum and achieved at least a 25%
 
 Snapshot is used for formal, binding votes. The user who authored the ZIP will also create the proposal on Snapshot[3]. Snapshot requires > 30 $gZIL[[4](https://viewblock.io/zilliqa/address/zil14pzuzq6v6pmmmrfjhczywguu0e97djepxt8g3e)] in a user’s wallet to create a proposal. If the author does not meet this requirement then contact a moderator who will submit the proposal on your behalf. Before creating the Snapshot vote, please wait for a moderator to assign your ZIP a number and begin your Snapshot title with it.
 
-A minimum of 168 hours (7 days) for voting, and a 20% quorum requirement is required for ZIPs voting processes. This wide time period for voting, coupled with an active communication of ZIPs via the governance forum and on social media channels should help ensure that no ZIPs will slip through and no malicious ones are approved.
+A minimum of 168 hours (7 days) for voting, and an 8% quorum requirement is required for ZIPs voting processes. This wide time period for voting, coupled with an active communication of ZIPs via the governance forum and on social media channels should help ensure that no ZIPs will slip through and no malicious ones are approved.
 
-The block selected for the Snapshot vote will be block number at the Snapshot submission. In order for a vote to pass it needs to have a majority approval (>50%) by the minimum quorum required. The eligible vote is defined as $gZIL held in the wallets to the token holders at the snapshot block. If the Snapshot vote does not meet > 50% majority approval, then the vote is rejected and no changes will be enacted. Authors of proposals that are rejected may resubmit their proposal, but should include significant changes that address issues that may have prevented the ZIP from passing during the initial vote.
+The block selected for the Snapshot vote will be the block number at the Snapshot submission. In order for a vote to pass it needs to have a majority approval (>50%) by the minimum quorum required. The eligible vote is defined as $gZIL held in the wallets to the token holders at the snapshot block. If the Snapshot vote does not meet > 50% majority approval, then the vote is rejected and no changes will be enacted. Authors of proposals that are rejected may resubmit their proposal, but should include significant changes that address issues that may have prevented the ZIP from passing during the initial vote.
 
 ### Scope
 
