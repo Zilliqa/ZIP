@@ -164,8 +164,8 @@ If you are interested in assuming ownership of a ZIP, send a message asking to t
 
 The current ZIP editors are
 
-- Zoltan Fazekas ([**DrZoltanFazekas**](https://github.com/DrZoltanFazekas))
-- James Hinshelwood ([**JamesHinshelwood**](https://github.com/orgs/Zilliqa/people/JamesHinshelwood))
+- Zoltan Fazekas ([**@DrZoltanFazekas**](https://github.com/DrZoltanFazekas))
+- James Hinshelwood ([**@JamesHinshelwood**](https://github.com/orgs/Zilliqa/people/JamesHinshelwood))
 - Richard Watts ([**@rrw-zilliqa**](https://github.com/rrw-zilliqa))
 
 
