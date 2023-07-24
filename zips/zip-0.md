@@ -53,7 +53,7 @@ Each status change is requested by the ZIP author and reviewed by the ZIP editor
 
 Each ZIP should have the following parts:
 
-- Preamble - RFC 822 style headers containing metadata about the ZIP, including the ZIP number, a short descriptive title (limited to a maximum of 44 characters), and the author details. 
+- Preamble - RFC 822 style headers containing metadata about the ZIP, including the ZIP number, a short descriptive title (limited to a maximum of 44 characters), and the author details.
 - Abstract - A short (~200 word) description of the technical issue (contract or library standard) being addressed.
 - Motivation (*optional) - It should clearly explain why the proposal is important. ZIP submissions without sufficient motivation may be rejected outright.
 - Specification - The technical specification should describe the new feature or improvement to the core protocol in sufficient detail.
@@ -164,21 +164,9 @@ If you are interested in assuming ownership of a ZIP, send a message asking to t
 
 The current ZIP editors are
 
-- Amrit Kumar ([**@AmritKumar**](https://github.com/AmritKumar))
-
-- Antonio Nunez ([**@ansnunez**](https://github.com/ansnunez))
-
-- Haichuan Liu ([**@kaikawaliu**](https://github.com/kaikawaliu)).
-
-- Han Wen Chua ([**@evesnow91**](https://github.com/evesnow91))
-
-- Jun Hao Tan ([**@bb111189**](https://github.com/bb111189))
-
-- Kaustubh Shamshery  ([**@KaustubhShamshery**](https://github.com/KaustubhShamshery))
-
-- Sandip Bhoir ([**@sandipbhoir**](https://github.com/sandipbhoir))
-
-- Vaivaswatha Nagaraj ([**@vaivaswatha**](https://github.com/vaivaswatha))
+- Zoltan Fazekas ([**@DrZoltanFazekas**](https://github.com/DrZoltanFazekas))
+- James Hinshelwood ([**@JamesHinshelwood**](https://github.com/orgs/Zilliqa/people/JamesHinshelwood))
+- Richard Watts ([**@rrw-zilliqa**](https://github.com/rrw-zilliqa))
 
 
 ## ZIP Editor Responsibilities
