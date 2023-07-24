@@ -21,3 +21,5 @@
 | 16 | Merkle Proof                               |
 | 18 | Simple TX Spamming Protection              |
 | 19 | Seed Node Staking Mechanism: Phase 1.1     |
+| 20 | bech32 address standard                    |
+| 21 | EVM/Scilla interop, phase 1                |
