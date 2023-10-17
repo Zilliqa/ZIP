@@ -16,7 +16,7 @@ increased.
 We need to be able to tune the staking reward level so as not to
 exhaust the supply of ZIL.
 
-Governance proposal GP008 was passed on 2023-10-14 to address thisw,
+Governance proposal GP008 was passed on 2023-10-14 to address this,
 and this ZIP describes its implementation.
 
 We also describe the implementation of some tunables surrounding the
@@ -28,8 +28,13 @@ these in order to achieve the reward distribution in ZIP-23.
 
 There is a contract at a well-known address on the blockchain, which
 will be advertised in the `constants.xml` available for download with
-the key `<transactions>
-<REWARD_CONTROL_CONTRACT_ADDRESS>(address)</REWARD_CONTROL_CONTRACT_ADDRESS></transactions>.
+the key:
+
+```
+<transactions>
+<REWARD_CONTROL_CONTRACT_ADDRESS>(address)</REWARD_CONTROL_CONTRACT_ADDRESS>
+</transactions>
+```
 
 If this contract does not exist, or is not a contract, or is a
 contract which does not contain the fields specified below, the chain
