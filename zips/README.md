@@ -25,3 +25,5 @@
 | 21 | EVM/Scilla interop, phase 1                |
 | 22 | Hybrid Consensus                           |
 | 23 | Desharding                                 |
+| 24 | On-chain rewards                           |
+
