@@ -1,6 +1,6 @@
-|  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
-|--|--|--|--| -- | -- | -- |
-| 24  | On-Chain Rewards | Approved | Standards Track  | Richard Watts <zoltan@zilliqa.com> | 2023-10-17 | 2023-10-17
+|  ZIP | Title | Status| Type | Author                                                                   | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
+|--|--|--|--|--------------------------------------------------------------------------| -- | -- |
+| 24  | On-Chain Rewards | Approved | Standards Track  | Richard Watts <richard@zilliqa.com>, Zoltan Fazekas <zoltan@zilliqa.com> | 2023-10-17 | 2023-12-12
 
 ## Abstract
 
@@ -49,6 +49,7 @@ field coinbase_reward_per_ds: Uint128
 (* Reward percentages, scaled by percent_precision - 100 means % * 100 *)
 field base_reward_in_percent : Uint32
 field lookup_reward_in_percent : Uint32
+field node_reward_in_percent : Uint32
 field percent_precision : Uint32
 
 (* The denominator here is a fixed 1000, so 1.668 is represented as 1668*)
