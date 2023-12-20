@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 21  | EVM/Scilla interwork, phase 1 | Implemented | Standards Track  | Richard Watts <richard@zilliqa.com>, Bartosz Zawistowski <bartosz@zilliqa.com>  | 2023-07-17 | 2023-07-17
+| 21  | EVM/Scilla interwork, phase 1 | Implemented | Standards Track  | Richard Watts <richard@zilliqa.com>, Bartosz Zawistowski <bartosz@zilliqa.com>  | 2023-07-17 | 2023-12-18
 
 ## Abstract
 
@@ -95,6 +95,61 @@ In a future version of this specification, it will allow EVM contracts to accept
 Scilla events can now appear in an EVM transaction receipt.
 
 Because popular libraries would object if they were faced with a "native" Scilla event, we encode them by treating a Scilla event `ev` as though it had been issued by a Solidity event `event ev(string)` with the `string` containing the JSON representing the Scilla event, just as it would have been represented in the `event_logs` array of a Scilla transaction receipt.
+
+### Errors and exceptions
+
+As of Zilliqa v9.3.0, scilla errors and exceptions also appear in EVM transaction receipts. They appear with their data as an abi-encoded `string` and with the topics as `keccak256` hashes of
+
+```
+ScillaError(string)
+ScillaException(string)
+```
+
+A sample receipt looks something like this:
+
+```
+...
+"logs": [
+    {
+      "address": "0x0000000000000000000000000000000000000000",
+      "blockHash": "0xc5ed3cceb046633b5d6c3916a32e4e86a93bfb99091f901a76b0022fd0c9c6d2",
+      "blockNumber": "0x1e1",
+      "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001443414C4C5F434F4E54524143545F4641494C4544000000000000000000000000",
+      "logIndex": "0x0",
+      "removed": false,
+      "topics": [
+        "0x2F6C91A9DB4104A8D1A8307E3A7BD88BEE662690837C6C4A9734A2DD31DA28CC"
+      ],
+      "transactionHash": "0xaaed47b443f9c9a00876cfdd4638c64a698f0cae64bb156725386c23fdbc2344",
+      "transactionIndex": 0
+    },
+    ...
+    ]
+...
+```
+
+And code to decode them looks something like this:
+
+```
+  const scillaErrorTopic = keccak256(toUtf8Bytes("ScillaError(string)"));
+  const scillaExceptionTopic = keccak256(toUtf8Bytes("ScillaException(string)"));
+  ...
+    if (byteTopic0 == scillaExceptionTopic ||
+      byteTopic0 == scillaErrorTopic) {
+      try {
+        let kind = (byteTopic0 == scillaExceptionTopic) ? "Forwarded_Scilla_Exception" : "Forwarded_Scilla_Error";
+        let parsed = AbiCoder.defaultAbiCoder().decode(["string"], log.data);
+        return {
+          kind,
+          description: parsed[0],
+        }
+      } catch (err) {
+        console.log(`Failed to parse Scilla return ${err}`);
+        return undefined;
+      }
+    }
+```
+
 
 ## Examples
 
