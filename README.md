@@ -18,3 +18,7 @@ When you believe your ZIP is ready to progress past the 'Draft' phase, you shoul
 2. **Ready** - a preliminary version of the ZIP that is ready for review by a wide audience.
 3. **Approved** - a finalized version of the ZIP that has been in the 'Ready' state for at least 2 weeks and any technical changes that were requested have been addressed by the author.
 4. **Implemented** - a finalized version of the ZIP that the Core Devs have decided to implement and release.
+
+# Reward control statements
+
+Per [GP008](https://governance.zilliqa.com/#/gzil/proposal/QmQUNz5DqWnpXZ8vry7EcDLieQYjNAgaXrUaYBvyunktne), these will appear in the `rewards/` directory in this repository.
