@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--| -- | -- | -- |
-| 21  | EVM/Scilla interwork, phase 1 | Implemented | Standards Track  | Richard Watts <richard@zilliqa.com>, Bartosz Zawistowski <bartosz@zilliqa.com>  | 2023-07-17 | 2023-07-17
+| 21  | EVM/Scilla interwork, phase 1 | Implemented | Standards Track  | Richard Watts <richard@zilliqa.com>, Bartosz Zawistowski <bartosz@zilliqa.com>  | 2023-07-17 | 2024-03-11
 
 ## Abstract
 
@@ -95,6 +95,10 @@ In a future version of this specification, it will allow EVM contracts to accept
 Scilla events can now appear in an EVM transaction receipt.
 
 Because popular libraries would object if they were faced with a "native" Scilla event, we encode them by treating a Scilla event `ev` as though it had been issued by a Solidity event `event ev(string)` with the `string` containing the JSON representing the Scilla event, just as it would have been represented in the `event_logs` array of a Scilla transaction receipt.
+
+### Transferring native tokens
+
+Transferring native tokens in interop calls is not supported (it's always 0 regardless of specified value in the call).
 
 ## Examples
 
