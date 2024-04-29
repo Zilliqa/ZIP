@@ -64,6 +64,10 @@ You can read off the reward to be given at the end of the current epoch from the
 Whilst you should not rely on it, the reward control contract that is expected to be used is in the `zilliqa-developer` repository, at
 `contracts/reward_control/contracts/scilla/rewards_params.scilla`
 
+## Amendment
+
+To counteract an unforeseen side effect of reducing the staking rewards in the current codebase without requiring a network upgrade, we introduce the following amendment to ZIP-24. Effective Mai 2, 2024, the ```lookup_reward_in_percent``` field of the [reward contract](https://viewblock.io/zilliqa/address/zil1hnjwuvjnjasxy230u2muceas3x4prd36d9dkev) will be set to ```4000``` instead of the value reflecting the current percentage of the block reward allocated to staking rewards. Nevertheless, the correct percentage will be distributed among the SSNs through the [staking contract](https://viewblock.io/zilliqa/address/zil15lr86jwg937urdeayvtypvhy6pnp6d7p8n5z09) and the respective current percentage will continue to be published every month in the form of [reward reports](https://github.com/Zilliqa/ZIP/tree/master/rewards).
+
 ## Copyright Waiver
 
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
