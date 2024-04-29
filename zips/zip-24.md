@@ -1,6 +1,6 @@
 |  ZIP | Title | Status| Type | Author                                                                   | Created (yyyy-mm-dd) | Updated (yyyy-mm-dd)
 |--|--|--|--|--------------------------------------------------------------------------| -- | -- |
-| 24  | On-Chain Rewards | Approved | Standards Track  | Richard Watts <richard@zilliqa.com>, Zoltan Fazekas <zoltan@zilliqa.com> | 2023-10-17 | 2023-12-12
+| 24  | On-Chain Rewards | Approved | Standards Track  | Richard Watts <richard@zilliqa.com>, Zoltan Fazekas <zoltan@zilliqa.com> | 2023-10-17 | 2024-04-29
 
 ## Abstract
 
